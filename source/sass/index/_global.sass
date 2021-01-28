@@ -1,0 +1,118 @@
+body
+	background-color: $c-skin
+
+.mgmnav
+	background-color: #fff
+	.wrapper
+		height: 100%
+	a
+		height: 100%
+		display: flex
+		align-items: center
+	img
+		height: 55%
+	
+.mgmcontent
+	position: relative
+	background:
+		repeat: no-repeat
+		position: center
+		size: 101%
+
+.mainbox
+	
+.mgmfoo
+	background-color: #343434
+
+.wrapper
+	margin: 0 auto
+	max-width: 1660px
+
+.fa, .fas, .far
+	font-size: 22px
+	font-weight: 700
+
+// MOBILE v
+@media screen and (max-width: $bp-mb)
+	html, body
+		overflow-x: hidden
+
+	.mgmnav
+		height: $h-nav-mb
+		.wrapper
+			margin-left: 5%
+
+	.mgmcontent
+		overflow: hidden
+		.wrapper
+			height: 100%
+
+	.mgmfoo
+		height: $h-foo-mb
+
+	.mgmfoo-mb
+		color: #ccc
+		text-align: center
+		height: 100%
+		display: flex
+		justify-content: center
+		align-items: center
+		line-height: 1.2
+		font-size: .75rem
+
+@media screen and (max-width: $bp-mb) and (orientation: portrait)
+	.mgmcontent
+		height: calc( 100vh - #{$h-nav-mb} - #{$h-foo-mb})
+	
+@media screen and (max-width: $bp-mb) and (orientation: landscape)
+	.mgmcontent
+		height: calc( 100vh - #{$h-nav-mb})
+
+	.mgmfoo
+		display: none
+
+// PC v
+@media screen and (min-width: $bp-pc)
+	body, html
+		height: 100%
+		min-height: 750px
+
+	.mgmnav
+		height: $h-nav-pc
+
+	.mgmcontent
+		height: calc(100vh - #{$h-nav-pc} - #{$h-foo-pc})
+		background:
+			image: image-url('pd.jpg')
+
+		.wrapper
+			height: 100%
+
+	.mainbox
+		height: calc( 100% - #{$h-logobox-pc})
+		padding: 25px 0 30px
+
+	.wrapper
+		padding: 0 70px
+
+	.mgmfoo
+		height: $h-foo-pc
+	
+	.mgmfoo-mb
+		display: none
+
+@media screen and (max-width: 1366px)
+	html
+		font-size: 12px
+
+@media screen and (min-width: 1367px) and (max-width: 1440px)
+	html
+		font-size: 14.5px
+
+// --------------------------------
+// -- PAD v
+// --------------------------------
+@media screen and (min-width: 992px) and (max-width: 1366px)
+	.mgmcontent
+		.wrapper
+			padding: 0 20px

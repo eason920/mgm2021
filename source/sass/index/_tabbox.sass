@@ -1,0 +1,103 @@
+.tabbox
+	height: $h-tab-pc
+	position: relative
+	display: flex
+	justify-content: space-between
+	border-bottom: solid 1px #666
+
+.tabbox-active
+	position: absolute
+	height: 5px
+	background-color: #666
+	bottom: 0
+	transition: .3s
+	box-shadow: 0 -1px 5px rgba(100, 100, 100, .7)
+
+.tabbox-item
+	background-color: transparent
+	color: #222
+	border: none
+	outline: none
+	cursor: pointer
+	font-size: 1rem
+	padding: 0
+	display: flex
+	align-items: flex-start
+	justify-content: center
+	line-height: 1
+	&:last-child
+		margin: 0
+
+	&.active
+		cursor: default
+
+	h3
+		font-size: 1.625rem
+		font-weight: 700
+		display: inline-block
+		margin: 0 1%
+
+	a
+		position: relative
+		display: block
+		text-align: center
+		font-size: .75rem
+		-webkit-font-smoothing: antialiased
+		-moz-osx-font-smoothing: grayscale
+		font-weight: 700
+		color: #fff
+		padding-top: 0
+		border: 2px solid #fff
+		margin: 0x
+		padding: 10px
+
+		&:hover
+			color: #29324e
+			background-color: rgba(233, 230, 202, 0.3)
+			margin: 0 6px
+	
+.tabbox-item, .tabbox-active
+	width: 25%
+
+// --------------------------------
+// -- MOBILE v
+// --------------------------------
+@media screen and (max-width: $bp-mb)
+	.tabbox-item
+		h3
+			font-size: 15px
+
+	.tabbox-item
+		height: calc( 100% - #{$g-tab} * .7 )
+
+	.tabbox-active
+		margin-bottom: -1px
+
+@media screen and (max-width: $bp-mb) and (orientation: portrait)
+	.tabbox
+		height: $h-tab-mb
+		padding-top: 5px
+
+	.tabbox-item
+		display: flex
+		flex-direction: column
+		align-items: center
+		i
+			display: block
+			padding-bottom: 2px
+
+@media screen and (max-width: $bp-mb) and (orientation: landscape)
+	.tabbox
+		height: $h-total-mb-landscape
+		padding-top: 8px
+
+	.tabbox-item
+		display: flex
+		align-items: center
+		i
+			margin-right: 5px
+
+// --------------------------------
+// -- PC v
+// --------------------------------
+@media screen and (min-width: $bp-pc)

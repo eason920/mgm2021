@@ -1,0 +1,95 @@
+{
+	"games": [
+		{
+			"title": "國產遊戲《螢幕判官》正式登陸 Android 平台 各版本同步新增支援日文",
+			"url": "https://gnn.gamer.com.tw/3/182593.html"
+		},
+		{
+			"title": "揭露「引魂者」 獨家專訪談此新卡牌與重生機制",
+			"url": "https://gnn.gamer.com.tw/2/182642.html"
+		},
+		{
+			"title": "迎接第 20 屆「漫畫博覽會」！獨家專訪主辦單位並回顧 20 多年青春回憶",
+			"url": "https://gnn.gamer.com.tw/7/182607.html"
+		}
+	],
+	"news": [
+		{
+			"h1": "又有陸拳王挑戰館長！MMA冠軍吳紫龍下戰書：很討厭你的言行",
+			"link": "https://www.ettoday.net/news/20190713/1489214.htm"
+		},{
+			"h1": "最新！第21屆台北電影獎完整得獎名單",
+			"link": "https://www.nownews.com/news/20190713/3498821/"
+		}
+	],
+	"mrt1": [
+		{
+			"bg": "./images/mrt/demo/3.jpg",
+			"video": "https://www.youtube.com/embed/CZoYuWA21SU"
+		},
+		{
+			"bg": "./images/mrt/demo/5.jpg",
+			"video": "https://www.youtube.com/embed/RPBLbKwRAkw"
+		},
+		{
+			"bg": "./images/mrt/demo/4.jpg",
+			"video": "https://www.youtube.com/embed/hN09_3jfNFE"
+		}
+	],
+	"mrt2": [
+		{"bg": "./images/mrt/demo/1.jpg"},
+		{"bg": "./images/mrt/demo/2.jpg"},
+		{"bg": "./images/mrt/demo/3.jpg"},
+		{"bg": "./images/mrt/demo/4.jpg"}
+	],
+	"mrt3": [
+		{"bg": "./images/mrt/demo/m1.jpg"},
+		{"bg": "./images/mrt/demo/m2.jpg"},
+		{"bg": "./images/mrt/demo/m3.jpg"},
+		{"bg": "./images/mrt/demo/m4.jpg"}
+	],
+	"mrt4": [
+		{
+			"bg1": "./images/mrt/demo/1.jpg",
+			"bg2": "./images/mrt/demo/4.jpg"
+		},
+		{
+			"bg1": "./images/mrt/demo/3.jpg",
+			"bg2": "./images/mrt/demo/4.jpg"
+		},
+		{
+			"bg1": "./images/mrt/demo/5.jpg",
+			"bg2": "./images/mrt/demo/6.jpg"
+		},
+		{
+			"bg1": "./images/mrt/demo/2.jpg",
+			"bg2": "./images/mrt/demo/4.jpg"
+		},
+		{
+			"bg1": "./images/mrt/demo/4.jpg",
+			"bg2": "./images/mrt/demo/3.jpg"
+		},
+		{
+			"bg1": "./images/mrt/demo/6.jpg",
+			"bg2": "./images/mrt/demo/5.jpg"
+		}
+	],
+	"mrt1b": [
+		{
+			"bg": "./images/mrt/demo/3.jpg",
+			"video": "https://www.youtube.com/embed/CZoYuWA21SU"
+		}
+	],
+	"mrt2b": [
+		{"bg": "./images/mrt/demo/1.jpg"}
+	],
+	"mrt3b": [
+		{"bg": "./images/mrt/demo/m1.jpg"}
+	],
+	"mrt4b": [
+		{
+			"bg1": "./images/mrt/demo/1.jpg",
+			"bg2": "./images/mrt/demo/4.jpg"
+		}
+	]
+}

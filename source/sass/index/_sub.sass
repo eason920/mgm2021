@@ -1,0 +1,196 @@
+.coinbox-lb
+	float: left
+
+.coinbox
+	padding: 0 50px
+	height: 100%
+	color: $c-txt
+	background-color: #fff
+
+	h3
+		font-size: 1.625rem
+		font-weight: 700
+		line-height: 1.4
+		text-align: center
+		padding: 1% 0
+
+	.p
+		font-size: 1rem
+		line-height: 1.4
+		text-align: center
+		padding: 1% 0
+
+	span
+		font-size: 2.5rem
+		font-weight: 700
+		text-align: center
+		padding: 1% 0
+
+.code-button
+	font-size: 1.625rem
+	font-weight: 700
+	color: $c-skin
+	text-align: center
+	padding: 4% 0
+	background-color: $c-golden
+	border-radius: 3px
+	width: 190px
+	margin: 6% auto 6%
+	transition: all .5s
+
+	&:hover
+		display: block
+		cursor: pointer
+		transform: translateY(-5px) scale(1.05)
+		box-shadow: 0 0 1rem rgba(0, 0, 0, 0.5)
+
+.textitem
+	margin: auto
+
+.img-responsive-title
+	display: block
+	margin-left: 50%
+
+.img-responsive-text
+	display: flex
+	margin: -18% auto 4%
+	width: 30%
+
+.img-responsive-coin-a
+	display: block
+	width: 30%
+	left: 100%
+	margin-top: -13%
+
+.img-responsive-coin-b
+	display: block
+	width: 30%
+	left: 100%
+	margin-top: -36%
+
+.img-responsive-text
+	animation: motion 2s ease-in-out infinite 1s
+	z-index: -1
+
+@keyframes motion
+	50%
+		transform: translateY(-10px)
+
+// --------------------------------
+// -- MOBILE v
+// --------------------------------
+@media screen and (max-width: $bp-mb)
+	.coinbox-lb
+		position: fixed
+		top: 0
+		bottom: 0
+		left: 0
+		margin: auto
+		width: 100%
+		justify-content: center
+		align-items: center
+		background-color: rgba( 0,0,0,.8 )
+		display: none
+
+	.is-open
+		.coinbox-lb
+			display: flex
+
+	.coinbox
+		width: 86%
+
+	.coinbox-close
+		background-color: #fff
+		font-size: 1.5rem
+		color: #000
+		width: 40px
+		height: 40px
+		border-radius: 50%
+		display: flex
+		justify-content: center
+		align-items: center
+		position: fixed
+		top: 20px
+		right: 4%
+		box-shadow: 0 0 12px rgba(0,0,0,.7)
+
+	.img-responsive-title
+		width: 180px
+		transform: translate(-50%, -15px)
+
+	.img-responsive-coin-a
+		margin-left: 103%
+
+	.img-responsive-coin-b
+		margin-left: -33%
+
+	.contentbox-total h2
+		padding-left: 0
+
+	.contentbox-convert
+		width: 110px
+
+@media screen and (max-width: $bp-mb) and (orientation: portrait)
+	.coinbox
+		height: 460px
+
+@media screen and (max-width: $bp-mb) and (orientation: landscape)
+	.is-open
+		position: relative
+		z-index: 1
+		margin-top: -1 * $h-nav-mb
+		height: 100%!important
+
+		.logobox, .leftbox
+			display: none
+
+		.coinbox-lb
+			position: relative
+			z-index: 1
+			padding: 100px 0 70px
+			height: auto
+
+		.coinbox
+			height: 640px
+
+// --------------------------------
+// -- PC v
+// --------------------------------
+@media screen and (min-width: $bp-pc)
+	$gutter: $h-tab-pc * .2
+	.coinbox
+		// margin-top: $gutter
+		// height: calc( 100% - #{$gutter} )
+		
+	.coinbox-lb
+		width: 30%
+		margin-left: 30px
+		padding-top: 15px
+		height: 100%
+
+	.coinbox-close
+		display: none
+
+	.img-responsive-title
+		width: 250px
+		transform: translate(-50%, -20px)
+
+	.img-responsive-coin-a
+		margin-left: 96%
+
+	.img-responsive-coin-b
+		margin-left: -23%
+
+	.code-button
+		width: 240px
+
+// --------------------------------
+// -- PAD landscape v
+// --------------------------------
+@media screen and (min-width: $bp-pc) and (max-width: 1024px)
+	.coinbox
+		padding: 0
+
+@media screen and (min-width: 992px) and (max-width: 1366px)
+	.img-responsive-coin-a
+		margin-left: 75%!important

@@ -1,0 +1,144 @@
+doctype html
+html(lang='en')
+	head
+		meta(charset='UTF-8')
+		meta(name='viewport' content='width=device-width, initial-scale=1.0')
+		title mgm index
+		link(href='./css/index.css' rel='stylesheet')
+		link(href='./assets/plugins/perfect-scrollbar-master/perfect-scrollbar.css' rel='stylesheet')
+		//-
+		script(src='./assets/plugins/jquery/jquery-1.12.4-min.js')
+		script(src='./assets/plugins/perfect-scrollbar-master/perfect-scrollbar.min.js')
+		script(src='./js/index.js')
+		//
+			Bootstrap-Core-CSS
+			<link rel="stylesheet" href="css/bootstrap.css">
+		// Font-Awesome-Icons-CSS
+		style.
+			/* v scrollbar 是否永遠顥示的跟據，而且一定要放外面，不可寫到 .css 中 v */
+			.ps__rail-x,
+			.ps__rail-y {
+				opacity: 0.6;
+			}
+			/* ^ scrollbar 是否永遠顥示的跟據，而且一定要放外面，不可寫到 .css 中 ^ */
+		link(href='https://use.fontawesome.com/releases/v5.0.7/css/all.css' rel='stylesheet')
+	body
+		.mgmnav
+			.wrapper
+				a(href='https://funday.asia/' target='_blank')
+					img.img-responsive(src='https://funday.asia/logo/2021/black/h60.png' alt='fundy logo')
+
+		.mgmcontent
+			.wrapper
+				.logobox
+					img.logobox-bonus(src='./images/bonus.png')
+					img.logobox-what(src='./images/what.png')
+				
+				.mainbox
+					//- LEFT
+					.leftbox
+						.tabbox
+							button.tabbox-item(data-tab='home')
+								i.far.fa-paper-plane
+								h3 列表
+							button.tabbox-item(data-tab='news')
+								i.far.fa-file-alt
+								h3 學習獎勵
+							button.tabbox-item(data-tab='awards')
+								i.fas.fa-gift
+								h3 推薦獎勵
+							button.tabbox-item(data-tab='events')
+								i.fas.fa-search-plus
+								h3 活動獎勵
+							.tabbox-active
+						.contentbox
+							//- home
+							.contentbox-item(data-tab='home')
+								.contentbox-tip.is-head
+									ol
+										li 項目
+									ol
+										li 完成日期
+									ol
+										li 
+											.for-pc Fun coin幣
+											.for-mb F coin
+								.contentbox-scroller.is-s1
+									.box
+										include partials/mgm2021/home
+										include partials/mgm2021/home
+										include partials/mgm2021/home
+										include partials/mgm2021/home
+										include partials/mgm2021/home
+
+							//- news
+							.contentbox-item(data-tab='news')
+								.contentbox-tip.is-head
+									ol
+										li 學習獎勵
+								.contentbox-scroller.is-s3
+									.box
+										include partials/mgm2021/news
+										include partials/mgm2021/news
+										include partials/mgm2021/news
+
+							//- contact
+							.contentbox-item(data-tab='awards')
+								.contentbox-tip.is-head
+									ol
+										li 推薦獎勵
+								.contentbox-scroller.is-s4
+									.box
+										include partials/mgm2021/news2
+										include partials/mgm2021/news2
+										include partials/mgm2021/news2
+
+							//- about
+							.contentbox-item(data-tab='events')
+								.contentbox-tip.is-head
+									ol
+										li 活動獎勵
+								.contentbox-scroller.is-s2
+									.box
+										include partials/mgm2021/news_1only
+										//- include partials/mgm2021/news
+										//- include partials/mgm2021/news
+										//- include partials/mgm2021/news
+
+							//- total
+							.contentbox-total
+								h2 目前累積
+									span 3650
+									|Fun Coin幣
+								.contentbox-convert 兌換
+
+					//-------------------------------------------------
+					.coinbox-lb
+						.coinbox-close ╳
+						.coinbox
+							img.img-responsive-title(src='./images/coin-title.png' alt='')
+							img.img-responsive-coin-a(src='./images/coin-1.png' alt='')
+							img.img-responsive-text(src='./images/coin-text.png' alt='')
+							h3
+								| FUN幣可兌換FUNDAY SHOP
+								br
+								| 裡的
+								span 各種商品
+								| 。
+							h3
+								| FUN幣累積達到2000點時，
+								br
+								| 始可
+								span 兌換現金
+								| 。
+							.p
+								| *申請兌換現金時，須提供個人資料與
+								br
+								| 金融帳戶資訊以利報稅與匯款。
+							.code-button 個人專屬優惠代碼
+							img.img-responsive-coin-b(src='./images/coin-2.png' alt='')
+		.mgmfoo
+			.mgmfoo-mb
+				|© 2020 Brainstorm Digital Communications Corp.
+				br
+				|All rights reserved. Privacy Policy
