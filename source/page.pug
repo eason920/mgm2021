@@ -1,0 +1,51 @@
+doctype html
+html(lang='en')
+	head
+		meta(charset='UTF-8')
+		meta(name='viewport' content='width=device-width, initial-scale=1.0')
+		title mgm page
+		link(href='./css/page.css' rel='stylesheet')
+		link(href='./assets/plugins/perfect-scrollbar-master/perfect-scrollbar.css' rel='stylesheet')
+		//-
+		script(src='./assets/plugins/jquery/jquery-1.12.4-min.js')
+		script(src='./assets/plugins/perfect-scrollbar-master/perfect-scrollbar.min.js')
+		script(src='./js/page.js')
+		//
+			Bootstrap-Core-CSS
+			<link rel="stylesheet" href="css/bootstrap.css">
+		// Font-Awesome-Icons-CSS
+		style.
+			/* v scrollbar 是否永遠顥示的跟據，而且一定要放外面，不可寫到 .css 中 v */
+			.ps__rail-x,
+			.ps__rail-y {
+				opacity: 0.6;
+			}
+			/* ^ scrollbar 是否永遠顥示的跟據，而且一定要放外面，不可寫到 .css 中 ^ */
+		link(href='https://use.fontawesome.com/releases/v5.0.7/css/all.css' rel='stylesheet')
+	body
+		.mgmnav
+			.wrapper
+				a.mgmnav-box(href='https://funday.asia/' target='_blank')
+					img.img-responsive(src='./images/logo.png' alt='fundy logo')
+					.mgmnav-home 首頁
+
+		.mgmcontent
+			.wrapper
+				h4.gifttitle 學習類
+				section.giftbox(data-category='1')
+					.giftbox-scroller
+						include partials/giftbox_item
+						include partials/giftbox_item
+						include partials/giftbox_item
+						include partials/giftbox_item
+						include partials/giftbox_item
+						include partials/giftbox_item
+						include partials/giftbox_item
+						include partials/giftbox_item
+						include partials/giftbox_item
+					
+		.mgmfoo
+			.mgmfoo-mb
+				|© 2020 Brainstorm Digital Communications Corp.
+				br
+				|All rights reserved. Privacy Policy

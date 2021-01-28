@@ -1,0 +1,85 @@
+.gifttitle
+	font:
+		size: 2rem
+		weight: bold
+	color: $c5
+	padding: 40px 0 20px
+	
+.giftbox
+
+.giftbox-scroller
+	flex-wrap: wrap
+	display: flex
+
+.giftbox-item
+	cursor: pointer
+	
+.giftbox-img
+	background:
+		size: cover
+		position: center
+	img
+		width: 100%
+
+.giftbox-info
+	background-color: #fff
+	padding: 15px
+
+.giftbox-title
+	font-size: 16px
+	line-height: 1.3
+	@extend %row2
+	height: 40px
+	margin-bottom: 5px
+
+.giftbox-pricebox
+	display: flex
+	justify-content: space-between
+
+.giftbox-price
+	background:
+		image: image-url('icon.png')
+
+.giftbox-btn
+	background-color: $c5
+	border: none
+	color: #fff
+	border-radius: 3px
+	padding: 0 20px
+
+
+@media screen and (max-width: $bp-pad-mb)
+	$w3: 50px
+	$g: 12px
+
+	.giftbox
+		overflow:
+			x: auto
+			y: hidden
+
+	.giftbox-scroller
+		// width: 2000px
+
+	.giftbox-item
+		width: calc( ( 100% - #{$w3} - #{$g} * 3 ) / 2 )
+		width: 150px
+		margin-left: $g
+		&:last-child
+			margin-right: $g
+		// width: 
+
+@media screen and (min-width: $bp-pad-pc)
+	$g: 30px
+	.giftbox-scroller
+		overflow: hidden
+		
+	.giftbox-item
+		width: 20%
+		width: calc( ( 100% - #{$g} * 4 ) / 5 )
+		margin:
+			right: $g
+			bottom: $g
+		&:nth-child(5n)
+			margin-right: 0
+
+@media screen and (min-width: 1440px)

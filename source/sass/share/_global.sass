@@ -2,22 +2,30 @@ body
 	background-color: $c-skin
 
 .mgmnav
-	background-color: #fff
+	position: fixed
+	width: 100%
+	top: 0
+	z-index: 1
+	background-color: $c-skin
 	.wrapper
 		height: 100%
-	a
-		height: 100%
-		display: flex
-		align-items: center
+		
+.mgmnav-box
+	height: 100%
+	display: flex
+	align-items: center
+	justify-content: space-between
+	text-decoration: none
+	border-bottom: solid 1px #006463
 	img
 		height: 55%
-	
-.mgmcontent
-	position: relative
-	background:
-		repeat: no-repeat
-		position: center
-		size: 101%
+
+.mgmnav-home
+	font-size: 16px
+	color: #000
+	transition: .3s
+	&:hover
+		color: $c2
 
 .mainbox
 	
@@ -32,7 +40,9 @@ body
 	font-size: 22px
 	font-weight: 700
 
-// MOBILE v
+// --------------------------------
+// -- MB v
+// --------------------------------
 @media screen and (max-width: $bp-mb)
 	html, body
 		overflow-x: hidden
@@ -40,12 +50,7 @@ body
 	.mgmnav
 		height: $h-nav-mb
 		.wrapper
-			margin-left: 5%
-
-	.mgmcontent
-		overflow: hidden
-		.wrapper
-			height: 100%
+			margin: 0 5%
 
 	.mgmfoo
 		height: $h-foo-mb
@@ -61,17 +66,14 @@ body
 		font-size: .75rem
 
 @media screen and (max-width: $bp-mb) and (orientation: portrait)
-	.mgmcontent
-		height: calc( 100vh - #{$h-nav-mb} - #{$h-foo-mb})
 	
 @media screen and (max-width: $bp-mb) and (orientation: landscape)
-	.mgmcontent
-		height: calc( 100vh - #{$h-nav-mb})
-
 	.mgmfoo
 		display: none
 
-// PC v
+// --------------------------------
+// -- PC v
+// --------------------------------
 @media screen and (min-width: $bp-pc)
 	body, html
 		height: 100%
@@ -79,14 +81,6 @@ body
 
 	.mgmnav
 		height: $h-nav-pc
-
-	.mgmcontent
-		height: calc(100vh - #{$h-nav-pc} - #{$h-foo-pc})
-		background:
-			image: image-url('pd.jpg')
-
-		.wrapper
-			height: 100%
 
 	.mainbox
 		height: calc( 100% - #{$h-logobox-pc})
@@ -108,11 +102,3 @@ body
 @media screen and (min-width: 1367px) and (max-width: 1440px)
 	html
 		font-size: 14.5px
-
-// --------------------------------
-// -- PAD v
-// --------------------------------
-@media screen and (min-width: 992px) and (max-width: 1366px)
-	.mgmcontent
-		.wrapper
-			padding: 0 20px

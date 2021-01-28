@@ -1,0 +1,49 @@
+.mgmcontent
+	position: relative
+	background:
+		repeat: repeat-y
+		position: center
+		size: 101%
+	height: 2000px
+
+	.wrapper
+		height: 100%
+
+// --------------------------------
+// -- MB v
+// --------------------------------
+@media screen and (max-width: $bp-mb)
+	.mgmcontent
+		overflow: hidden
+		margin-top: $h-nav-mb
+
+@media screen and (max-width: $bp-mb) and (orientation: portrait)
+	.mgmcontent
+		min-height: calc( 100vh - #{$h-nav-mb} - #{$h-foo-mb})
+	
+@media screen and (max-width: $bp-mb) and (orientation: landscape)
+	.mgmcontent
+		min-height: calc( 100vh - #{$h-nav-mb})
+
+	.mgmfoo
+		display: block
+
+// --------------------------------
+// -- PC v
+// --------------------------------
+@media screen and (min-width: $bp-pc)
+	.mgmcontent
+		min-height: calc(100vh - #{$h-nav-pc} - #{$h-foo-pc})
+		background:
+			image: image-url('pd_page.jpg')
+			size: contain
+			position: center top
+		margin-top: $h-nav-pc
+
+// --------------------------------
+// -- PAD v
+// --------------------------------
+@media screen and (min-width: 992px) and (max-width: 1366px)
+	.mgmcontent
+		.wrapper
+			// padding: 0 20px

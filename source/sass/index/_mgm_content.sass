@@ -1,0 +1,46 @@
+.mgmcontent
+	position: relative
+	background:
+		repeat: no-repeat
+		position: center
+		size: 101%
+
+// --------------------------------
+// -- MB v
+// --------------------------------
+@media screen and (max-width: $bp-mb)
+	.mgmcontent
+		overflow: hidden
+		margin-top: $h-nav-mb
+		
+		.wrapper
+			height: 100%
+
+@media screen and (max-width: $bp-mb) and (orientation: portrait)
+	.mgmcontent
+		height: calc( 100vh - #{$h-nav-mb} - #{$h-foo-mb})
+	
+@media screen and (max-width: $bp-mb) and (orientation: landscape)
+	.mgmcontent
+		height: calc( 100vh - #{$h-nav-mb})
+
+// --------------------------------
+// -- PC v
+// --------------------------------
+@media screen and (min-width: $bp-pc)
+	.mgmcontent
+		height: calc(100vh - #{$h-nav-pc} - #{$h-foo-pc})
+		background:
+			image: image-url('pd.jpg')
+		margin-top: $h-nav-pc
+
+		.wrapper
+			height: 100%
+
+// --------------------------------
+// -- PAD v
+// --------------------------------
+@media screen and (min-width: 992px) and (max-width: 1366px)
+	.mgmcontent
+		.wrapper
+			padding: 0 20px
