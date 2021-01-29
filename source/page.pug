@@ -31,7 +31,7 @@ html(lang='en')
 
 		.mgmcontent
 			.wrapper
-				h4.gifttitle 學習類
+				h4.gifttitle.is-first 學習類
 				section.giftbox(data-category='1')
 					.giftbox-scroller
 						include partials/giftbox_item
@@ -43,9 +43,34 @@ html(lang='en')
 						include partials/giftbox_item
 						include partials/giftbox_item
 						include partials/giftbox_item
+						include partials/giftbox_item_empty
+
+				h4.gifttitle 生活類
+				section.giftbox(data-category='2')
+					.giftbox-scroller
+						include partials/giftbox_item
+						include partials/giftbox_item
+						include partials/giftbox_item
+						include partials/giftbox_item
+						include partials/giftbox_item
+
+				h4.gifttitle 現金類
+				section.giftbox(data-category='3')
+					.giftbox-scroller
+						include partials/giftbox_item
+						include partials/giftbox_item
+						include partials/giftbox_item
+						include partials/giftbox_item_empty
+						include partials/giftbox_item_empty
+
+				section.mgmlimit
+					p **VIP會員若到期，點數僅保留3個月。
+					p **活動有效日期110年8月31日。
 					
 		.mgmfoo
 			.mgmfoo-mb
 				|© 2020 Brainstorm Digital Communications Corp.
 				br
 				|All rights reserved. Privacy Policy
+		
+		include partials/lb
