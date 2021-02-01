@@ -1,0 +1,100 @@
+$g-x: 35px
+$g-y: 5% 
+	
+.mgmlb
+	&.is-mb-open
+		padding: #{$g-x} #{$g-y}
+		overflow-y: auto
+		.mgmlb-box
+			position: static
+			max-width: 570px
+
+		// =================================
+		.mgmlb-close
+			top: $g-x
+			right: $g-y
+			transform: translate(20%, -50%)      
+
+		// =================================
+		.mgmlb-pic
+			display: flex
+			justify-content: space-between
+			border-bottom: solid 1px #b3b3b3
+
+		.lbpic-kv
+
+		.lbpic-box
+			display: flex
+			justify-content: space-between
+			flex-direction: column
+
+		.lbpic-item
+			// width: 100%
+
+		// =================================
+		.mgmlb-info
+			height: 2000px
+
+		// --------------------------------
+		.is-lbblock
+
+		// --------------------------------
+		.lbproduct
+
+		.lbproduct-title
+			font-size: 19px
+
+		.lbproduct-pricebox
+
+		.lbproduct-price
+
+		// --------------------------------
+		.lbtalk
+
+		// --------------------------------
+		.lbinfo
+
+		// --------------------------------
+		.lbbtn
+
+@media screen and (max-width: 360px)
+	.mgmlb
+		&.is-mb-open
+			.mgmlb-pic
+				padding: 25px
+
+			.lbpic-kv
+				width: calc( 100% - 7px - 50px)
+
+@media screen and (max-width: 375px) and (min-width: 361px)
+	.mgmlb
+		&.is-mb-open
+			.mgmlb-pic
+				padding: 25px
+
+			.lbpic-kv
+				width: calc( 100% - 12px - 50px)
+
+@media screen and (max-width: 414px) and (min-width: 376px)
+	.mgmlb
+		&.is-mb-open
+			.mgmlb-pic
+				padding: 25px
+
+			.lbpic-kv
+				width: calc( 100% - 8px - 60px)
+
+			.lbpic-item
+				width: 60px
+
+@media screen and (max-width: 812px) and (orientation: landscape)
+	.mgmlb
+		&.is-mb-open
+			.mgmlb-pic
+				padding: 25px
+
+			.lbpic-kv
+				width: calc( 100% - 20px - 90px)
+
+			.lbpic-item
+				width: 90px
