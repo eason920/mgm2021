@@ -11,7 +11,7 @@ $(()=>{
 	const ww = $(window).width();
 	const nua = navigator.userAgent;
 	
-	if( /android | iphone/i.test(nua) || /ipad/i.test(nua) ){
+	if( /android | iphone/i.test(nua) || /ipad/i.test(nua) && ww <= 768 ){
 		const w = $('.giftbox-item').outerWidth(true);
 		const g = w - $('.giftbox-item').outerWidth();
 		for( i=1; i<=3; i++){
@@ -34,18 +34,24 @@ $(()=>{
 	
 	// --------------------------------
 	$('.giftbox-btn').click(function(){
-		$('.mgmlb').fadeIn().addClass(deviceClass);
+		const time = 300;
+		$('.mgmlb, .mgmlb-box').fadeIn(time);
+		$('body').addClass(deviceClass);
+		setTimeout(()=>{
+			$('.mgmlb-box').css('display', 'flex')
+			$('.mgmlb-info').scrollTop(1);
+		}, time);
 		$('html').css('overflow', 'hidden');
 		//
 	});
 
-	$('.mgmlb').click(function(){
-		const time = 300
-		$(this).fadeOut(time);
+	$('.mgmlb, .mgmlb-close').click(function(){
+		const time = 300;
+		$('.mgmlb, .mgmlb-box').fadeOut(time);
 		$('html').removeAttr('style');
 		//
 		setTimeout(()=>{
-			$('.mgmlb').removeClass(deviceClass);
+			$('body').removeClass(deviceClass);
 		}, time);
 	});
 

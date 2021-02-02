@@ -1,100 +1,144 @@
 $g-x: 35px
-$g-y: 5% 
+$g-y: 5%
+$p: 18px
+$w-price: 98px
 	
-.mgmlb
-	&.is-mb-open
+.is-mb-open
+	.mgmlb
 		padding: #{$g-x} #{$g-y}
 		overflow-y: auto
-		.mgmlb-box
-			position: static
-			max-width: 570px
 
-		// =================================
-		.mgmlb-close
-			top: $g-x
-			right: $g-y
-			transform: translate(20%, -50%)      
+	.mgmlb-scroller
+		position: fixed
+		top: 0
+		right: 0
+		bottom: 0
+		left: 0
+		margin: auto
+		overflow:
+			x: hidden
+			y: auto
+		z-index: 2
+		padding: 3vh 0
 
-		// =================================
-		.mgmlb-pic
-			display: flex
-			justify-content: space-between
-			border-bottom: solid 1px #b3b3b3
+	.mgmlb-box
+		position: static
+		width: 92%
+		max-width: 570px // for landscape
+		flex-direction: column
 
-		.lbpic-kv
+	// =================================
+	.mgmlb-close
+		top: $g-x
+		right: $g-y
+		transform: translate(30%, -75%)      
 
-		.lbpic-box
-			display: flex
-			justify-content: space-between
-			flex-direction: column
+	// =================================
+	.mgmlb-pic
+		padding: $p
+		display: flex
+		justify-content: space-between
+		border-bottom: solid 1px #b3b3b3
 
-		.lbpic-item
-			// width: 100%
+	.lbpic-kv
 
-		// =================================
-		.mgmlb-info
-			height: 2000px
+	.lbpic-box
+		display: flex
+		justify-content: space-between
+		flex-direction: column
 
-		// --------------------------------
-		.is-lbblock
+	.lbpic-item
+		// width: 100%
 
-		// --------------------------------
-		.lbproduct
+	// =================================
+	.mgmlb-info
+		padding: $p $p $p*2
 
-		.lbproduct-title
-			font-size: 19px
+	// --------------------------------
+	.is-lbblock
 
-		.lbproduct-pricebox
+	// --------------------------------
+	.lbproduct
+		display: flex
 
-		.lbproduct-price
+	.lbproduct-title
+		font-size: 19px
+		width: calc( 100% - #{$w-price})
+		max-height: 40px
+		overflow: hidden
+		padding-right: 8px
+		@extend %row2
 
-		// --------------------------------
-		.lbtalk
+	.lbproduct-pricebox
+		width: $w-price
 
-		// --------------------------------
-		.lbinfo
+	.lbproduct-price
+		font-size: 18px
 
-		// --------------------------------
-		.lbbtn
+	.lbproduct-prefix
+		display: none
+
+	// --------------------------------
+	.lbtalk
+		padding: 15px 0
+
+	.lbtalk-item
+		line-height: 1.3
+		font-size: 15px
+		margin-bottom: 8px
+
+	// --------------------------------
+	.lbinfo
+		padding: 15px 0
+	
+	.lbinfo-info
+
+	.lbinfo-tip
+		margin-bottom: 10px
+		// font-size: 16px
+
+	.lbinfo-iptbox
+		margin-bottom: 8px
+
+	.lbinfo-name
+		font-size: 15px
+		margin-bottom: 5px
+
+	.lbinfo-ipt
+		width: 100%
+		line-height: 40px
+		box-sizing: border-box
+		text-indent: 8px
+		font-size: 15px
+
+	// --------------------------------
+	.lbbtn
 
 @media screen and (max-width: 360px)
-	.mgmlb
-		&.is-mb-open
-			.mgmlb-pic
-				padding: 25px
-
-			.lbpic-kv
-				width: calc( 100% - 7px - 50px)
+	.is-mb-open
+		.lbpic-kv
+			width: calc( 100% - 10px - 50px)
 
 @media screen and (max-width: 375px) and (min-width: 361px)
-	.mgmlb
-		&.is-mb-open
-			.mgmlb-pic
-				padding: 25px
-
-			.lbpic-kv
-				width: calc( 100% - 12px - 50px)
+	.is-mb-open
+		.lbpic-kv
+			width: calc( 100% - 15px - 50px)
 
 @media screen and (max-width: 414px) and (min-width: 376px)
-	.mgmlb
-		&.is-mb-open
-			.mgmlb-pic
-				padding: 25px
+	.is-mb-open
+		.lbpic-kv
+			width: calc( 100% - 12px - 60px)
 
-			.lbpic-kv
-				width: calc( 100% - 8px - 60px)
-
-			.lbpic-item
-				width: 60px
+		.lbpic-item
+			width: 60px
 
 @media screen and (max-width: 812px) and (orientation: landscape)
-	.mgmlb
-		&.is-mb-open
-			.mgmlb-pic
-				padding: 25px
+	.is-mb-open
+		.mgmlb-scroller
+			padding: 12vh 0
 
-			.lbpic-kv
-				width: calc( 100% - 20px - 90px)
+		.lbpic-kv
+			width: calc( 100% - 20px - 90px)
 
-			.lbpic-item
-				width: 90px
+		.lbpic-item
+			width: 90px

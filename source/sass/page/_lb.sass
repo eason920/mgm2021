@@ -13,6 +13,9 @@
 
 .mgmlb-box
 	background-color: #fff
+	border-radius: 7px
+	z-index: 3
+	display: none
 
 // =================================
 .mgmlb-close
@@ -26,9 +29,13 @@
 	justify-content: center
 	align-items: center
 	font:
-		size: 18px
+		size: 24px
 	cursor: pointer
 	z-index: 1
+	transition: .3s
+	&:hover
+		background-color: #333
+		transform: rotate(360deg)
 
 // =================================
 .mgmlb-pic
@@ -38,6 +45,9 @@
 .lbpic-box
 
 .lbpic-item
+	cursor: pointer
+	&.active
+		border: solid 2px #{$c2}
 
 .lbpic-kv, .lbpic-item
 	background:
@@ -73,9 +83,35 @@
 
 // --------------------------------
 .lbtalk
+	color: $c-txt
+	border-bottom: solid 1px #b3b3b3
+
+.lbtalk-item
+	&:last-child
+		margin: 0!important
 
 // --------------------------------
 .lbinfo
+	& > *
+		color: $c-txt2
+
+.lbinfo-tip
+	font:
+		size: 16px
+		weight: bold
 
 // --------------------------------
 .lbbtn
+	width: 150px
+	height: 40px
+	border-radius: 3px
+	display: flex
+	align-items: center
+	justify-content: center
+	background-color: $c5
+	color: #fff
+	font-size: 22px
+	border: none
+	margin: 0 auto
+	cursor: pointer
+	transition: .3s
