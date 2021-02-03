@@ -163,9 +163,9 @@ gulp.task('build', function(){
 		.pipe(gulp.dest('./public/data/'))
 })
 
-gulp.task('default', ['pug', 'email', 'tmp_module', 'css', 'js', 'tmp_js', 'img', 'data'], function(){
+
+const mission = function(){
 	gulp.watch('./source/css/**/*.css', ['css']);
-	gulp.watch('./source/*.pug', ['pug']);
 	gulp.watch('./source/partials/**/*.pug', ['pug']);
 	gulp.watch('./source/email/*.pug', ['email']);
 	gulp.watch('./source/tmp_module/*.pug', ['tmp_module']);
@@ -173,4 +173,12 @@ gulp.task('default', ['pug', 'email', 'tmp_module', 'css', 'js', 'tmp_js', 'img'
 	gulp.watch('./.tmp/assets/tmp/*.js', ['tmp_js'])
 	gulp.watch('./source/images/**/*', ['img']);
 	gulp.watch('./source/data/*.json', ['data']);
+}
+gulp.task('default', ['pug', 'email', 'tmp_module', 'css', 'js', 'tmp_js', 'img', 'data'], function(){
+	gulp.watch('./source/*.pug', ['pug']);
+	mission();
+});
+
+gulp.task('vue', ['email', 'tmp_module', 'css', 'js', 'tmp_js', 'img', 'data'], function () {
+	mission();
 });

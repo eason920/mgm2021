@@ -1,3 +1,13 @@
+const fnCountToSum = function (element, number, suffix, duration) {
+	$({ count: parseInt(element.text().split("+")[0].replace(/\,/g, '')) }).animate({ count: number }, {
+		duration: duration ? duration : 1000,
+		easing: 'swing',
+		step: function (now) {
+			element.text((Math.floor(now) + suffix).replace(/(\d)(?=(\d\d\d)+(?!\d))/g, "$1,"));
+		}
+	});
+};
+
 $(()=>{
 	$('.tabbox-item').click(function(){
 		const tab = $(this).attr('data-tab');
@@ -40,6 +50,9 @@ $(()=>{
 			$('.mgmcontent').removeClass('is-open');
 		});
 	}
-
-
+	
+	// ==========================================
+	// == COUNT v
+	// ==========================================
+	fnCountToSum( $('#countToSum') , 23500, '', 2000);
 });
