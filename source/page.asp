@@ -47,7 +47,8 @@ response.Charset = "utf-8"
 							:prop='item'
 							v-for='(item, i) in ary.learning'
 							:key='i'
-							@connect_click='fnOpenLB("learning", i)'
+							:req_style='item.pic[0] | filterBG'
+							@connect_click='fnOpenLB(item)'
 						></cpn_item>
 						<!--div class="giftbox-item is-empty"></div-->
 					</div>
@@ -55,107 +56,25 @@ response.Charset = "utf-8"
 				<h4 class="gifttitle">生活類</h4>
 				<section class="giftbox" data-category="2">
 					<div class="giftbox-scroller">
-						<div class="giftbox-item">
-							<div class="giftbox-imgouter">
-								<div class="giftbox-img" style="background-image: url(./2021/images/gifts/1.jpg)"><img src="./2021/images/empty_item.png"></div>
-							</div>
-							<div class="giftbox-info">
-								<div class="giftbox-title">FUNDAY線上數位訂閱-3個月線上數位訂閱-3個月線上數位訂閱線上數位訂閱</div>
-								<div class="giftbox-pricebox">
-									<div class="giftbox-price"> <img class="giftbox-icon" src="./2021/images/icon.svg">3050 點</div>
-									<button class="giftbox-btn">兌換</button>
-								</div>
-							</div>
-						</div>
-						<div class="giftbox-item">
-							<div class="giftbox-imgouter">
-								<div class="giftbox-img" style="background-image: url(./2021/images/gifts/1.jpg)"><img src="./2021/images/empty_item.png"></div>
-							</div>
-							<div class="giftbox-info">
-								<div class="giftbox-title">FUNDAY線上數位訂閱-3個月線上數位訂閱-3個月線上數位訂閱線上數位訂閱</div>
-								<div class="giftbox-pricebox">
-									<div class="giftbox-price"> <img class="giftbox-icon" src="./2021/images/icon.svg">3050 點</div>
-									<button class="giftbox-btn">兌換</button>
-								</div>
-							</div>
-						</div>
-						<div class="giftbox-item">
-							<div class="giftbox-imgouter">
-								<div class="giftbox-img" style="background-image: url(./2021/images/gifts/1.jpg)"><img src="./2021/images/empty_item.png"></div>
-							</div>
-							<div class="giftbox-info">
-								<div class="giftbox-title">FUNDAY線上數位訂閱-3個月線上數位訂閱-3個月線上數位訂閱線上數位訂閱</div>
-								<div class="giftbox-pricebox">
-									<div class="giftbox-price"> <img class="giftbox-icon" src="./2021/images/icon.svg">3050 點</div>
-									<button class="giftbox-btn">兌換</button>
-								</div>
-							</div>
-						</div>
-						<div class="giftbox-item">
-							<div class="giftbox-imgouter">
-								<div class="giftbox-img" style="background-image: url(./2021/images/gifts/1.jpg)"><img src="./2021/images/empty_item.png"></div>
-							</div>
-							<div class="giftbox-info">
-								<div class="giftbox-title">FUNDAY線上數位訂閱-3個月線上數位訂閱-3個月線上數位訂閱線上數位訂閱</div>
-								<div class="giftbox-pricebox">
-									<div class="giftbox-price"> <img class="giftbox-icon" src="./2021/images/icon.svg">3050 點</div>
-									<button class="giftbox-btn">兌換</button>
-								</div>
-							</div>
-						</div>
-						<div class="giftbox-item">
-							<div class="giftbox-imgouter">
-								<div class="giftbox-img" style="background-image: url(./2021/images/gifts/1.jpg)"><img src="./2021/images/empty_item.png"></div>
-							</div>
-							<div class="giftbox-info">
-								<div class="giftbox-title">FUNDAY線上數位訂閱-3個月線上數位訂閱-3個月線上數位訂閱線上數位訂閱</div>
-								<div class="giftbox-pricebox">
-									<div class="giftbox-price"> <img class="giftbox-icon" src="./2021/images/icon.svg">3050 點</div>
-									<button class="giftbox-btn">兌換</button>
-								</div>
-							</div>
-						</div>
+						<cpn_item
+							:prop='item'
+							v-for='(item, i) in ary.life'
+							:key='i'
+							:req_style='item.pic[0] | filterBG'
+							@connect_click='fnOpenLB(item)'
+						></cpn_item>
 					</div>
 				</section>
 				<h4 class="gifttitle">現金類</h4>
 				<section class="giftbox" data-category="3">
 					<div class="giftbox-scroller">
-						<div class="giftbox-item">
-							<div class="giftbox-imgouter">
-								<div class="giftbox-img" style="background-image: url(./2021/images/gifts/1.jpg)"><img src="./2021/images/empty_item.png"></div>
-							</div>
-							<div class="giftbox-info">
-								<div class="giftbox-title">FUNDAY線上數位訂閱-3個月線上數位訂閱-3個月線上數位訂閱線上數位訂閱</div>
-								<div class="giftbox-pricebox">
-									<div class="giftbox-price"> <img class="giftbox-icon" src="./2021/images/icon.svg">3050 點</div>
-									<button class="giftbox-btn">兌換</button>
-								</div>
-							</div>
-						</div>
-						<div class="giftbox-item">
-							<div class="giftbox-imgouter">
-								<div class="giftbox-img" style="background-image: url(./2021/images/gifts/1.jpg)"><img src="./2021/images/empty_item.png"></div>
-							</div>
-							<div class="giftbox-info">
-								<div class="giftbox-title">FUNDAY線上數位訂閱-3個月線上數位訂閱-3個月線上數位訂閱線上數位訂閱</div>
-								<div class="giftbox-pricebox">
-									<div class="giftbox-price"> <img class="giftbox-icon" src="./2021/images/icon.svg">3050 點</div>
-									<button class="giftbox-btn">兌換</button>
-								</div>
-							</div>
-						</div>
-						<div class="giftbox-item">
-							<div class="giftbox-imgouter">
-								<div class="giftbox-img" style="background-image: url(./2021/images/gifts/1.jpg)"><img src="./2021/images/empty_item.png"></div>
-							</div>
-							<div class="giftbox-info">
-								<div class="giftbox-title">FUNDAY線上數位訂閱-3個月線上數位訂閱-3個月線上數位訂閱線上數位訂閱</div>
-								<div class="giftbox-pricebox">
-									<div class="giftbox-price"> <img class="giftbox-icon" src="./2021/images/icon.svg">3050 點</div>
-									<button class="giftbox-btn">兌換</button>
-								</div>
-							</div>
-						</div>
+						<cpn_item
+							:prop='item'
+							v-for='(item, i) in ary.cash'
+							:key='i'
+							:req_style='item.pic[0] | filterBG'
+							@connect_click='fnOpenLB(item)'
+						></cpn_item>
 						<!--div class="giftbox-item is-empty"></div-->
 						<!--div class="giftbox-item is-empty"></div-->
 					</div>
@@ -170,31 +89,38 @@ response.Charset = "utf-8"
 			<div class="mgmfoo-mb">© 2021 Brainstorm Digital Communications Corp.<br>All rights reserved. Privacy Policy</div>
 		</div>
 		<div class="mgmlb"></div>
-		<div class="mgmlb-scroller">
+		<div class="mgmlb-scroller" id="AppLB">
 			<div class="mgmlb-box">
-				<div class="mgmlb-close">╳</div>
+				<div class="mgmlb-close" @click='fnClose'>╳</div>
 				<div class="mgmlb-pic">
-					<div class="lbpic-kv" style="background-image:url(./2021/images/gifts/l.jpg)"><img src="./2021/images/empty_lb.png"></div>
+					<div class="lbpic-kv" :style="data.pic[0] | filterBG"><img src="./2021/images/empty_lb.png"></div>
 					<div class="lbpic-box">
-						<div class="lbpic-item active" style="background-image:url(./2021/images/gifts/l.jpg)"><img src="./2021/images/empty_lb.png"></div>
-						<div class="lbpic-item" style="background-image:url(./2021/images/gifts/l.jpg)"><img src="./2021/images/empty_lb.png"></div>
-						<div class="lbpic-item" style="background-image:url(./2021/images/gifts/l.jpg)"><img src="./2021/images/empty_lb.png"></div>
-						<div class="lbpic-item" style="background-image:url(./2021/images/gifts/l.jpg)"><img src="./2021/images/empty_lb.png"></div>
+						<div class="lbpic-item"
+							v-for='(item, i) in data.pic'
+							:style="data.pic[i] | filterBG"
+							:key='i'
+							:class='{"active": i == 0}'
+							@click='fnChange( data.pic[i], i )'
+						><img src="./2021/images/empty_lb.png"></div>
 					</div>
 				</div>
 				<div class="mgmlb-info">
 					<div class="lbproduct is-lbblock">
-						<div class="lbproduct-title">FUNDAY運動毛巾FUNDAY運動毛巾FUNDAY運動毛巾FUNDAY運動毛巾FUNDAY運動毛巾FUNDAY運動毛巾</div>
+						<div class="lbproduct-title">{{data.title}}</div>
 						<div class="lbproduct-pricebox">
-							<div class="lbproduct-price"><img class="giftbox-icon" src="./2021/images/icon.svg"><span class="lbproduct-prefix">兌換點數：</span><span>30,000</span>點</div>
+							<div class="lbproduct-price">
+								<img class="giftbox-icon" src="./2021/images/icon.svg">
+								<span class="lbproduct-prefix">兌換點數：</span><span>{{data.Fcoin}}</span>點
+							</div>
 						</div>
 					</div>
 					<div class="lbtalk is-lbblock">
-						<div class="lbtalk-item">規格：有機原棉織造 無化學添加  柔細舒適  吸水性佳 有機原棉織造 無化學添加  柔細舒適  吸水性佳</div>
-						<div class="lbtalk-item">材質：100% 有機棉 台灣織造</div>
-						<div class="lbtalk-item">尺寸：76cm*148cm</div>
+						<div class="lbtalk-item"
+							v-for='(item, i) in data.description'
+							:key='i'
+						>{{data.description[i]}}</div>
 					</div>
-					<div class="lbinfo is-lbblock">
+					<form class="lbinfo is-lbblock">
 						<div class="lbinfo-tip">請正確填寫以下收件人相關資訊</div>
 						<div class="lbinfo-iptbox">
 							<div class="lbinfo-name">收件人姓名</div>
@@ -208,7 +134,7 @@ response.Charset = "utf-8"
 							<div class="lbinfo-name">郵遞區號及地址</div>
 							<input class="lbinfo-ipt" type="text" placeholder="*必填">
 						</div>
-					</div>
+					</form>
 					<button class="lbbtn">立即兌換</button>
 				</div>
 			</div>
@@ -227,25 +153,104 @@ response.Charset = "utf-8"
 							vm.ary.life = res.Life;
 							vm.ary.cash = res.Cash;
 							console.log(vm.ary.learning, vm.ary.life, vm.ary.cash);
+
+
+							// --------------------------------
+							const ww = $(window).width();
+							const nua = navigator.userAgent;
+							
+							if( /android | iphone/i.test(nua) || /ipad/i.test(nua) && ww <= 768 ){
+								setTimeout(()=>{
+									const w = $('.giftbox-item').outerWidth(true);
+									const g = w - $('.giftbox-item').outerWidth();
+									for( i=1; i<=3; i++){
+										const l = $('.giftbox[data-category="'+i+'"]').find('.giftbox-item').length - $('.giftbox[data-category="'+i+'"]').find('.is-empty').length;
+										const width = w * l + g;
+										$('.giftbox[data-category="'+i+'"] .giftbox-scroller').css({width});
+										console.log('is mb', w, l, g, width);
+										//
+										vm.deviceClass = 'is-mb-open';
+									};
+								}, 0);
+								
+							}else{
+								$(window).on('load resize', function(){ vm.fnImgOuterHeight() });
+
+								new PerfectScrollbar('.mgmlb-info');
+								//
+								vm.deviceClass = 'is-pc-open';
+							};
+							
 						}
 					})
 				},
 				methods: {
-					fnOpenLB(from, i){
-						console.log(from + i);
-					}
+					fnOpenLB(item){
+						console.log(item);
+						const vm = this;
+						const time = 300;
+						$('.mgmlb, .mgmlb-box').fadeIn(time);
+						$('body').addClass(vm.deviceClass);
+						setTimeout(()=>{
+							$('.mgmlb-box').css('display', 'flex')
+							$('.mgmlb-info').scrollTop(1);
+						}, time);
+						$('html').css('overflow', 'hidden');
+						//
+						App_lb._data.data = item
+					},
+
+					fnImgOuterHeight(){
+						setTimeout(()=>{
+							const height = $('.giftbox-img').height();
+							$('.giftbox-imgouter').css({height});
+						}, 100);
+					},
+
+					
 				},
 				data: {
 					ary: {
 						learning: new Array(),
 						life: new Array(),
 						cash: new Array()
-					}
+					},
+					deviceClass: '',
 				},
 				components: {
 					cpn_item,
 				},
 				el: '#App'
+			});
+
+			const App_lb = new Vue({
+				data: {
+					data: {
+						orders: "",
+						title: "",
+						description: [""],
+						pic: [""],
+						Fcoin: ""
+					},
+				},
+				methods: {
+					fnClose(){
+						const time = 300;
+						$('.mgmlb, .mgmlb-box').fadeOut(time);
+						$('html').removeAttr('style');
+						//
+						setTimeout(()=>{
+							$('body').removeClass(App._data.deviceClass);
+							$('.lbpic-item').removeClass('active').eq(0).addClass('active');
+						}, time);
+					},
+
+					fnChange(style, i){
+						$('.lbpic-kv').attr('style', 'background-image: url(' + style + ')');
+						$('.lbpic-item').removeClass('active').eq(i).addClass('active');
+					}
+				},
+				el: '#AppLB'
 			});
 		</script>
 	</body>

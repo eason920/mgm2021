@@ -1,9 +1,11 @@
+Vue.filter('filterBG', (str) => { return 'background-image: url(' + str + ')' });
+
 const cpn_item = {
-	props: ['prop', 'req_src'],
+	props: ['prop', 'req_style'],
 	template: `
 		<div class="giftbox-item">
 			<div class="giftbox-imgouter">
-				<div class="giftbox-img" :style="req_src"><img src="./2021/images/empty_item.png"></div>
+				<div class="giftbox-img" :style="req_style"><img src="./2021/images/empty_item.png"></div>
 			</div>
 			<div class="giftbox-info">
 				<div class="giftbox-title">{{prop.title}}</div>
