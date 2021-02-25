@@ -55,5 +55,5 @@ $(()=>{
 		}, time);
 	});
 
-	// $('.giftbox-btn').click();
+	$('.giftbox-btn').click();
 });

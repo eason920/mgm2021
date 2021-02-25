@@ -1,3 +1,6 @@
+$w-zipcode: 85px
+$w-zipcode-selected: 40px
+	
 .mgmlb, .mgmlb-box
 	position: fixed
 	top: 0
@@ -99,6 +102,44 @@
 	font:
 		size: 16px
 		weight: bold
+
+.lbinfo-iptbox
+	// &.is-zipcode
+	// 	height: auto
+// --------------------------------
+.zipbox
+	font-size: 0
+
+.zipbox-block
+	display: flex
+	border-radius: 0 3px 3px 0
+
+	select
+		width: 50%
+		&:first-child
+			border-right: none
+			border-radius: 3px 0 0 3px
+	& + .zipbox-block
+
+.zipbox-code
+	border: solid 1px #767676
+	border-radius: 3px 0 0 3px
+	width: $w-zipcode
+	font:
+		size: 13px
+	border-right: none
+	text-align: center
+	transition: width .3s
+
+.zipbox-ipt
+	border: solid 1px #767676
+	width: calc( 100% - #{$w-zipcode} )
+	transition: width .3s
+
+.zipbox-code.is-selected
+	width: $w-zipcode-selected
+	& + .zipbox-ipt
+		width: calc( 100% - #{$w-zipcode-selected} )
 
 // --------------------------------
 .lbbtn

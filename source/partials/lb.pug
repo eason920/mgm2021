@@ -50,8 +50,23 @@
 				.lbinfo-iptbox
 					.lbinfo-name 收件人電話
 					input.lbinfo-ipt(type='text' placeholder='*必填')
-				.lbinfo-iptbox
+				//- 0225 vvvvvvvvvvvvvvvv
+				.lbinfo-iptbox.is-zipcode
 					.lbinfo-name 郵遞區號及地址
-					input.lbinfo-ipt(type='text' placeholder='*必填')
+					.zipbox
+						.zipbox-block
+							select
+								option(value="1") 1
+								option(value="2") 2
+								option(value="3") 3
+							select
+								option(value="a") a
+								option(value="b") b
+								option(value="c") c
+						.zipbox-block
+							//- .zipbox-code 選填郵遞區號
+							.zipbox-code.is-selected 114
+							input.zipbox-ipt(type='text' placeholder='*必填')
+					//- o225 ^^^^^^^^^^^^^^^
 			//- send v
 			button.lbbtn 立即兌換

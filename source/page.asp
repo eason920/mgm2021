@@ -130,9 +130,26 @@ response.Charset = "utf-8"
 							<div class="lbinfo-name">收件人電話</div>
 							<input class="lbinfo-ipt" type="text" placeholder="*必填">
 						</div>
-						<div class="lbinfo-iptbox">
+						<div class="lbinfo-iptbox is-zipcode">
 							<div class="lbinfo-name">郵遞區號及地址</div>
-							<input class="lbinfo-ipt" type="text" placeholder="*必填">
+							<div class="zipbox">
+								<div class="zipbox-block">
+									<select>
+										<option value="1">1</option>
+										<option value="2">2</option>
+										<option value="3">3</option>
+									</select>
+									<select>
+										<option value="a">a</option>
+										<option value="b">b</option>
+										<option value="c">c</option>
+									</select>
+								</div>
+								<div class="zipbox-block">
+									<div class="zipbox-code is-selected">114</div>
+									<input class="zipbox-ipt" type="text" placeholder="*必填">
+								</div>
+							</div>
 						</div>
 					</form>
 					<button class="lbbtn">立即兌換</button>
@@ -197,7 +214,7 @@ response.Charset = "utf-8"
 						}, time);
 						$('html').css('overflow', 'hidden');
 						//
-						App_lb._data.data = item
+						AppLB._data.data = item
 					},
 
 					fnImgOuterHeight(){
@@ -223,7 +240,7 @@ response.Charset = "utf-8"
 				el: '#App'
 			});
 
-			const App_lb = new Vue({
+			const AppLB = new Vue({
 				data: {
 					data: {
 						orders: "",

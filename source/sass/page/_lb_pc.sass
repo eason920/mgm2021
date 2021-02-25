@@ -3,6 +3,8 @@ $w-pic: 450px
 $h: 650px
 $g-close: 20px
 $g: 40px
+$w-name: 125px
+
 
 .is-pc-open
 	.mgmlb-box
@@ -76,7 +78,6 @@ $g: 40px
 	// --------------------------------
 	.lbinfo
 		padding: 20px 0
-		
 
 	.lbinfo-tip
 
@@ -84,16 +85,41 @@ $g: 40px
 		display: flex
 		height: 40px
 		align-items: center
+		&.is-zipcode
+			height: auto
+			align-items: flex-start
+			padding: 
+				top: 7px
 
 	.lbinfo-name
 		font-size: 16px
 		padding-right: 10px
-		width: 125px
+		width: $w-name
 
 	.lbinfo-ipt
 		font-size: 16px
 		text-indent: 5px
+		width: calc( 100% - #{$w-name} )
 
+	// --------------------------------
+	.zipbox
+		width: calc( 100% - #{$w-name} )
+
+	.zipbox-block
+		select
+			height: 27px
+		& + .zipbox-block
+			margin-top: 10px
+
+	.zipbox-code
+		line-height: 27px
+
+	.zipbox-ipt
+		height: 27px
+		border-radius: 0 3px 3px 0
+		font-size: 16px
+		text-indent: 5px
+	
 	// --------------------------------
 	.lbbtn
 		&:hover
