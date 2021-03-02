@@ -20,8 +20,8 @@ response.Charset = "utf-8"
 	<head>
 		<meta charset="UTF-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
-		<title>mgm page</title>
-		<link href="./2021/css/page.css" rel="stylesheet">
+		<title>item</title>
+		<link href="./2021/css/item.css" rel="stylesheet">
 		<link href="./2021/assets/plugins/perfect-scrollbar-master/perfect-scrollbar.css" rel="stylesheet">
 		<script src="./2021/assets/plugins/jquery/jquery-1.12.4-min.js"></script>
 		<script src="./2021/assets/plugins/vue/vue2.6.12.js"></script>
@@ -38,37 +38,36 @@ response.Charset = "utf-8"
 			<div class="wrapper"><a class="mgmnav-box" href="https://funday.asia/" target="_blank"><img class="img-responsive" src="./2021/images/logo.png" alt="fundy logo">
 					<div class="mgmnav-home">首頁</div></a></div>
 		</div>
-		<div class="mgmcontent" id="AppLB">
+		<div class="mgmcontent" id="App">
 			<div class="wrapper">
-				<div class="mgmlb-box" style="display: flex;">
-					<div class="mgmlb-close" @click='fnClose'>╳</div>
+				<div class="mgmlb-box">
 					<div class="mgmlb-pic">
-						<div class="lbpic-kv" :style="data.pic[0] | filterBG"><img src="./2021/images/empty_lb.png"></div>
+						<div class="lbpic-kv" :style="obj.pic[0] | filterBG"><img src="./2021/images/empty_lb.png"></div>
 						<div class="lbpic-box">
 							<div class="lbpic-item"
-								v-for='(item, i) in data.pic'
-								:style="data.pic[i] | filterBG"
+								v-for='(item, i) in obj.pic'
+								:style="obj.pic[i] | filterBG"
 								:key='i'
 								:class='{"active": i == 0}'
-								@click='fnChange( data.pic[i], i )'
+								@click='fnChange( obj.pic[i], i )'
 							><img src="./2021/images/empty_lb.png"></div>
 						</div>
 					</div>
 					<div class="mgmlb-info">
 						<div class="lbproduct is-lbblock">
-							<div class="lbproduct-title">{{data.title}}</div>
+							<div class="lbproduct-title">{{obj.title}}</div>
 							<div class="lbproduct-pricebox">
 								<div class="lbproduct-price">
 									<img class="giftbox-icon" src="./2021/images/icon.svg">
-									<span class="lbproduct-prefix">兌換點數：</span><span>{{data.Fcoin}}</span>點
+									<span class="lbproduct-prefix">兌換點數：</span><span>{{obj.Fcoin}}</span>點
 								</div>
 							</div>
 						</div>
 						<div class="lbtalk is-lbblock">
 							<div class="lbtalk-item"
-								v-for='(item, i) in data.description'
+								v-for='(item, i) in obj.description'
 								:key='i'
-							>{{data.description[i]}}</div>
+							>{{obj.description[i]}}</div>
 						</div>
 						<form class="lbinfo is-lbblock">
 							<div class="lbinfo-tip">請正確填寫以下收件人相關資訊</div>
@@ -110,37 +109,53 @@ response.Charset = "utf-8"
 		<div class="mgmfoo">
 			<div class="mgmfoo-mb">© 2021 Brainstorm Digital Communications Corp.<br>All rights reserved. Privacy Policy</div>
 		</div>
-
+			
 		<script>
-			const AppLB = new Vue({
-				data: {
-					data: {
-						orders: "",
-						title: "",
-						description: [""],
-						pic: [""],
-						Fcoin: "",
-					},
+			new Vue({
+        created(){
+					const vm = this;
+					$.ajax({
+						url: './2021/api/FundayShop.Json',
+						type: "GET",
+						contentType: "application/json",
+						success(res){
+							const val = location.href.split("?")[1].split("&");
+							vm.category = val[0].split("=")[1];
+							vm.id = val[1].split("=")[1];
+							// --------------------------------
+							if( !res[vm.category] ){
+								vm.category = "Life";
+							};
+
+							if( !res[vm.category][vm.id] ){
+								vm.id = 1;
+							};
+							// --------------------------------
+							res[vm.category].forEach(function(item, i){
+								if( item.id == vm.id ){ vm.obj = item };
+							});
+						}
+					});
 				},
 				methods: {
-					fnClose(){
-						const time = 300;
-						$('.mgmlb, .mgmlb-box').fadeOut(time);
-						$('html').removeAttr('style');
-						//
-						setTimeout(()=>{
-							$('body').removeClass(App._data.deviceClass);
-							$('.lbpic-item').removeClass('active').eq(0).addClass('active');
-						}, time);
-					},
-
 					fnChange(style, i){
 						$('.lbpic-kv').attr('style', 'background-image: url(' + style + ')');
 						$('.lbpic-item').removeClass('active').eq(i).addClass('active');
-					}
+					},
 				},
-				el: '#AppLB'
-			});
+        data: {
+					category: "",
+					id: "",
+					obj: {
+						orders: "",
+						title: "",
+						description: [],
+						pic: [],
+						Fcoin: "",
+					},
+				},
+        el: "#App",
+      })
 		</script>
 	</body>
 </html>

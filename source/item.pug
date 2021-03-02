@@ -1,0 +1,94 @@
+doctype html
+html(lang='en')
+	head
+		meta(charset='UTF-8')
+		meta(name='viewport' content='width=device-width, initial-scale=1.0')
+		title mgm page
+		link(href='./css/item.css' rel='stylesheet')
+		link(href='./assets/plugins/perfect-scrollbar-master/perfect-scrollbar.css' rel='stylesheet')
+		//-
+		script(src='./assets/plugins/jquery/jquery-1.12.4-min.js')
+		script(src='./assets/plugins/perfect-scrollbar-master/perfect-scrollbar.min.js')
+		//- script(src='./js/page.js')
+		//
+			Bootstrap-Core-CSS
+			<link rel="stylesheet" href="css/bootstrap.css">
+		// Font-Awesome-Icons-CSS
+		style.
+			/* v scrollbar 是否永遠顥示的跟據，而且一定要放外面，不可寫到 .css 中 v */
+			.ps__rail-x,
+			.ps__rail-y,
+			.ps__thumb-y {
+				opacity: .6;
+			}
+			/* ^ scrollbar 是否永遠顥示的跟據，而且一定要放外面，不可寫到 .css 中 ^ */
+		link(href='https://use.fontawesome.com/releases/v5.0.7/css/all.css' rel='stylesheet')
+	body
+		.mgmnav
+			.wrapper
+				a.mgmnav-box(href='https://funday.asia/' target='_blank')
+					img.img-responsive(src='./images/logo.png' alt='fundy logo')
+					.mgmnav-home 首頁
+
+		.mgmcontent
+			.wrapper
+				//- .mgmlb-scroller
+				.mgmlb-box
+					//- .mgmlb-close ╳
+					.mgmlb-pic
+						.lbpic-kv(style='background-image:url(./images/gifts/l.jpg)')
+							img(src='./images/empty_lb.png')
+						.lbpic-box
+							.lbpic-item.active(style='background-image:url(./images/gifts/l.jpg)')
+								img(src='./images/empty_lb.png')
+							.lbpic-item(style='background-image:url(./images/gifts/l.jpg)')
+								img(src='./images/empty_lb.png')
+							.lbpic-item(style='background-image:url(./images/gifts/l.jpg)')
+								img(src='./images/empty_lb.png')
+							.lbpic-item(style='background-image:url(./images/gifts/l.jpg)')
+								img(src='./images/empty_lb.png')
+					.mgmlb-info
+						//- product v
+						.lbproduct.is-lbblock
+							.lbproduct-title FUNDAY運動毛巾FUNDAY運動毛巾FUNDAY運動毛巾FUNDAY運動毛巾FUNDAY運動毛巾FUNDAY運動毛巾
+							.lbproduct-pricebox
+								.lbproduct-price
+									img.giftbox-icon(src='./images/icon.svg')
+									span.lbproduct-prefix 兌換點數：
+									span 30,000
+									|點
+						//- talk v
+						.lbtalk.is-lbblock
+							.lbtalk-item 規格：有機原棉織造 無化學添加  柔細舒適  吸水性佳 有機原棉織造 無化學添加  柔細舒適  吸水性佳
+							.lbtalk-item 材質：100% 有機棉 台灣織造
+							.lbtalk-item 尺寸：76cm*148cm
+						//- info
+						.lbinfo.is-lbblock
+							.lbinfo-tip 請正確填寫以下收件人相關資訊
+							.lbinfo-iptbox
+								.lbinfo-name 收件人姓名
+								input.lbinfo-ipt(type='text' placeholder='*必填')
+							.lbinfo-iptbox
+								.lbinfo-name 收件人電話
+								input.lbinfo-ipt(type='text' placeholder='*必填')
+							//- 0225 vvvvvvvvvvvvvvvv
+							.lbinfo-iptbox.is-zipcode
+								.lbinfo-name 郵遞區號及地址
+								.zipbox
+									.zipbox-block
+										select
+											option(value="1") 1
+											option(value="2") 2
+											option(value="3") 3
+										select
+											option(value="a") a
+											option(value="b") b
+											option(value="c") c
+									.zipbox-block
+										//- .zipbox-code 選填郵遞區號
+										.zipbox-code.is-selected 114
+										input.zipbox-ipt(type='text' placeholder='*必填')
+								//- o225 ^^^^^^^^^^^^^^^
+						//- send v
+						button.lbbtn 立即兌換
+		include partials/footer

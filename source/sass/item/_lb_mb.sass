@@ -3,7 +3,8 @@ $g-y: 5%
 $p: 18px
 $w-price: 98px
 	
-.is-mb-open
+// .is-mb-open
+@media screen and (max-width: 768px)
 	.mgmlb
 		padding: #{$g-x} #{$g-y}
 		overflow-y: auto
@@ -67,7 +68,11 @@ $w-price: 98px
 		max-height: 40px
 		overflow: hidden
 		padding-right: 8px
-		@extend %row2
+		// @extend %row2
+		display: -webkit-box
+		-webkit-line-clamp: 2
+		-webkit-box-orient: vertical
+		overflow: hidden
 
 	.lbproduct-pricebox
 		width: $w-price
@@ -131,30 +136,30 @@ $w-price: 98px
 	.lbbtn
 
 @media screen and (max-width: 360px)
-	.is-mb-open
-		.lbpic-kv
-			width: calc( 100% - 10px - 50px)
+	// .is-mb-open
+	.lbpic-kv
+		width: calc( 100% - 10px - 50px)
 
 @media screen and (max-width: 375px) and (min-width: 361px)
-	.is-mb-open
-		.lbpic-kv
-			width: calc( 100% - 15px - 50px)
+	// .is-mb-open
+	.lbpic-kv
+		width: calc( 100% - 15px - 50px)
 
 @media screen and (max-width: 414px) and (min-width: 376px)
-	.is-mb-open
-		.lbpic-kv
-			width: calc( 100% - 12px - 60px)
+	// .is-mb-open
+	.lbpic-kv
+		width: calc( 100% - 12px - 60px)
 
-		.lbpic-item
-			width: 60px
+	.lbpic-item
+		width: 60px
 
 @media screen and (max-width: 812px) and (orientation: landscape)
-	.is-mb-open
-		.mgmlb-scroller
-			padding: 12vh 0
+	// .is-mb-open
+	.mgmlb-scroller
+		padding: 12vh 0
 
-		.lbpic-kv
-			width: calc( 100% - 20px - 90px)
+	.lbpic-kv
+		width: calc( 100% - 20px - 90px)
 
-		.lbpic-item
-			width: 90px
+	.lbpic-item
+		width: 90px

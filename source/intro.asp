@@ -21,11 +21,11 @@ response.Charset = "utf-8"
 		<meta charset="UTF-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
 		<title>mgm page</title>
-		<link href="./2021/css/page.css" rel="stylesheet">
-		<link href="./2021/assets/plugins/perfect-scrollbar-master/perfect-scrollbar.css" rel="stylesheet">
+		<link href="./2021/css/index_flat.css" rel="stylesheet">
+		<!--link href="./2021/assets/plugins/perfect-scrollbar-master/perfect-scrollbar.css" rel="stylesheet"-->
 		<script src="./2021/assets/plugins/jquery/jquery-1.12.4-min.js"></script>
 		<script src="./2021/assets/plugins/vue/vue2.6.12.js"></script>
-		<script src="./2021/assets/plugins/perfect-scrollbar-master/perfect-scrollbar.min.js"></script>
+		<!--script src="./2021/assets/plugins/perfect-scrollbar-master/perfect-scrollbar.min.js"></script-->
 		<!--script src="./2021/js/page.js"></script-->
 		<script src="./2021/js/cpn_page.js"></script>
 		<style>
@@ -48,7 +48,7 @@ response.Charset = "utf-8"
 							v-for='(item, i) in ary.life'
 							:key='i'
 							:req_style='item.pic[0] | filterBG'
-							@connect_click='fnOpenLB(item)'
+							@connect_click='fnLink("Life", item.id)'
 						></cpn_item>
 					</div>
 				</section>
@@ -60,7 +60,7 @@ response.Charset = "utf-8"
 							v-for='(item, i) in ary.learning'
 							:key='i'
 							:req_style='item.pic[0] | filterBG'
-							@connect_click='fnOpenLB(item)'
+							@connect_click='fnLink("Learning", item.id)'
 						></cpn_item>
 						<!--div class="giftbox-item is-empty"></div-->
 					</div>
@@ -73,7 +73,7 @@ response.Charset = "utf-8"
 							v-for='(item, i) in ary.cash'
 							:key='i'
 							:req_style='item.pic[0] | filterBG'
-							@connect_click='fnOpenLB(item)'
+							@connect_click='fnLink("Cash", item.id)'
 						></cpn_item>
 						<!--div class="giftbox-item is-empty"></div-->
 						<!--div class="giftbox-item is-empty"></div-->
@@ -125,7 +125,7 @@ response.Charset = "utf-8"
 							}else{
 								$(window).on('load resize', function(){ vm.fnImgOuterHeight() });
 
-								new PerfectScrollbar('.mgmlb-info');
+								// new PerfectScrollbar('.mgmlb-info');
 								//
 								vm.deviceClass = 'is-pc-open';
 							};
@@ -134,19 +134,8 @@ response.Charset = "utf-8"
 					})
 				},
 				methods: {
-					fnOpenLB(item){
-						console.log(item);
-						const vm = this;
-						const time = 300;
-						$('.mgmlb, .mgmlb-box').fadeIn(time);
-						$('body').addClass(vm.deviceClass);
-						setTimeout(()=>{
-							$('.mgmlb-box').css('display', 'flex')
-							$('.mgmlb-info').scrollTop(1);
-						}, time);
-						$('html').css('overflow', 'hidden');
-						//
-						AppLB._data.data = item;
+					fnLink(category, id){
+						location.href= "item.asp?cat=" + category + "&id=" + id;
 					},
 
 					fnImgOuterHeight(){

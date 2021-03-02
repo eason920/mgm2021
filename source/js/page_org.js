@@ -33,27 +33,27 @@ $(()=>{
 	};
 	
 	// --------------------------------
-	// $('.giftbox-btn').click(function(){
-	// 	const time = 300;
-	// 	$('.mgmlb, .mgmlb-box').fadeIn(time);
-	// 	$('body').addClass(deviceClass);
-	// 	setTimeout(()=>{
-	// 		$('.mgmlb-box').css('display', 'flex')
-	// 		$('.mgmlb-info').scrollTop(1);
-	// 	}, time);
-	// 	$('html').css('overflow', 'hidden');
-	// 	//
-	// });
+	$('.giftbox-btn').click(function(){
+		const time = 300;
+		$('.mgmlb, .mgmlb-box').fadeIn(time);
+		$('body').addClass(deviceClass);
+		setTimeout(()=>{
+			$('.mgmlb-box').css('display', 'flex')
+			$('.mgmlb-info').scrollTop(1);
+		}, time);
+		$('html').css('overflow', 'hidden');
+		//
+	});
 
-	// $('.mgmlb, .mgmlb-close').click(function(){
-	// 	const time = 300;
-	// 	$('.mgmlb, .mgmlb-box').fadeOut(time);
-	// 	$('html').removeAttr('style');
-	// 	//
-	// 	setTimeout(()=>{
-	// 		$('body').removeClass(deviceClass);
-	// 	}, time);
-	// });
+	$('.mgmlb, .mgmlb-close').click(function(){
+		const time = 300;
+		$('.mgmlb, .mgmlb-box').fadeOut(time);
+		$('html').removeAttr('style');
+		//
+		setTimeout(()=>{
+			$('body').removeClass(deviceClass);
+		}, time);
+	});
 
-	// $('.giftbox-btn').click();
+	$('.giftbox-btn').click();
 });
