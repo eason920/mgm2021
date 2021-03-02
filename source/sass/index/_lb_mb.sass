@@ -1,0 +1,160 @@
+$g-x: 35px
+$g-y: 5%
+$p: 18px
+$w-price: 98px
+	
+.is-mb-open
+	.mgmlb
+		padding: #{$g-x} #{$g-y}
+		overflow-y: auto
+
+	.mgmlb-scroller
+		position: fixed
+		top: 0
+		right: 0
+		bottom: 0
+		left: 0
+		margin: auto
+		overflow:
+			x: hidden
+			y: auto
+		z-index: 2
+		padding: 3vh 0
+
+	.mgmlb-box
+		position: static
+		width: 92%
+		max-width: 570px // for landscape
+		flex-direction: column
+
+	// =================================
+	.mgmlb-close
+		top: $g-x
+		right: $g-y
+		transform: translate(30%, -75%)      
+
+	// =================================
+	.mgmlb-pic
+		padding: $p
+		display: flex
+		justify-content: space-between
+		border-bottom: solid 1px #b3b3b3
+
+	.lbpic-kv
+
+	.lbpic-box
+		display: flex
+		justify-content: space-between
+		flex-direction: column
+
+	.lbpic-item
+		// width: 100%
+
+	// =================================
+	.mgmlb-info
+		padding: $p $p $p*2
+
+	// --------------------------------
+	.is-lbblock
+
+	// --------------------------------
+	.lbproduct
+		display: flex
+
+	.lbproduct-title
+		font-size: 19px
+		width: calc( 100% - #{$w-price})
+		max-height: 40px
+		overflow: hidden
+		padding-right: 8px
+		@extend %row2
+
+	.lbproduct-pricebox
+		width: $w-price
+
+	.lbproduct-price
+		font-size: 18px
+
+	.lbproduct-prefix
+		display: none
+
+	// --------------------------------
+	.lbtalk
+		padding: 15px 0
+
+	.lbtalk-item
+		line-height: 1.3
+		font-size: 15px
+		margin-bottom: 8px
+
+	// --------------------------------
+	.lbinfo
+		padding: 15px 0
+	
+	.lbinfo-info
+
+	.lbinfo-tip
+		margin-bottom: 20px
+		// font-size: 16px
+
+	.lbinfo-iptbox
+		margin-bottom: 20px
+
+	.lbinfo-name
+		font-size: 15px
+		margin-bottom: 5px
+
+	.lbinfo-ipt
+		width: 100%
+		line-height: 40px
+		box-sizing: border-box
+		text-indent: 8px
+		font-size: 15px
+
+	// --------------------------------
+	.zipbox
+
+	.zipbox-block
+		select
+			height: 46px
+		& + .zipbox-block
+			margin-top: 5px
+
+	.zipbox-code
+		line-height: 44px
+
+	.zipbox-ipt
+		font-size: 15px
+		padding-left: 8px
+
+	// --------------------------------
+	.lbbtn
+
+@media screen and (max-width: 360px)
+	.is-mb-open
+		.lbpic-kv
+			width: calc( 100% - 10px - 50px)
+
+@media screen and (max-width: 375px) and (min-width: 361px)
+	.is-mb-open
+		.lbpic-kv
+			width: calc( 100% - 15px - 50px)
+
+@media screen and (max-width: 414px) and (min-width: 376px)
+	.is-mb-open
+		.lbpic-kv
+			width: calc( 100% - 12px - 60px)
+
+		.lbpic-item
+			width: 60px
+
+@media screen and (max-width: 812px) and (orientation: landscape)
+	.is-mb-open
+		.mgmlb-scroller
+			padding: 12vh 0
+
+		.lbpic-kv
+			width: calc( 100% - 20px - 90px)
+
+		.lbpic-item
+			width: 90px

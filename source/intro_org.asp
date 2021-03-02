@@ -40,7 +40,19 @@ response.Charset = "utf-8"
 		</div>
 		<div class="mgmcontent" id="App">
 			<div class="wrapper">
-				<h4 class="gifttitle is-first">學習類</h4>
+				<h4 class="gifttitle is-first">生活類</h4>
+				<section class="giftbox" data-category="2">
+					<div class="giftbox-scroller">
+						<cpn_item
+							:prop='item'
+							v-for='(item, i) in ary.life'
+							:key='i'
+							:req_style='item.pic[0] | filterBG'
+							@connect_click='fnOpenLB(item)'
+						></cpn_item>
+					</div>
+				</section>
+				<h4 class="gifttitle">學習類</h4>
 				<section class="giftbox" data-category="1">
 					<div class="giftbox-scroller">
 						<cpn_item
@@ -51,18 +63,6 @@ response.Charset = "utf-8"
 							@connect_click='fnOpenLB(item)'
 						></cpn_item>
 						<!--div class="giftbox-item is-empty"></div-->
-					</div>
-				</section>
-				<h4 class="gifttitle">生活類</h4>
-				<section class="giftbox" data-category="2">
-					<div class="giftbox-scroller">
-						<cpn_item
-							:prop='item'
-							v-for='(item, i) in ary.life'
-							:key='i'
-							:req_style='item.pic[0] | filterBG'
-							@connect_click='fnOpenLB(item)'
-						></cpn_item>
 					</div>
 				</section>
 				<h4 class="gifttitle">現金類</h4>
@@ -135,14 +135,14 @@ response.Charset = "utf-8"
 							<div class="zipbox">
 								<div class="zipbox-block">
 									<select>
-										<option value="1">1</option>
-										<option value="2">2</option>
-										<option value="3">3</option>
+										<option value='' disabled>-- country --</option>
+										<option value='0'>0</option>
+										<option value='1'>1</option>
 									</select>
 									<select>
-										<option value="a">a</option>
-										<option value="b">b</option>
-										<option value="c">c</option>
+										<option value='' disabled>-- town --</option>
+										<option value='0'>0</option>
+										<option value='1'>1</option>
 									</select>
 								</div>
 								<div class="zipbox-block">
@@ -166,8 +166,8 @@ response.Charset = "utf-8"
 						success(res){
 							console.log('res > ', res);
 							//
-							vm.ary.learning = res.Learning;
 							vm.ary.life = res.Life;
+							vm.ary.learning = res.Learning;
 							vm.ary.cash = res.Cash;
 							console.log(vm.ary.learning, vm.ary.life, vm.ary.cash);
 
@@ -214,7 +214,7 @@ response.Charset = "utf-8"
 						}, time);
 						$('html').css('overflow', 'hidden');
 						//
-						AppLB._data.data = item
+						AppLB._data.data = item;
 					},
 
 					fnImgOuterHeight(){
@@ -247,7 +247,7 @@ response.Charset = "utf-8"
 						title: "",
 						description: [""],
 						pic: [""],
-						Fcoin: ""
+						Fcoin: "",
 					},
 				},
 				methods: {

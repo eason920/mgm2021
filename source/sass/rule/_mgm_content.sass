@@ -1,9 +1,9 @@
 .mgmcontent
-	// position: relative
-	// height: 2000px
-
-	.wrapper
-		height: 100%
+	position: relative
+	background:
+		repeat: no-repeat
+		position: center
+		size: 101%
 
 // --------------------------------
 // -- MB v
@@ -12,31 +12,30 @@
 	.mgmcontent
 		overflow: hidden
 		margin-top: $h-nav-mb
+		
+		.wrapper
+			height: 100%
 
 @media screen and (max-width: $bp-mb) and (orientation: portrait)
 	.mgmcontent
-		min-height: calc( 100vh - #{$h-nav-mb} - #{$h-foo-mb})
+		height: calc( 100vh - #{$h-nav-mb} - #{$h-foo-mb})
 	
 @media screen and (max-width: $bp-mb) and (orientation: landscape)
 	.mgmcontent
-		min-height: calc( 100vh - #{$h-nav-mb})
-
-	.mgmfoo
-		display: block
+		height: calc( 100vh - #{$h-nav-mb})
 
 // --------------------------------
 // -- PC v
 // --------------------------------
 @media screen and (min-width: $bp-pc)
 	.mgmcontent
-		min-height: calc(100vh - #{$h-nav-pc} - #{$h-foo-pc})
+		height: calc(100vh - #{$h-nav-pc} - #{$h-foo-pc})
 		background:
-			image: image-url('pd_page.jpg')
-			size: contain
-			position: center top
-			repeat: repeat-y
+			image: image-url('pd.jpg')
 		margin-top: $h-nav-pc
-		padding-bottom: 50px
+
+		.wrapper
+			height: 100%
 
 // --------------------------------
 // -- PAD v
@@ -44,4 +43,4 @@
 @media screen and (min-width: 992px) and (max-width: 1366px)
 	.mgmcontent
 		.wrapper
-			// padding: 0 20px
+			padding: 0 20px

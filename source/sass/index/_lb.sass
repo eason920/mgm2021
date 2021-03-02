@@ -1,0 +1,158 @@
+$w-zipcode: 85px
+$w-zipcode-selected: 40px
+	
+.mgmlb, .mgmlb-box
+	position: fixed
+	top: 0
+	right: 0
+	bottom: 0
+	left: 0
+	margin: auto
+
+.mgmlb
+	background-color: rgba(0,0,0,.7)
+	z-index: 2
+	display: none
+
+.mgmlb-box
+	background-color: #fff
+	border-radius: 7px
+	z-index: 3
+	display: none
+
+// =================================
+.mgmlb-close
+	background-color: #999
+	color: #fff
+	position: fixed
+	width: 40px
+	height: 40px
+	border-radius: 50%
+	display: flex
+	justify-content: center
+	align-items: center
+	font:
+		size: 24px
+	cursor: pointer
+	z-index: 1
+	transition: .3s
+	&:hover
+		background-color: #333
+		transform: rotate(360deg)
+
+// =================================
+.mgmlb-pic
+
+.lbpic-kv
+
+.lbpic-box
+
+.lbpic-item
+	cursor: pointer
+	&.active
+		border: solid 2px #{$c2}
+
+.lbpic-kv, .lbpic-item
+	background:
+		size: cover
+		position: center
+	font-size: 0
+	img
+		width: 100%
+
+// =================================
+.mgmlb-info
+
+
+// --------------------------------
+.is-lbblock
+
+// --------------------------------
+.lbproduct
+
+.lbproduct-title
+	font:
+		weight: bold
+
+.lbproduct-pricebox
+
+.lbproduct-price
+	display: flex
+	align-items: center
+	font:
+		size: 24px
+		weight: bold
+	color: $c5
+
+// --------------------------------
+.lbtalk
+	color: $c-txt
+	border-bottom: solid 1px #b3b3b3
+
+.lbtalk-item
+	&:last-child
+		margin: 0!important
+
+// --------------------------------
+.lbinfo
+	& > *
+		color: $c-txt2
+
+.lbinfo-tip
+	font:
+		size: 16px
+		weight: bold
+
+.lbinfo-iptbox
+	// &.is-zipcode
+	// 	height: auto
+// --------------------------------
+.zipbox
+	font-size: 0
+
+.zipbox-block
+	display: flex
+	border-radius: 0 3px 3px 0
+
+	select
+		width: 50%
+		&:first-child
+			border-right: none
+			border-radius: 3px 0 0 3px
+	& + .zipbox-block
+
+.zipbox-code
+	border: solid 1px #767676
+	border-radius: 3px 0 0 3px
+	width: $w-zipcode
+	font:
+		size: 13px
+	border-right: none
+	text-align: center
+	transition: width .3s
+
+.zipbox-ipt
+	border: solid 1px #767676
+	width: calc( 100% - #{$w-zipcode} )
+	transition: width .3s
+
+.zipbox-code.is-selected
+	width: $w-zipcode-selected
+	& + .zipbox-ipt
+		width: calc( 100% - #{$w-zipcode-selected} )
+
+// --------------------------------
+.lbbtn
+	width: 150px
+	height: 40px
+	border-radius: 3px
+	display: flex
+	align-items: center
+	justify-content: center
+	background-color: $c5
+	color: #fff
+	font-size: 22px
+	border: none
+	margin: 0 auto
+	cursor: pointer
+	transition: .3s

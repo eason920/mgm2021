@@ -1,0 +1,168 @@
+{
+  "Member_id": "1234",
+  "Mgm_code": "XXXX",
+  "FunCoin": "3650",
+  "Life": [
+    {
+      "id": 1,
+      "orders":"1",
+      "title": "FUNDAY經典帆布包",
+      "type":"2",
+      "description":["FUNDAY經典帆布包"],
+      "pic":["https://funday.asia/mgm/2021/images/gifts/6.jpg"],
+      "Fcoin":"300"
+    },
+    {
+      "id": 2,
+      "orders":"2",
+      "title": "FUNDAY運動毛巾",
+      "type":"2",
+      "description":["規格：有機原棉織造 無化學添加  柔細舒適  吸水性佳","材質：100% 有機棉 台灣織造","尺寸：76cm*148cm"],
+      "pic":["https://funday.asia/mgm/2021/images/gifts/lb/1.jpg","https://funday.asia/mgm/2021/images/gifts/lb/2.jpg","https://funday.asia/mgm/2021/images/gifts/lb/3.jpg","https://funday.asia/mgm/2021/images/gifts/lb/4.jpg"],                 
+      "Fcoin":"300"
+    },
+    {
+      "id": 3,
+      "orders":"3",
+      "title": "FUNDAY馬克杯",
+      "type":"2",
+      "description":["FUNDAY馬克杯"],
+      "pic":["https://funday.asia/mgm/2021/images/gifts/8.jpg"],
+      "Fcoin":"400"
+    },
+    {
+      "id": 4,
+      "orders":"4",
+      "title": "FUNDAY晴雨傘",
+      "type":"2",
+      "description":["FUNDAY晴雨傘"],
+      "pic":["https://funday.asia/mgm/2021/images/gifts/9.jpg"],
+      "Fcoin":"500"
+    },
+    {
+      "id": 5,
+      "orders":"5",
+      "title": "FUNDAY浴巾",
+      "type":"2",
+      "description":["FUNDAY浴巾"],
+      "pic":["https://funday.asia/mgm/2021/images/gifts/10.jpg"],
+      "Fcoin":"800"
+    }
+  ],
+  "Learning": [
+    {
+      "id": 6,
+      "orders":"1",
+      "title": "FUNDAY學習筆記本",
+      "type":"2",
+      "description":["FUNDAY學習筆記本"],
+      "pic":["https://funday.asia/mgm/2021/images/gifts/1.jpg"],
+      "Fcoin":"150"
+    },
+    {
+      "id": 7,
+      "orders":"2",
+      "title": "FUNDAY單字隨手貼",
+      "type":"2",
+      "description":["FUNDAY單字隨手貼"],
+      "pic":["https://funday.asia/mgm/2021/images/gifts/2.jpg"],
+      "Fcoin":"250"
+    },
+    {
+      "id": 8,
+      "orders":"3",
+      "title": "FUNDAY當期英語達人誌",
+      "type":"2",
+      "description":["FUNDAY當期英語達人誌"],
+      "pic":["https://funday.asia/mgm/2021/images/gifts/3.jpg"],
+      "Fcoin":"300"
+    },
+    {
+      "id": 9,
+      "orders":"4",
+      "title": "FUNDAY第16期英語達人誌",
+      "type":"2",
+      "description":["FUNDAY第16期英語達人誌"],
+      "pic":["https://funday.asia/mgm/2021/images/gifts/4.jpg"],
+      "Fcoin":"300"
+    },
+    {
+      "id": 10,
+      "orders":"5",
+      "title": "FUNDAY學習聖經",
+      "type":"2",
+      "description":["FUNDAY學習聖經"],
+      "pic":["https://funday.asia/mgm/2021/images/gifts/5.jpg"],
+      "Fcoin":"300"
+    },
+    {
+      "id": 11,
+      "orders":"6",
+      "title": "FUNDAY線上數位訂閱- 3個月",
+      "type":"3",
+      "description":["FUNDAY線上數位訂閱- 3個月"],
+      "pic":["https://funday.asia/mgm/2021/images/gifts/m3.jpg"],
+      "Fcoin":"2500"
+    },
+    {
+      "id": 12,
+      "orders":"7",
+      "title": "FUNDAY線上數位訂閱- 6個月",
+      "type":"3",
+      "description":["FUNDAY線上數位訂閱- 6個月"],
+      "pic":["https://funday.asia/mgm/2021/images/gifts/m6.jpg"],
+      "Fcoin":"4500"
+    },
+    {
+      "id": 13,
+      "orders":"8",
+      "title": "FUNDAY線上數位訂閱- 一年",
+      "type":"3",
+      "description":["FUNDAY線上數位訂閱- 一年"],
+      "pic":["https://funday.asia/mgm/2021/images/gifts/y1.jpg"],
+      "Fcoin":"5500"
+    },
+    {
+      "id": 14,
+      "orders":"9",
+      "title": "FUNDAY線上數位訂閱- 二年",
+      "type":"2",
+      "description":["FUNDAY線上數位訂閱- 二年"],
+      "pic":["https://funday.asia/mgm/2021/images/gifts/y2.jpg"],
+      "Fcoin":"8000"
+    }                            
+  ],
+  "Cash": [
+    {
+      "id": 15,
+      "orders":"1",
+      "title": "現金NT$3,000",
+      "type":"1",
+      "description":["現金NT$3,000"],
+      "pic":["https://funday.asia/mgm/2021/images/gifts/11.jpg"],
+      "Fcoin":"3000"
+    },
+    {
+      "id": 16,
+      "orders":"2",
+      "title": "現金NT$5,000",
+      "type":"1",
+      "description":["現金NT$5,000"],
+      "pic":["https://funday.asia/mgm/2021/images/gifts/12.jpg"],                 
+      "Fcoin":"5000"
+    },
+    {
+      "id": 17,
+      "orders":"3",
+      "title": "現金NT$10,000",
+      "type":"1",
+      "description":["現金NT$10,000"],
+      "pic":["https://funday.asia/mgm/2021/images/gifts/13.jpg"],
+      "Fcoin":"10000"
+    }
+  ],
+  "memo": [
+    {"title": "VIP會員若到期，點數僅保留3個月。"},
+    {"title": "活動有效日期110年8月31日。"}    
+  ]
+}
