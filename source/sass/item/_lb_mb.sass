@@ -24,9 +24,24 @@ $w-price: 98px
 
 	.mgmlb-box
 		position: static
-		width: 92%
+		// width: 92%
 		max-width: 570px // for landscape
 		flex-direction: column
+
+	.mgmlb-bread
+		padding: 18px 18px 0
+
+		p
+			overflow: hidden
+			text-overflow: ellipsis
+			white-space: nowrap
+			&.bread-1
+				width: $w-bread1
+			&.bread-2
+				max-width: $w-bread2
+			&.bread-3
+				max-width: calc( 100% - #{$w-bread1} - #{$w-bread2} - #{$w-bread-arrow} * 2 )
+
 
 	// =================================
 	.mgmlb-close

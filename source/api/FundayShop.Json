@@ -101,7 +101,7 @@
       "title": "FUNDAY線上數位訂閱- 3個月",
       "type":"3",
       "description":["FUNDAY線上數位訂閱- 3個月"],
-      "pic":["https://funday.asia/mgm/2021/images/gifts/m3.jpg"],
+      "pic":["https://funday.asia/mgm/2021/images/gifts/m3.png"],
       "Fcoin":"2500"
     },
     {
@@ -110,7 +110,7 @@
       "title": "FUNDAY線上數位訂閱- 6個月",
       "type":"3",
       "description":["FUNDAY線上數位訂閱- 6個月"],
-      "pic":["https://funday.asia/mgm/2021/images/gifts/m6.jpg"],
+      "pic":["https://funday.asia/mgm/2021/images/gifts/m6.png"],
       "Fcoin":"4500"
     },
     {
@@ -119,18 +119,9 @@
       "title": "FUNDAY線上數位訂閱- 一年",
       "type":"3",
       "description":["FUNDAY線上數位訂閱- 一年"],
-      "pic":["https://funday.asia/mgm/2021/images/gifts/y1.jpg"],
+      "pic":["https://funday.asia/mgm/2021/images/gifts/y1.png"],
       "Fcoin":"5500"
-    },
-    {
-      "id": 14,
-      "orders":"9",
-      "title": "FUNDAY線上數位訂閱- 二年",
-      "type":"2",
-      "description":["FUNDAY線上數位訂閱- 二年"],
-      "pic":["https://funday.asia/mgm/2021/images/gifts/y2.jpg"],
-      "Fcoin":"8000"
-    }                            
+    }                         
   ],
   "Cash": [
     {
@@ -139,7 +130,7 @@
       "title": "現金NT$3,000",
       "type":"1",
       "description":["現金NT$3,000"],
-      "pic":["https://funday.asia/mgm/2021/images/gifts/11.jpg"],
+      "pic":["https://funday.asia/mgm/2021/images/gifts/11.png"],
       "Fcoin":"3000"
     },
     {
@@ -148,7 +139,7 @@
       "title": "現金NT$5,000",
       "type":"1",
       "description":["現金NT$5,000"],
-      "pic":["https://funday.asia/mgm/2021/images/gifts/12.jpg"],                 
+      "pic":["https://funday.asia/mgm/2021/images/gifts/12.png"],                 
       "Fcoin":"5000"
     },
     {
@@ -157,7 +148,7 @@
       "title": "現金NT$10,000",
       "type":"1",
       "description":["現金NT$10,000"],
-      "pic":["https://funday.asia/mgm/2021/images/gifts/13.jpg"],
+      "pic":["https://funday.asia/mgm/2021/images/gifts/13.png"],
       "Fcoin":"10000"
     }
   ],

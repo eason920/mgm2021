@@ -41,67 +41,76 @@ response.Charset = "utf-8"
 		<div class="mgmcontent" id="App">
 			<div class="wrapper">
 				<div class="mgmlb-box">
-					<div class="mgmlb-pic">
-						<div class="lbpic-kv" :style="obj.pic[0] | filterBG"><img src="./2021/images/empty_lb.png"></div>
-						<div class="lbpic-box">
-							<div class="lbpic-item"
-								v-for='(item, i) in obj.pic'
-								:style="obj.pic[i] | filterBG"
-								:key='i'
-								:class='{"active": i == 0}'
-								@click='fnChange( obj.pic[i], i )'
-							><img src="./2021/images/empty_lb.png"></div>
-						</div>
+					<div class="mgmlb-bread">
+						<p class="bread-1">FUNDAY SHOP</p>
+						<span>></span>
+						<p class="bread-2">{{category_ch}}</p>
+						<span>></span>
+						<p class="bread-3">{{obj.title}}</p>
 					</div>
-					<div class="mgmlb-info">
-						<div class="lbproduct is-lbblock">
-							<div class="lbproduct-title">{{obj.title}}</div>
-							<div class="lbproduct-pricebox">
-								<div class="lbproduct-price">
-									<img class="giftbox-icon" src="./2021/images/icon.svg">
-									<span class="lbproduct-prefix">兌換點數：</span><span>{{obj.Fcoin}}</span>點
-								</div>
+					<div class="mgmlb-flex">
+						<div class="mgmlb-pic">
+							<div class="lbpic-kv" :style="obj.pic[0] | filterBG"><img src="./2021/images/empty_lb.png"></div>
+							<div class="lbpic-box">
+								<div class="lbpic-item"
+									v-for='(item, i) in obj.pic'
+									:style="obj.pic[i] | filterBG"
+									:key='i'
+									:class='{"active": i == 0}'
+									@click='fnChange( obj.pic[i], i )'
+								><img src="./2021/images/empty_lb.png"></div>
 							</div>
 						</div>
-						<div class="lbtalk is-lbblock">
-							<div class="lbtalk-item"
-								v-for='(item, i) in obj.description'
-								:key='i'
-							>{{obj.description[i]}}</div>
-						</div>
-						<form class="lbinfo is-lbblock">
-							<div class="lbinfo-tip">請正確填寫以下收件人相關資訊</div>
-							<div class="lbinfo-iptbox">
-								<div class="lbinfo-name">收件人姓名</div>
-								<input class="lbinfo-ipt" type="text" placeholder="*必填">
-							</div>
-							<div class="lbinfo-iptbox">
-								<div class="lbinfo-name">收件人電話</div>
-								<input class="lbinfo-ipt" type="text" placeholder="*必填">
-							</div>
-							<div class="lbinfo-iptbox is-zipcode">
-								<div class="lbinfo-name">郵遞區號及地址</div>
-								<div class="zipbox">
-									<div class="zipbox-block">
-										<select>
-											<option value='' disabled>-- country --</option>
-											<option value='0'>0</option>
-											<option value='1'>1</option>
-										</select>
-										<select>
-											<option value='' disabled>-- town --</option>
-											<option value='0'>0</option>
-											<option value='1'>1</option>
-										</select>
-									</div>
-									<div class="zipbox-block">
-										<div class="zipbox-code is-selected">114</div>
-										<input class="zipbox-ipt" type="text" placeholder="*必填">
+						<div class="mgmlb-info">
+							<div class="lbproduct is-lbblock">
+								<div class="lbproduct-title">{{obj.title}}</div>
+								<div class="lbproduct-pricebox">
+									<div class="lbproduct-price">
+										<img class="giftbox-icon" src="./2021/images/icon.svg">
+										<span class="lbproduct-prefix">兌換點數：</span><span>{{obj.Fcoin}}</span>點
 									</div>
 								</div>
 							</div>
-						</form>
-						<button class="lbbtn">立即兌換</button>
+							<div class="lbtalk is-lbblock">
+								<div class="lbtalk-item"
+									v-for='(item, i) in obj.description'
+									:key='i'
+								>{{obj.description[i]}}</div>
+							</div>
+							<form class="lbinfo is-lbblock">
+								<div class="lbinfo-tip">請正確填寫以下收件人相關資訊</div>
+								<div class="lbinfo-iptbox">
+									<div class="lbinfo-name">收件人姓名</div>
+									<input class="lbinfo-ipt" type="text" placeholder="*必填">
+								</div>
+								<div class="lbinfo-iptbox">
+									<div class="lbinfo-name">收件人電話</div>
+									<input class="lbinfo-ipt" type="text" placeholder="*必填">
+								</div>
+								<div class="lbinfo-iptbox is-zipcode">
+									<div class="lbinfo-name">郵遞區號及地址</div>
+									<div class="zipbox">
+										<div class="zipbox-block">
+											<select>
+												<option value='' disabled>-- country --</option>
+												<option value='0'>0</option>
+												<option value='1'>1</option>
+											</select>
+											<select>
+												<option value='' disabled>-- town --</option>
+												<option value='0'>0</option>
+												<option value='1'>1</option>
+											</select>
+										</div>
+										<div class="zipbox-block">
+											<div class="zipbox-code is-selected">114</div>
+											<input class="zipbox-ipt" type="text" placeholder="*必填">
+										</div>
+									</div>
+								</div>
+							</form>
+							<button class="lbbtn">立即兌換</button>
+						</div>
 					</div>
 				</div>
 			</div>
@@ -119,21 +128,59 @@ response.Charset = "utf-8"
 						type: "GET",
 						contentType: "application/json",
 						success(res){
-							const val = location.href.split("?")[1].split("&");
-							vm.category = val[0].split("=")[1];
-							vm.id = val[1].split("=")[1];
+							const url = location.href;
+							let val;
+							let index;
+							if( url.match(/[?=]/) ){
+								console.log('have ? = ');
+								val = url.split("?")[1].split("&");
+								vm.category = val[0].split("cat=")[1];
+								vm.id = val[1].split("id=")[1];
+								//
+								res[vm.category].forEach(function(item,i){
+									if( item.id == vm.id ){ index = i };
+								})
+							}else{
+								console.log('no ? =');
+								vm.category = "Life";
+								index = 0
+							}
+
 							// --------------------------------
 							if( !res[vm.category] ){
 								vm.category = "Life";
 							};
 
-							if( !res[vm.category][vm.id] ){
-								vm.id = 1;
+							if( !res[vm.category][index] ){
+								index = 0;
 							};
+
+							switch(vm.category){
+								case "Life":
+									vm.category_ch = "生活類";break;
+								case "Learning":
+									vm.category_ch = "學習類";break;
+								case "Cash":
+									vm.category_ch = "現金類";break;
+							}
 							// --------------------------------
-							res[vm.category].forEach(function(item, i){
-								if( item.id == vm.id ){ vm.obj = item };
-							});
+							vm.obj = res[vm.category][index];
+						}
+					});
+
+					// ==========================================
+					// == ZIP CODE v
+					// ==========================================
+					$.ajax({
+						url: "./2021/api/tw_zipcode.json",
+						type: "GET",
+						contentType: "application/json",
+						success(res){
+							console.log('zipcode', res);
+							res.forEach(function(item, i){
+								console.log(item.COUNTYNAME, '/', item.TOWNNAME);
+							})
+							vm.zipcode = res;
 						}
 					});
 				},
@@ -145,6 +192,7 @@ response.Charset = "utf-8"
 				},
         data: {
 					category: "",
+					category_ch: "",
 					id: "",
 					obj: {
 						orders: "",
@@ -153,6 +201,7 @@ response.Charset = "utf-8"
 						pic: [],
 						Fcoin: "",
 					},
+					zipcode: [],
 				},
         el: "#App",
       })

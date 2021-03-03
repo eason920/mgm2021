@@ -8,12 +8,7 @@ $w-zipcode-selected: 40px
 	height: 22px
 	
 .mgmlb, .mgmlb-box
-	position: fixed
-	top: 0
-	right: 0
-	bottom: 0
-	left: 0
-	margin: auto
+	margin: 0 auto
 
 // .mgmlb
 // 	background-color: rgba(0,0,0,.7)
@@ -21,10 +16,25 @@ $w-zipcode-selected: 40px
 // 	display: none
 
 .mgmlb-box
-	background-color: #fff
 	border-radius: 7px
 	z-index: 3
+	// display: flex
+
+.mgmlb-bread
 	display: flex
+	align-items: center
+	p
+		font:
+			size: 16px
+		color: $c5
+
+	span
+		font:
+			size: 16px
+		color: #333
+		// padding: 0 5px
+		text-align: center
+		width: $w-bread-arrow
 
 // =================================
 .mgmlb-close
