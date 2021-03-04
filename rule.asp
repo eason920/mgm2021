@@ -40,12 +40,6 @@ response.Charset = "utf-8"
 		<div class="mgmcontent" id="app">
 			<div class="wrapper">
 				<div class="logobox">
-					<div v-text='text'></div>
-					  <select v-model='text'>
-							<option value='' disabled>-- select --</option>
-							<option value='0'>0</option>
-							<option value='1'>1</option>
-						</select>
 					<img class="logobox-bonus" src="./2021/images/bonus.png"><img class="logobox-what" src="./2021/images/what.png"></div>
 				<div class="mainbox">
 					<div class="leftbox">

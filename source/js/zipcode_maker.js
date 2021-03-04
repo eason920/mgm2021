@@ -7,6 +7,7 @@ $(()=>{
 		type: "GET",
 		contentType: "application/json",
 		success(res){
+			console.log('res > ', res);
 			const max = res.length - 1;
 
 			res.forEach(function(item, i){
@@ -17,12 +18,12 @@ $(()=>{
 
 				switch(true){
 					case idx == -1:
-						const obj = {county: item.COUNTYNAME,  town: [{town: item.TOWNNAME, code: item.ZIPCODE}]}
+						const obj = {county: item.COUNTYNAME,  ary: [{town: item.TOWNNAME, code: item.ZIPCODE}]}
 						zipcode.push(obj);
 						break;
 					case idx >= 0:
 						const town = {town: item.TOWNNAME, code: item.ZIPCODE};
-						zipcode[idx].town.push(town);
+						zipcode[idx].ary.push(town);
 					default:
 				}
 

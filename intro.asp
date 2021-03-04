@@ -1,5 +1,6 @@
 <%@LANGUAGE="VBSCRIPT" CODEPAGE="65001" %>   
 <!-- #include virtual="include/DBConnection.asp"--> 
+
 <%
 response.Buffer = true
 session.Codepage =65001
@@ -13,6 +14,8 @@ response.Charset = "utf-8"
 '   response.write "<script>location.href='../../'</script>"
 '   response.end()
 ' end if
+
+
 
 %>
 <!DOCTYPE html>

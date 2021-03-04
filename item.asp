@@ -91,15 +91,20 @@ response.Charset = "utf-8"
 									<div class="lbinfo-name">郵遞區號及地址</div>
 									<div class="zipbox">
 										<div class="zipbox-block">
-											<select>
-												<option value='' disabled>-- country --</option>
-												<option value='0'>0</option>
-												<option value='1'>1</option>
+											<select v-model="county">
+												<option value='' disabled>請選擇縣市</option>
+												<option
+													v-for="(item, i) in zipcode"
+													:key="i"
+												>{{item.county}}</option>
 											</select>
-											<select>
-												<option value='' disabled>-- town --</option>
-												<option value='0'>0</option>
-												<option value='1'>1</option>
+											<select v-model="town">
+												<option value='' disabled>請選擇鎮市區</option>
+												<!--v-for="(item, i) in filter_town"
+												
+													:key="i"
+												<option>{{item.county}}</option>
+												-->
 											</select>
 										</div>
 										<div class="zipbox-block">
@@ -172,37 +177,11 @@ response.Charset = "utf-8"
 					// == ZIP CODE v
 					// ==========================================
 					$.ajax({
-						url: "./2021/api/tw_zipcode.json",
+						url: "./2021/api/zipcode_item.json",
 						type: "GET",
 						contentType: "application/json",
 						success(res){
-							console.log('zipcode api is ', res);
-							// res.forEach(function(item, i){
-							// 	console.log(item.COUNTYNAME, '/', item.TOWNNAME);
-							// })
-							// vm.zipcode = res;
-							
-							// --------------------------------
-							const idx = res.findIndex(item => item.COUNTYNAME == '\u5c4f\u6771\u7e23');
-							console.log('index is ', idx);
-
-							const max = res.length - 1;
-							res.forEach(function(item, i){
-								console.log('--------------');
-								// const idx = vm.zipcode.findIndex(b => b.county == item.COUNTYNAME);
-								const idx = vm.zipcode.findIndex(function(b){
-									console.log( b.county, '/', item.COUNTYNAME );
-									return b.c == item.COUNTYNAME;
-								});
-								console.log('idx is ', idx);
-								if( idx == -1 ){
-									const obj = {county: item.COUNTYNAME }
-									vm.zipcode.push(obj);
-								}
-								if( i == max ){
-									console.log('end ', vm.zipcode);
-								}
-							});
+							vm.zipcode = res;
 						}
 					});
 				},
@@ -211,6 +190,15 @@ response.Charset = "utf-8"
 						$('.lbpic-kv').attr('style', 'background-image: url(' + style + ')');
 						$('.lbpic-item').removeClass('active').eq(i).addClass('active');
 					},
+				},
+				computed: {
+					filter_town(){
+						const vm = this;
+						const index = vm.zipcode.findIndex(function(item, i){
+							return item.county == vm.county;
+						});
+						return vm.zipcode[index].ary;
+					}
 				},
         data: {
 					category: "",
@@ -224,6 +212,9 @@ response.Charset = "utf-8"
 						Fcoin: "",
 					},
 					zipcode: [],
+					county: "",
+					town: "",
+					town_ary: "",
 				},
         el: "#App",
       })
