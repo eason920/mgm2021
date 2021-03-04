@@ -1,0 +1,9 @@
+1. 政府資資料開放平臺「3碼郵遞區號與行政區地理座標對照KML」
+   a.https://data.gov.tw/dataset/37759
+	 b.點「資料資源下載網址」的「檢視資料」
+	 c.於 lightbox 點「json」
+	 d.petty online貼入本機「source/api/zipcode_gov.json」
+
+2. 由 zipcode_maker.html 執行後 copy 出 stringify json」
+
+3. petty 後即完成，貼入「source/api/zipcode_item.json」更新線上

@@ -115,6 +115,11 @@ gulp.task('js', function(){
 		.pipe(gulp.dest('./public/js/'));
 });
 
+gulp.task('api', function(){
+	gulp.src('./source/api/**/*.json')
+		.pipe(gulp.dest('./public/api/'))
+});
+
 gulp.task('tmp_js', function(){
 	gulp.src('./.tmp/assets/tmp/*.js')
 		.pipe(gulp.dest('./public/assets/tmp/'))
@@ -170,15 +175,16 @@ const mission = function(){
 	gulp.watch('./source/email/*.pug', ['email']);
 	gulp.watch('./source/tmp_module/*.pug', ['tmp_module']);
 	gulp.watch('./source/js/**/*.js', ['js']);
+	gulp.watch('./source/api/**/*.json', ['api']);
 	gulp.watch('./.tmp/assets/tmp/*.js', ['tmp_js'])
 	gulp.watch('./source/images/**/*', ['img']);
 	gulp.watch('./source/data/*.json', ['data']);
 }
-gulp.task('default', ['pug', 'email', 'tmp_module', 'css', 'js', 'tmp_js', 'img', 'data'], function(){
+gulp.task('default', ['pug', 'email', 'tmp_module', 'css', 'js', 'api', 'tmp_js', 'img', 'data'], function(){
 	gulp.watch('./source/*.pug', ['pug']);
 	mission();
 });
 
-gulp.task('vue', ['email', 'tmp_module', 'css', 'js', 'tmp_js', 'img', 'data'], function () {
+gulp.task('vue', ['email', 'tmp_module', 'css', 'js', 'api', 'tmp_js', 'img', 'data'], function () {
 	mission();
 });
