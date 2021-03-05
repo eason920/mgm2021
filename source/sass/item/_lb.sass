@@ -1,4 +1,4 @@
-$w-zipcode: 85px
+$w-zipcode: 130px
 $w-zipcode-selected: 40px
 
 .giftbox-icon
@@ -122,6 +122,9 @@ $w-zipcode-selected: 40px
 .lbinfo-iptbox
 	// &.is-zipcode
 	// 	height: auto
+
+.lbinfo-ipt
+	box-sizing: border-box
 // --------------------------------
 .zipbox
 	font-size: 0
@@ -131,6 +134,8 @@ $w-zipcode-selected: 40px
 	border-radius: 0 3px 3px 0
 
 	select
+		font-size: 16px
+		border-color: #767676
 		width: 50%
 		&:first-child
 			border-right: none
@@ -142,12 +147,13 @@ $w-zipcode-selected: 40px
 	border-radius: 3px 0 0 3px
 	width: $w-zipcode
 	font:
-		size: 13px
+		size: 16px
 	border-right: none
 	text-align: center
 	transition: width .3s
 
 .zipbox-ipt
+	box-sizing: border-box
 	border: solid 1px #767676
 	width: calc( 100% - #{$w-zipcode} )
 	transition: width .3s
@@ -156,6 +162,16 @@ $w-zipcode-selected: 40px
 	width: $w-zipcode-selected
 	& + .zipbox-ipt
 		width: calc( 100% - #{$w-zipcode-selected} )
+
+// --------------------------------
+.is-bank-select
+	border-color: #767676
+	font-size: 16px
+
+// --------------------------------
+.is-bank-select
+	width: 100%
+	height: 46px
 
 // --------------------------------
 .lbbtn

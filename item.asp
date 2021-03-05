@@ -44,7 +44,7 @@ response.Charset = "utf-8"
 					<div class="mgmlb-bread">
 						<p class="bread-1">FUNDAY SHOP</p>
 						<span>></span>
-						<p class="bread-2">{{category_ch}}</p>
+						<p class="bread-2">{{categoryCh}}</p>
 						<span>></span>
 						<p class="bread-3">{{obj.title}}</p>
 					</div>
@@ -79,6 +79,7 @@ response.Charset = "utf-8"
 							</div>
 							<form class="lbinfo is-lbblock">
 								<div class="lbinfo-tip">請正確填寫以下收件人相關資訊</div>
+								<!-- USUAL v -->
 								<div class="lbinfo-iptbox">
 									<div class="lbinfo-name">收件人姓名</div>
 									<input class="lbinfo-ipt" type="text" placeholder="*必填">
@@ -87,28 +88,53 @@ response.Charset = "utf-8"
 									<div class="lbinfo-name">收件人電話</div>
 									<input class="lbinfo-ipt" type="text" placeholder="*必填">
 								</div>
-								<div class="lbinfo-iptbox is-zipcode">
+
+								<!-- BANK v -->
+								<div class="bankblock" v-if="category == 'Cash'">
+									<div class="lbinfo-iptbox">
+										<div class="lbinfo-name">身份證字號</div>
+										<input class="lbinfo-ipt" type="text" placeholder="*必填">
+									</div>
+									<div class="lbinfo-iptbox">
+										<div class="lbinfo-name">銀行代號</div>
+										<select class="is-bank-select" v-model="bank.selected">
+											<option value="" disabled>請選擇銀行代號</option>
+											<option
+												v-for="(item, i) in bank.ary"
+												:key="i"
+											>{{item}}</option>
+										</select>
+									</div>
+									<div class="lbinfo-iptbox">
+										<div class="lbinfo-name">銀行帳號</div>
+										<input class="lbinfo-ipt" type="text" placeholder="*必填">
+									</div>
+								</div>
+
+								<!-- TRANSPORT v -->
+								<div class="lbinfo-iptbox is-zipcode" v-else>
 									<div class="lbinfo-name">郵遞區號及地址</div>
 									<div class="zipbox">
 										<div class="zipbox-block">
-											<select v-model="county">
+											<select v-model="zipInfo.county">
 												<option value='' disabled>請選擇縣市</option>
 												<option
-													v-for="(item, i) in zipcode"
+													v-for="(item, i) in countyAry"
 													:key="i"
 												>{{item.county}}</option>
 											</select>
-											<select v-model="town">
+											<select v-model="zipInfo.town">
 												<option value='' disabled>請選擇鎮市區</option>
-												<!--v-for="(item, i) in filter_town"
-												
+												<option 
+													v-for="(item, i) in filterTown"
 													:key="i"
-												<option>{{item.county}}</option>
-												-->
+												>{{item.town}}</option>
 											</select>
 										</div>
 										<div class="zipbox-block">
-											<div class="zipbox-code is-selected">114</div>
+											<div class="zipbox-code"
+												:class="{ 'is-selected' : zipInfo.selected == true}"
+											>{{filterCode}}</div>
 											<input class="zipbox-ipt" type="text" placeholder="*必填">
 										</div>
 									</div>
@@ -140,10 +166,10 @@ response.Charset = "utf-8"
 								console.log('have ? = ');
 								val = url.split("?")[1].split("&");
 								vm.category = val[0].split("cat=")[1];
-								vm.id = val[1].split("id=")[1];
+								vm.goodsId = val[1].split("id=")[1];
 								//
 								res[vm.category].forEach(function(item,i){
-									if( item.id == vm.id ){ index = i };
+									if( item.id == vm.goodsId ){ index = i };
 								})
 							}else{
 								console.log('no ? =');
@@ -162,11 +188,11 @@ response.Charset = "utf-8"
 
 							switch(vm.category){
 								case "Life":
-									vm.category_ch = "生活類";break;
+									vm.categoryCh = "生活類";break;
 								case "Learning":
-									vm.category_ch = "學習類";break;
+									vm.categoryCh = "學習類";break;
 								case "Cash":
-									vm.category_ch = "現金類";break;
+									vm.categoryCh = "現金類";break;
 							}
 							// --------------------------------
 							vm.obj = res[vm.category][index];
@@ -181,7 +207,19 @@ response.Charset = "utf-8"
 						type: "GET",
 						contentType: "application/json",
 						success(res){
-							vm.zipcode = res;
+							vm.countyAry = res;
+						}
+					});
+
+					// ==========================================
+					// == BANK v
+					// ==========================================
+					$.ajax({
+						url: "./2021/api/bank.json",
+						type: "GET",
+						contentType: "application/json",
+						success(res){
+							vm.bank.ary = res;
 						}
 					});
 				},
@@ -192,18 +230,43 @@ response.Charset = "utf-8"
 					},
 				},
 				computed: {
-					filter_town(){
+					filterTown(){
 						const vm = this;
-						const index = vm.zipcode.findIndex(function(item, i){
-							return item.county == vm.county;
+						const index = vm.countyAry.findIndex(function(item, i){
+							return item.county == vm.zipInfo.county;
 						});
-						return vm.zipcode[index].ary;
+						if( index >= 0 ){
+							return vm.countyAry[index].ary;
+						}else{
+							return [];
+						}
+					},
+					filterCode() {
+						const vm = this;
+						const countyIndex = vm.countyAry.findIndex(function(item){
+							return item.county == vm.zipInfo.county;
+						});
+						if( countyIndex >= 0){
+							const townIndex = vm.countyAry[countyIndex].ary.findIndex(function(item){
+								return item.town == vm.zipInfo.town;
+							});
+							if( townIndex >= 0 ){
+								vm.zipInfo.selected = true;
+								return vm.countyAry[countyIndex].ary[townIndex].code;
+							}else{
+								vm.zipInfo.selected = false;
+								return "選填郵遞區號";
+							}
+						}else{
+							vm.zipInfo.selected = false;
+							return "選填郵遞區號";
+						}
 					}
 				},
         data: {
 					category: "",
-					category_ch: "",
-					id: "",
+					categoryCh: "",
+					goodsId: "",
 					obj: {
 						orders: "",
 						title: "",
@@ -211,10 +274,17 @@ response.Charset = "utf-8"
 						pic: [],
 						Fcoin: "",
 					},
-					zipcode: [],
-					county: "",
-					town: "",
-					town_ary: "",
+					countyAry: [],
+					zipInfo: {
+						county: "",
+						town: "",
+						selected: false
+					},
+					bank: {
+						ary: [],
+						selected: ''
+					}
+
 				},
         el: "#App",
       })

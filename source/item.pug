@@ -32,63 +32,90 @@ html(lang='en')
 
 		.mgmcontent
 			.wrapper
-				//- .mgmlb-scroller
 				.mgmlb-box
-					//- .mgmlb-close ╳
-					.mgmlb-pic
-						.lbpic-kv(style='background-image:url(./images/gifts/l.jpg)')
-							img(src='./images/empty_lb.png')
-						.lbpic-box
-							.lbpic-item.active(style='background-image:url(./images/gifts/l.jpg)')
+					.mgmlb-bread 
+						p.bread-1 FUNDAY SHOP
+						span >
+						p.bread-2 category 
+						span >
+						p.bread-3 item name
+					.mgmlb-flex
+						.mgmlb-pic
+							.lbpic-kv(style='background-image:url(./images/gifts/l.jpg)')
 								img(src='./images/empty_lb.png')
-							.lbpic-item(style='background-image:url(./images/gifts/l.jpg)')
-								img(src='./images/empty_lb.png')
-							.lbpic-item(style='background-image:url(./images/gifts/l.jpg)')
-								img(src='./images/empty_lb.png')
-							.lbpic-item(style='background-image:url(./images/gifts/l.jpg)')
-								img(src='./images/empty_lb.png')
-					.mgmlb-info
-						//- product v
-						.lbproduct.is-lbblock
-							.lbproduct-title FUNDAY運動毛巾FUNDAY運動毛巾FUNDAY運動毛巾FUNDAY運動毛巾FUNDAY運動毛巾FUNDAY運動毛巾
-							.lbproduct-pricebox
-								.lbproduct-price
-									img.giftbox-icon(src='./images/icon.svg')
-									span.lbproduct-prefix 兌換點數：
-									span 30,000
-									|點
-						//- talk v
-						.lbtalk.is-lbblock
-							.lbtalk-item 規格：有機原棉織造 無化學添加  柔細舒適  吸水性佳 有機原棉織造 無化學添加  柔細舒適  吸水性佳
-							.lbtalk-item 材質：100% 有機棉 台灣織造
-							.lbtalk-item 尺寸：76cm*148cm
-						//- info
-						.lbinfo.is-lbblock
-							.lbinfo-tip 請正確填寫以下收件人相關資訊
-							.lbinfo-iptbox
-								.lbinfo-name 收件人姓名
-								input.lbinfo-ipt(type='text' placeholder='*必填')
-							.lbinfo-iptbox
-								.lbinfo-name 收件人電話
-								input.lbinfo-ipt(type='text' placeholder='*必填')
-							//- 0225 vvvvvvvvvvvvvvvv
-							.lbinfo-iptbox.is-zipcode
-								.lbinfo-name 郵遞區號及地址
-								.zipbox
-									.zipbox-block
-										select
-											option(value="1") 1
-											option(value="2") 2
-											option(value="3") 3
-										select
+							.lbpic-box
+								.lbpic-item.active(style='background-image:url(./images/gifts/l.jpg)')
+									img(src='./images/empty_lb.png')
+								.lbpic-item(style='background-image:url(./images/gifts/l.jpg)')
+									img(src='./images/empty_lb.png')
+								.lbpic-item(style='background-image:url(./images/gifts/l.jpg)')
+									img(src='./images/empty_lb.png')
+								.lbpic-item(style='background-image:url(./images/gifts/l.jpg)')
+									img(src='./images/empty_lb.png')
+						.mgmlb-info
+							//- product v
+							.lbproduct.is-lbblock
+								.lbproduct-title FUNDAY運動毛巾FUNDAY運動毛巾FUNDAY運動毛巾FUNDAY運動毛巾FUNDAY運動毛巾FUNDAY運動毛巾
+								.lbproduct-pricebox
+									.lbproduct-price
+										img.giftbox-icon(src='./images/icon.svg')
+										span.lbproduct-prefix 兌換點數：
+										span 30,000
+										|點
+							//- talk v
+							.lbtalk.is-lbblock
+								.lbtalk-item 規格：有機原棉織造 無化學添加  柔細舒適  吸水性佳 有機原棉織造 無化學添加  柔細舒適  吸水性佳
+								.lbtalk-item 材質：100% 有機棉 台灣織造
+								.lbtalk-item 尺寸：76cm*148cm
+							//- info
+							.lbinfo.is-lbblock
+								.lbinfo-tip 請正確填寫以下收件人相關資訊
+								.lbinfo-iptbox
+									.lbinfo-name 收件人姓名
+									input.lbinfo-ipt(type='text' placeholder='*必填')
+								.lbinfo-iptbox
+									.lbinfo-name 收件人電話
+									input.lbinfo-ipt(type='text' placeholder='*必填')
+								//- zipcode
+								.lbinfo-iptbox.is-zipcode
+									.lbinfo-name 郵遞區號及地址
+									.zipbox
+										.zipbox-block
+											select
+												option(value="1") 1
+												option(value="2") 2
+												option(value="3") 3
+											select
+												option(value="a") a
+												option(value="b") b
+												option(value="c") c
+										.zipbox-block
+											//- .zipbox-code 選填郵遞區號
+											.zipbox-code.is-selected 114
+											input.zipbox-ipt(type='text' placeholder='*必填')
+								//- bank
+								.bankblock
+									.lbinfo-iptbox
+										.lbinfo-name 身份證字號
+										input.lbinfo-ipt(type='text' placeholder='*必填')
+									.lbinfo-iptbox
+										.lbinfo-name 銀行代號
+										select.is-bank-select
 											option(value="a") a
 											option(value="b") b
 											option(value="c") c
-									.zipbox-block
-										//- .zipbox-code 選填郵遞區號
-										.zipbox-code.is-selected 114
-										input.zipbox-ipt(type='text' placeholder='*必填')
-								//- o225 ^^^^^^^^^^^^^^^
-						//- send v
-						button.lbbtn 立即兌換
+									.lbinfo-iptbox
+										.lbinfo-name 銀行帳號
+										input.lbinfo-ipt(type='text' placeholder='*必填')
+								
+							//- send v
+							button.lbbtn 立即兌換
 		include partials/footer
+
+//- ====================================
+//- STUDY v
+//- option ele 無法加上行為函式 ( 如 @click )
+//- data 中的變數可以用 camle case 命名 & 直接 camle  case 引用到 html 中
+//- computed 的函式名也可用 camle case 命名、直接 camel case 引用到 html 中
+//- var.match(/[?=]/) | var 中有 ? 及 = 時
+//- ====================================
