@@ -158,6 +158,8 @@ response.Charset = "utf-8"
 		<script>
 			const App = new Vue({
 				created(){
+					$('.mgmnav').load('./2021/header.html');
+					//
 					const vm = this;
 					$.ajax({
 						type: 'GET',

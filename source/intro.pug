@@ -3,7 +3,7 @@ html(lang='en')
 	head
 		meta(charset='UTF-8')
 		meta(name='viewport' content='width=device-width, initial-scale=1.0')
-		title mgm page
+		title mgm index
 		link(href='./css/index_flat.css' rel='stylesheet')
 		link(href='./assets/plugins/perfect-scrollbar-master/perfect-scrollbar.css' rel='stylesheet')
 		//-
@@ -24,12 +24,7 @@ html(lang='en')
 			/* ^ scrollbar 是否永遠顥示的跟據，而且一定要放外面，不可寫到 .css 中 ^ */
 		link(href='https://use.fontawesome.com/releases/v5.0.7/css/all.css' rel='stylesheet')
 	body
-		.mgmnav
-			.wrapper
-				a.mgmnav-box(href='https://funday.asia/' target='_blank')
-					img.img-responsive(src='./images/logo.png' alt='fundy logo')
-					.mgmnav-home 首頁
-
+		include header
 		.mgmcontent
 			.wrapper
 				h4.gifttitle.is-first 學習類

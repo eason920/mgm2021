@@ -37,9 +37,7 @@ response.Charset = "utf-8"
 		<link href="https://use.fontawesome.com/releases/v5.0.7/css/all.css" rel="stylesheet">
 	</head>
 	<body>
-		<div class="mgmnav">
-			<div class="wrapper"><a class="mgmnav-box" href="https://funday.asia/" target="_blank"><img class="img-responsive" src="./2021/images/logo.png" alt="fundy logo">
-					<div class="mgmnav-home">首頁</div></a></div>
+		<div class="mgmnav"></div>
 		</div>
 		<div class="mgmcontent" id="App">
 			<div class="wrapper">
@@ -94,8 +92,9 @@ response.Charset = "utf-8"
 		<script>
 			const App = new Vue({
 				created(){
+					$('.mgmnav').load('./2021/header.html');
+					//
 					const vm = this;
-					console.log('page got vue');
 					$.ajax({
 						url: './2021/api/FundayShop.Json',
 						success(res){

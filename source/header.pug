@@ -1,0 +1,18 @@
+.wrapper
+	.mgmnav-box
+		a(href='intro.asp')
+			img.is-mb(src="./2021/images/logo_w.png")
+			img.is-pc(src='./2021/images/logo.png')
+		.mgmnav-hamber
+			.mgmnav-line.is-t 
+			.mgmnav-line.is-m
+			.mgmnav-line.is-b
+		.mgmnav-ul
+			a.mgmnav-li(href="https://funday.asia/TeachingCenter/index.html" target="_blank") 英語教育
+			a.mgmnav-li(href="https://fundayinternationalschool.com/" target="_blank") 英語學校
+			a.mgmnav-li(href="https://funday.asia/lifeWeb/" target="_blank") 新生活
+			a.mgmnav-li.is-point(href="rule.asp") 點數兌換
+script.
+	$('.mgmnav-hamber').click(function(){
+		$('.mgmnav-box').toggleClass('is-open');
+	});

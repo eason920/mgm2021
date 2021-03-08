@@ -153,6 +153,8 @@ response.Charset = "utf-8"
 		<script>
 			new Vue({
         created(){
+					$('.mgmnav').load('./2021/header.html');
+					//
 					const vm = this;
 					$.ajax({
 						url: './2021/api/FundayShop.Json',

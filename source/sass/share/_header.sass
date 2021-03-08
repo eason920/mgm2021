@@ -1,0 +1,121 @@
+.mgmnav
+	position: fixed
+	width: 100%
+	top: 0
+	z-index: 1
+	background-color: $c-skin
+	.wrapper
+		height: 100%
+		
+.mgmnav-box
+	height: 100%
+	display: flex
+	align-items: center
+	justify-content: space-between
+	text-decoration: none
+	a
+		height: 55%
+		img
+			height: 100%
+
+.mgmnav-ul
+	list-style-type: none
+	display: flex
+
+.mgmnav-li
+	text:
+		decoration: none
+	font:
+		weight: bold
+	
+
+@media screen and (max-width: $bp-mb)
+	.mgmnav
+		height: $h-nav-mb
+		background-color: #000
+		.wrapper
+			margin: 0 5%
+			.is-pc
+				display: none
+
+	.mgmnav-hamber
+		width: 29px
+		height: 22px
+		position: relative
+		display: flex
+		flex-direction: column
+		justify-content: space-between
+
+	.mgmnav-line
+		height: 1px
+		width: 100%
+		background-color: #fff
+		transition: .2s
+		&.is-t
+			transform-origin: 0 0
+
+		&.is-m
+			opacity: 1
+		
+		&.is-b
+			transform-origin: 0% 100%
+
+	.mgmnav-ul
+		position: fixed
+		top: $h-nav-mb
+		left: 0
+		flex-direction: column
+		width: 100%
+		justify-content: row
+		// display: none
+		overflow: hidden
+		height: 0
+		transition: .2s
+
+	.mgmnav-li
+		font-size: 18px
+		color: #fff
+		display: block
+		background-color: rgba(0,0,0,.92)
+		text-align: center
+		line-height: $h-nav-mb * .8
+		border-bottom: solid 1px #aaa
+
+	.is-open 
+		.mgmnav-line
+			&.is-t
+				transform: rotateZ(45deg)
+
+			&.is-m
+				opacity: 0
+			
+			&.is-b
+				transform: rotateZ(-45deg)
+
+		.mgmnav-ul
+			height: 196px
+
+
+
+@media screen and (min-width: $bp-pc)
+	.mgmnav
+		height: $h-nav-pc
+		border-bottom: solid 1px #006463
+		.is-mb
+			display: none
+
+	.mgmnav-hamber
+		display: none
+
+	.mgmnav-ul
+
+	.mgmnav-li
+		color: #333
+		padding: 5px 15px
+		margin-left: 12px
+		font-size: 16px
+
+		&.is-point
+			color: #fff
+			background-color: #f16c5d
+			border-radius: 3px

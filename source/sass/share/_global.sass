@@ -1,32 +1,6 @@
 body
 	background-color: $c-skin
 
-.mgmnav
-	position: fixed
-	width: 100%
-	top: 0
-	z-index: 1
-	background-color: $c-skin
-	border-bottom: solid 1px #006463
-	.wrapper
-		height: 100%
-		
-.mgmnav-box
-	height: 100%
-	display: flex
-	align-items: center
-	justify-content: space-between
-	text-decoration: none
-	img
-		height: 55%
-
-.mgmnav-home
-	font-size: 16px
-	color: #000
-	transition: .3s
-	&:hover
-		color: $c2
-
 .mainbox
 	
 .mgmfoo
@@ -46,11 +20,6 @@ body
 @media screen and (max-width: $bp-mb)
 	html, body
 		overflow-x: hidden
-
-	.mgmnav
-		height: $h-nav-mb
-		.wrapper
-			margin: 0 5%
 
 	.mgmfoo
 		height: $h-foo-mb
@@ -81,9 +50,6 @@ body
 
 	html
 		font-size: 16px
-
-	.mgmnav
-		height: $h-nav-pc
 
 	.mainbox
 		height: calc( 100% - #{$h-logobox-pc})
