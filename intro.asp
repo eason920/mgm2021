@@ -41,6 +41,36 @@ response.Charset = "utf-8"
 		</div>
 		<div class="mgmcontent" id="App">
 			<div class="wrapper">
+				<div id="fade">
+					<div class="fade-main">
+						<cpn_fade
+							:prop='item'
+							:class='{"active": reactiveFade == i}'
+							v-for='(item, i) in fade' 
+							:req_href='item.href'
+							:req_pic='fnFadeBg(item.pic) | filterBG'
+							@connect_mouseover='fnClearInterval'
+							@connect_mouseout='fnSetInterval'
+							:key='i'
+						></cpn_fade>
+						<!--
+							:req_fn='fnGoLink("News", item.xml)' 
+							:req_pic='item.pic | filterSrc | filterBG'
+						-->
+					</div>
+					<div class="fade-dot"
+						v-if='sMax > 1'
+					>
+						<cpn_fade_dot
+							:class='{"active": reactiveFade == i}'
+							:prop='item'
+							v-for='(item, i) in fade'
+							@connect_mouseover='fnDotOver(i)'
+							@connect_mouseover2='fnClearInterval'
+							:key='i'
+						></cpn_fade_dot>
+					</div>
+				</div>
 				<h4 class="gifttitle is-first">生活類</h4>
 				<section class="giftbox" data-category="2">
 					<div class="giftbox-scroller">
@@ -92,13 +122,23 @@ response.Charset = "utf-8"
 		<script>
 			const App = new Vue({
 				created(){
-					$('.mgmnav').load('./2021/header.html');
-					//
 					const vm = this;
+					// --------------------------------
+					// -- HEADER v
+					// --------------------------------
+					$('.mgmnav').load('./2021/header.html');
+
+					// --------------------------------
+					// -- AJAX v
+					// --------------------------------
 					$.ajax({
 						url: './2021/api/FundayShop.Json',
+						type: 'GET',
+						contentType: 'application/json',
 						success(res){
 							console.log('res > ', res);
+							//
+							vm.fade = res.FadeShow;
 							//
 							vm.ary.life = res.Life;
 							vm.ary.learning = res.Learning;
@@ -131,9 +171,20 @@ response.Charset = "utf-8"
 								//
 								vm.deviceClass = 'is-pc-open';
 							};
+
+							// --------------------------------
+							// -- FADE SHOW v
+							// --------------------------------
+							vm.sMax = vm.fade.length;
+							if( vm.sMax > 1 ){ vm.fnSetInterval() };
 							
 						}
 					})
+				},
+				computed: {
+					reactiveFade(){
+						return this.sIndex;
+					}
 				},
 				methods: {
 					fnLink(category, id){
@@ -147,6 +198,31 @@ response.Charset = "utf-8"
 						}, 100);
 					},
 
+					// FADE v
+					fnFadeLink(){
+						return 'padding';
+					},
+
+					fnClearInterval() {
+						window.clearInterval(this.fadeControl);
+					},
+
+					fnSetInterval() {
+						let vm = this;
+						vm.fadeControl = window.setInterval(() => {
+							vm.sIndex ++;
+							if( vm.sIndex >= vm.sMax ){ vm.sIndex = 0 };
+						}, vm.fadeTimeDelay);
+					},
+
+					fnDotOver(i){
+						if( i != this.sIndex ){ this.sIndex = i };
+					},
+
+					fnFadeBg(obj){
+						const device = $(window).width() >= 992 ? 'pc' : 'mb';
+						return obj[device];
+					},
 					
 				},
 				data: {
@@ -156,9 +232,38 @@ response.Charset = "utf-8"
 						cash: new Array()
 					},
 					deviceClass: '',
+
+					// fade v
+					fade: [
+						// {
+						// 	pic: {
+						// 		pc: 'https://funday.asia/fundayshop/2021/images/history/hero_pc.jpg',
+						// 		mb: 'https://funday.asia/fundayshop/2021/images/history/hero_mb.jpg'
+						// 	},
+						// 	subject: '世界再遠，夢想再大，我！都裝得下！',
+						// 	button: '每月主題',
+						// 	href: 'rule.asp'
+						// },
+						// {
+						// 	pic: 'https://funday.asia/fundayshop/2021/images/history/hero_pc2.png',
+						// 	subject: 'ch 2',
+						// 	button: 'en 2'
+						// },
+						// {
+						// 	pic: 'https://funday.asia/fundayshop/2021/images/history/hero_pc3.png',
+						// 	subject: 'ch 3',
+						// 	button: 'en 3'
+						// },
+					],
+					sIndex: 0,
+					sMax: 0,
+					fadeTimeDelay: 4000,
+					fadeControl: '',
 				},
 				components: {
 					cpn_item,
+					cpn_fade,
+					cpn_fade_dot
 				},
 				el: '#App'
 			});

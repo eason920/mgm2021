@@ -25,3 +25,47 @@ const cpn_item = {
 		 }
 	}
 };
+
+// ==========================================
+// == FADE SHOW v
+// ==========================================
+const cpn_fade = {
+	props: ['prop', 'req_href', 'req_pic'],
+	template: `
+		<a class="fade-main-item"
+			:href='req_href'
+			:style="req_pic"
+			@mouseover='emit_mouseover'
+			@mouseout='emit_mouseout'
+		>
+			<div class="grid-subtitle">{{prop.subject}}</div>
+			<div class="fade-btn">{{prop.button}}</div>
+		</a>
+	`,
+	methods: {
+		emit_mouseover(){
+			this.$emit('connect_mouseover');
+		},
+		emit_mouseout(){
+			this.$emit('connect_mouseout')
+		}
+	}
+};
+
+const cpn_fade_dot = {
+	props: ['prop'],
+	template: `
+		<div 
+			class="fade-dot-item"
+			@mouseover='emit_mouseover(), emit_mouseover2()'
+		></div>
+	`,
+	methods: {
+		emit_mouseover(){
+			this.$emit('connect_mouseover')
+		},
+		emit_mouseover2(){
+			this.$emit('connect_mouseover2')
+		},
+	}
+}
