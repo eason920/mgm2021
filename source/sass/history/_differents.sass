@@ -1,0 +1,75 @@
+body
+	background-color: #fff
+	
+.lbproduct-pricebox
+	padding: 9px 0
+
+.lbtalk
+	border-bottom: none
+
+.lbpic-kv
+	height: auto!important
+
+.mgmlb-box
+	width: auto!important
+
+.mgmcontent
+	.wrapper
+		max-width: 1200px
+
+.lbbtn
+	margin: 60px auto
+
+// --------------------------------
+$c: #e6eef1
+.history-name
+	font-size: 24px
+	padding-bottom: 15px
+
+// --------------------------------
+.history-tales
+	img
+		width: 100%
+		max-width: 1200px
+		margin: 0 auto
+
+// --------------------------------
+.history-vbox-f1
+	display: none
+	background-color: $c
+	padding: 70px 0
+
+.history-vbox-f2
+	width: calc( 1200px * 0.7)
+	margin: 0 auto
+
+.history-vbox-f3
+	@include video
+
+
+@media screen and (max-width: $bp-pad-mb)
+	.mgmlb-pic
+		padding: 20px 0 0
+
+	.lbpic-kv
+		width: 100%!important
+
+	.lbproduct-title
+		font-size: 28px
+		padding: 0 0 25px
+		margin-bottom: 8px
+		border-bottom: solid 1px #777
+		width: 100%
+
+	.lbproduct-pricebox
+		display: none
+
+	// --------------------------------
+	.history-tales
+		.is-pc
+			display: none
+
+@media screen and (min-width: $bp-pad-pc)
+	.history-tales
+		.is-mb
+			display: none

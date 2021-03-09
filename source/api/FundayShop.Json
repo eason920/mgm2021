@@ -10,7 +10,7 @@
       },
       "subject": "世界再遠，夢想再大，我！都裝得下！",
       "button": "每月主題",
-      "href": "rule.asp"
+      "href": "https://funday.asia/fundayshop/history.asp?cat=Life&id=6"
     }
   ],
   "Life": [
@@ -37,7 +37,7 @@
       "orders":"3",
       "title": "FUNDAY馬克杯",
       "type":"2",
-      "description":["FUNDAY馬克杯"],
+      "description":["規格：容量320ml","材質：瓷","產地：台灣","尺寸：75cm x H80cm x w110cm","特色：看了"],
       "pic":["./2021/images/gifts/8.jpg"],
       "Fcoin":"400"
     },
@@ -58,6 +58,15 @@
       "description":["FUNDAY浴巾"],
       "pic":["./2021/images/gifts/10.jpg"],
       "Fcoin":"800"
+    },
+    {
+      "id": 6,
+      "orders":"3",
+      "title": "FUNDAY馬克杯(M)",
+      "type":"2",
+      "description":["規格：容量320ml","材質：瓷","產地：台灣","尺寸：75cm x H80cm x w110cm","特色：看了"],
+      "pic":["./2021/images/history/main.jpg"],
+      "Fcoin":"400"
     }
   ],
   "Learning": [
