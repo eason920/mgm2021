@@ -44,17 +44,20 @@ response.Charset = "utf-8"
 				<div class="mainbox">
 					<div class="leftbox">
 						<div class="tabbox">
-							<button class="tabbox-item" @click='fnTabboxItem("list", 0)' data-tab="list"><i class="far fa-paper-plane"></i>
-								<h3>列表</h3>
+							<button class="tabbox-item" @click='fnTabboxItem("list", 0)' data-tab="list">
+								<h3>獎勵列表</h3>
 							</button>
-							<button class="tabbox-item" @click='fnTabboxItem("learning", 1)' data-tab="learning"><i class="far fa-file-alt"></i>
+							<button class="tabbox-item" @click='fnTabboxItem("learning", 1)' data-tab="learning">
 								<h3>學習獎勵</h3>
 							</button>
-							<button class="tabbox-item" @click='fnTabboxItem("recommend", 2)' data-tab="recommend"><i class="fas fa-gift"></i>
+							<button class="tabbox-item" @click='fnTabboxItem("recommend", 2)' data-tab="recommend">
 								<h3>推薦獎勵</h3>
 							</button>
-							<button class="tabbox-item" @click='fnTabboxItem("campaign", 3)' data-tab="campaign"><i class="fas fa-search-plus"></i>
+							<button class="tabbox-item" @click='fnTabboxItem("campaign", 3)' data-tab="campaign">
 								<h3>活動獎勵</h3>
+							</button>
+							<button class="tabbox-item" @click='fnTabboxItem("campaign", 3)' data-tab="campaign">
+								<h3>兌換規則</h3>
 							</button>
 							<div class="tabbox-active"></div>
 						</div>
@@ -209,7 +212,7 @@ response.Charset = "utf-8"
 
 					fnTabboxItem(tab, index){
 						const vm = this;
-						const left = index * 25 + '%';
+						const left = index * 20 + '%';
 						let key = '';
 
 						//
