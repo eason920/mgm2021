@@ -1,8 +1,10 @@
 .contentbox
-	&[data-tab='list']
+	&[data-tab='list'], &[data-tab='learning'], 
+	&[data-tab='recommend'], &[data-tab='campaign']
 		ol
 			&:first-child
 				width: 60%
+				padding-right: 5px
 			&:nth-child(2), &:nth-child(3)
 				width: 30%
 				li
@@ -91,7 +93,11 @@
 // --------------------------------
 @media screen and (max-width: $bp-mb)
 	.contentbox
+		background-color: #e8e8e8
 		overflow: hidden
+
+	.contentbox-tip.is-head
+		background-color: #fff
 
 	.contentbox-item
 		height: calc( 100% - #{$h-total-mb})
@@ -104,9 +110,11 @@
 
 @media screen and (max-width: $bp-mb) and (orientation: portrait)
 	.contentbox
+		background-color: #e8e8e8
 		height: calc( 100vh - #{$h-nav-mb} - #{$h-logobox-mb} - #{$h-tab-mb} - #{$h-foo-mb} )
 
-		&[data-tab='list']
+		&[data-tab='list'], &[data-tab='learning'], 
+		&[data-tab='recommend'], &[data-tab='campaign']
 			ol
 				&:first-child
 					width: 60%
@@ -115,6 +123,8 @@
 				&:nth-child(3)
 					width: 20%
 
+	.contentbox-tip.is-head
+		background-color: #fff
 
 	.contentbox-total
 		height: $h-total-mb
@@ -157,7 +167,8 @@
 	.contentbox
 		height: calc( 100% - #{$h-tab-pc} )
 
-		&[data-tab='list']
+		&[data-tab='list'], &[data-tab='learning'], 
+		&[data-tab='recommend'], &[data-tab='campaign']
 			ol
 				li
 					font:

@@ -20,7 +20,7 @@ response.Charset = "utf-8"
 	<head>
 		<meta charset="UTF-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
-		<title>history</title>
+		<title>Funday Shop | 每月主題</title>
 		<link href="./2021/css/history.css" rel="stylesheet">
 		<link href="./2021/assets/plugins/perfect-scrollbar-master/perfect-scrollbar.css" rel="stylesheet">
 		<script src="./2021/assets/plugins/jquery/jquery-1.12.4-min.js"></script>
@@ -82,6 +82,7 @@ response.Charset = "utf-8"
 		</div>
 		<a class="lbbtn" href="intro.asp">回商品首頁</a>
 		<div class="mgmfoo">
+			<div class="mgmfoo-pc" ><!-- #include virtual="fundayshop/footer.asp"--></div>
 			<div class="mgmfoo-mb">© 2021 Brainstorm Digital Communications Corp.<br>All rights reserved. Privacy Policy</div>
 		</div>
 			
@@ -97,42 +98,42 @@ response.Charset = "utf-8"
 						contentType: "application/json",
 						success(res){
 							const url = location.href;
-							let val;
-							let index;
-							if( url.match(/[?=]/) ){
-								console.log('have ? = ');
-								val = url.split("?")[1].split("&");
-								vm.category = val[0].split("cat=")[1];
-								vm.goodsId = val[1].split("id=")[1];
-								//
-								res[vm.category].forEach(function(item,i){
-									if( item.id == vm.goodsId ){ index = i };
-								})
-							}else{
-								console.log('no ? =');
-								vm.category = "Life";
-								index = 0
-							}
+							// let val;
+							// let index;
+							// if( url.match(/[?=]/) ){
+							// 	console.log('have ? = ');
+							// 	val = url.split("?")[1].split("&");
+							// 	vm.category = val[0].split("cat=")[1];
+							// 	vm.goodsId = val[1].split("id=")[1];
+							// 	//
+							// 	res[vm.category].forEach(function(item,i){
+							// 		if( item.id == vm.goodsId ){ index = i };
+							// 	})
+							// }else{
+							// 	console.log('no ? =');
+							// 	vm.category = "Life";
+							// 	index = 0
+							// }
 
+							// // --------------------------------
+							// if( !res[vm.category] ){
+							// 	vm.category = "Life";
+							// };
+
+							// if( !res[vm.category][index] ){
+							// 	index = 0;
+							// };
+
+							// switch(vm.category){
+							// 	case "Life":
+							// 		vm.categoryCh = "生活類";break;
+							// 	case "Learning":
+							// 		vm.categoryCh = "學習類";break;
+							// 	case "Cash":
+							// 		vm.categoryCh = "現金類";break;
+							// }
 							// --------------------------------
-							if( !res[vm.category] ){
-								vm.category = "Life";
-							};
-
-							if( !res[vm.category][index] ){
-								index = 0;
-							};
-
-							switch(vm.category){
-								case "Life":
-									vm.categoryCh = "生活類";break;
-								case "Learning":
-									vm.categoryCh = "學習類";break;
-								case "Cash":
-									vm.categoryCh = "現金類";break;
-							}
-							// --------------------------------
-							vm.obj = res[vm.category][index];
+							vm.obj = res.History[0];
 						}
 					});
 
@@ -161,44 +162,44 @@ response.Charset = "utf-8"
 					});
 				},
 				methods: {
-					fnChange(style, i){
-						$('.lbpic-kv').attr('style', 'background-image: url(' + style + ')');
-						$('.lbpic-item').removeClass('active').eq(i).addClass('active');
-					},
+					// fnChange(style, i){
+					// 	$('.lbpic-kv').attr('style', 'background-image: url(' + style + ')');
+					// 	$('.lbpic-item').removeClass('active').eq(i).addClass('active');
+					// },
 				},
 				computed: {
-					filterTown(){
-						const vm = this;
-						const index = vm.countyAry.findIndex(function(item, i){
-							return item.county == vm.zipInfo.county;
-						});
-						if( index >= 0 ){
-							return vm.countyAry[index].ary;
-						}else{
-							return [];
-						}
-					},
-					filterCode() {
-						const vm = this;
-						const countyIndex = vm.countyAry.findIndex(function(item){
-							return item.county == vm.zipInfo.county;
-						});
-						if( countyIndex >= 0){
-							const townIndex = vm.countyAry[countyIndex].ary.findIndex(function(item){
-								return item.town == vm.zipInfo.town;
-							});
-							if( townIndex >= 0 ){
-								vm.zipInfo.selected = true;
-								return vm.countyAry[countyIndex].ary[townIndex].code;
-							}else{
-								vm.zipInfo.selected = false;
-								return "選填郵遞區號";
-							}
-						}else{
-							vm.zipInfo.selected = false;
-							return "選填郵遞區號";
-						}
-					}
+					// filterTown(){
+					// 	const vm = this;
+					// 	const index = vm.countyAry.findIndex(function(item, i){
+					// 		return item.county == vm.zipInfo.county;
+					// 	});
+					// 	if( index >= 0 ){
+					// 		return vm.countyAry[index].ary;
+					// 	}else{
+					// 		return [];
+					// 	}
+					// },
+					// filterCode() {
+					// 	const vm = this;
+					// 	const countyIndex = vm.countyAry.findIndex(function(item){
+					// 		return item.county == vm.zipInfo.county;
+					// 	});
+					// 	if( countyIndex >= 0){
+					// 		const townIndex = vm.countyAry[countyIndex].ary.findIndex(function(item){
+					// 			return item.town == vm.zipInfo.town;
+					// 		});
+					// 		if( townIndex >= 0 ){
+					// 			vm.zipInfo.selected = true;
+					// 			return vm.countyAry[countyIndex].ary[townIndex].code;
+					// 		}else{
+					// 			vm.zipInfo.selected = false;
+					// 			return "選填郵遞區號";
+					// 		}
+					// 	}else{
+					// 		vm.zipInfo.selected = false;
+					// 		return "選填郵遞區號";
+					// 	}
+					// }
 				},
         data: {
 					category: "",

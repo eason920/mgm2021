@@ -27,6 +27,10 @@
 		decoration: none
 	font:
 		weight: bold
+	transition: .3s
+	opacity: .8
+	&:hover
+		opacity: 1
 	
 
 @media screen and (max-width: $bp-mb)
@@ -39,7 +43,7 @@
 				display: none
 
 	.mgmnav-hamber
-		width: 29px
+		width: 30px
 		height: 22px
 		position: relative
 		display: flex
@@ -52,13 +56,13 @@
 		background-color: #fff
 		transition: .2s
 		&.is-t
-			transform-origin: 0 0
+			transform-origin: 100% 0
 
 		&.is-m
 			opacity: 1
 		
 		&.is-b
-			transform-origin: 0% 100%
+			transform-origin: 100% 100%
 
 	.mgmnav-ul
 		position: fixed
@@ -84,13 +88,13 @@
 	.is-open 
 		.mgmnav-line
 			&.is-t
-				transform: rotateZ(45deg)
+				transform: rotateZ(-45deg)
 
 			&.is-m
 				opacity: 0
 			
 			&.is-b
-				transform: rotateZ(-45deg)
+				transform: rotateZ(45deg)
 
 		.mgmnav-ul
 			height: 196px

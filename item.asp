@@ -20,7 +20,7 @@ response.Charset = "utf-8"
 	<head>
 		<meta charset="UTF-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
-		<title>item</title>
+		<title>Funday Shop | 商品兌換頁</title>
 		<link href="./2021/css/item.css" rel="stylesheet">
 		<link href="./2021/assets/plugins/perfect-scrollbar-master/perfect-scrollbar.css" rel="stylesheet">
 		<script src="./2021/assets/plugins/jquery/jquery-1.12.4-min.js"></script>
@@ -77,27 +77,27 @@ response.Charset = "utf-8"
 									:key='i'
 								>{{obj.description[i]}}</div>
 							</div>
-							<form class="lbinfo is-lbblock">
+							<form class="lbinfo is-lbblock" id="Tform" name="Tform">
 								<div class="lbinfo-tip">請正確填寫以下收件人相關資訊</div>
 								<!-- USUAL v -->
 								<div class="lbinfo-iptbox">
 									<div class="lbinfo-name">收件人姓名</div>
-									<input class="lbinfo-ipt" type="text" placeholder="*必填">
+									<input class="lbinfo-ipt" type="text" ref="ordr_name" name="ordr_name" placeholder="*必填">
 								</div>
 								<div class="lbinfo-iptbox">
 									<div class="lbinfo-name">收件人電話</div>
-									<input class="lbinfo-ipt" type="text" placeholder="*必填">
+									<input class="lbinfo-ipt" type="text" ref="ordr_tel" name="ordr_tel" placeholder="*必填">
 								</div>
 
 								<!-- BANK v -->
 								<div class="bankblock" v-if="category == 'Cash'">
 									<div class="lbinfo-iptbox">
 										<div class="lbinfo-name">身份證字號</div>
-										<input class="lbinfo-ipt" type="text" placeholder="*必填">
+										<input class="lbinfo-ipt" ref="ordr_idno" name="ordr_idno" type="text" placeholder="*必填">
 									</div>
 									<div class="lbinfo-iptbox">
 										<div class="lbinfo-name">銀行代號</div>
-										<select class="is-bank-select" v-model="bank.selected">
+										<select class="is-bank-select" ref="ordr_Bcode" name="ordr_Bcode" v-model="bank.selected">
 											<option value="" disabled>請選擇銀行代號</option>
 											<option
 												v-for="(item, i) in bank.ary"
@@ -107,7 +107,7 @@ response.Charset = "utf-8"
 									</div>
 									<div class="lbinfo-iptbox">
 										<div class="lbinfo-name">銀行帳號</div>
-										<input class="lbinfo-ipt" type="text" placeholder="*必填">
+										<input class="lbinfo-ipt" ref="ordr_Baccount" name="ordr_Baccount" type="text" placeholder="*必填">
 									</div>
 								</div>
 
@@ -135,10 +135,12 @@ response.Charset = "utf-8"
 											<div class="zipbox-code"
 												:class="{ 'is-selected' : zipInfo.selected == true}"
 											>{{filterCode}}</div>
-											<input class="zipbox-ipt" type="text" placeholder="*必填">
+											<input class="zipbox-ipt" type="text" ref="zipbox_ipt" v-model="zipipt" placeholder="*必填">
 										</div>
 									</div>
+									<input type="hidden" name="ordr_addr"  />
 								</div>
+								<input type="hidden" name="p_id" v-model="goodsId" />
 							</form>
 							<button class="lbbtn">立即兌換</button>
 						</div>
@@ -147,6 +149,7 @@ response.Charset = "utf-8"
 			</div>
 		</div>
 		<div class="mgmfoo">
+			<div class="mgmfoo-pc" ><!-- #include virtual="fundayshop/footer.asp"--></div>
 			<div class="mgmfoo-mb">© 2021 Brainstorm Digital Communications Corp.<br>All rights reserved. Privacy Policy</div>
 		</div>
 			
@@ -198,6 +201,75 @@ response.Charset = "utf-8"
 							}
 							// --------------------------------
 							vm.obj = res[vm.category][index];
+
+							$('.lbbtn').on('click',function(){
+								let chkStr=1;
+
+								if(chkStr==1 && vm.$refs.ordr_name.value==''){
+									chkStr=0;
+									vm.$refs.ordr_name.focus();		
+								}
+
+								if(chkStr==1 && vm.$refs.ordr_tel.value==''){
+									chkStr=0;
+									vm.$refs.ordr_tel.focus();				
+								}
+
+
+								if(vm.category!='Cash'){
+
+									if(chkStr==1 && (!vm.zipInfo.selected || vm.zipipt=='') ){
+										chkStr=0;
+										vm.$refs.zipbox_ipt.focus();				
+									}
+
+									Tform.ordr_addr.value=vm.filterCode+vm.zipInfo.county+vm.zipInfo.town+vm.zipipt							
+								}else{
+									if(chkStr==1 && vm.$refs.ordr_idno.value==''){
+										chkStr=0;
+										vm.$refs.ordr_idno.focus();				
+									}
+									if(chkStr==1 && vm.$refs.ordr_Bcode.value==''){
+										chkStr=0;
+										vm.$refs.ordr_Bcode.focus();				
+									}	
+									if(chkStr==1 && vm.$refs.ordr_Baccount.value==''){
+										chkStr=0;
+										vm.$refs.ordr_Baccount.focus();				
+									}								
+								}
+
+								//(chkStr==1)?console.log($('#Tform').serialize()):null
+								
+								if(chkStr==1){
+									if(confirm("確定是否兌換商品?")){
+										$.ajax({
+											type: "POST",//方法
+											url: "../../../../fundayshop/ordersC.asp" ,//表單接收url
+											data: $('#Tform').serialize(),
+											success: function (res) {
+												const obj = JSON.parse(res);
+												console.log( 'type is > ', typeof(obj));
+												console.log(obj, obj.Status, obj.Status == 0)
+												if( obj.Status == 0 ){
+													console.log('0, error');
+													if( obj.message == "點數不足"){
+														alert("點數不足")
+													}else{
+														alert("無此商品")
+													}
+												}else{
+													console.log('1, success');
+													alert( "您的商品「" + vm.obj.title + "」兌換成功!" );
+													location.href = "./rule.asp"
+												}
+											}
+										});
+									}
+								}
+								
+							})
+
 						}
 					});
 
@@ -282,6 +354,7 @@ response.Charset = "utf-8"
 						town: "",
 						selected: false
 					},
+					zipipt:"",					
 					bank: {
 						ary: [],
 						selected: ''

@@ -20,13 +20,14 @@ response.Charset = "utf-8"
 	<head>
 		<meta charset="UTF-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
-		<title>Funday Shop</title>
+		<title>Funday Shop | 點數紀錄</title>
 		<link href="./2021/css/rule.css" rel="stylesheet">
 		<link href="./2021/assets/plugins/perfect-scrollbar-master/perfect-scrollbar.css" rel="stylesheet">
 		<script src="./2021/assets/plugins/jquery/jquery-1.12.4-min.js"></script>
 		<script src="./2021/assets/plugins/vue/vue2.6.12.js"></script>
 		<script src="./2021/assets/plugins/perfect-scrollbar-master/perfect-scrollbar.min.js"></script>
 		<script src="./2021/js/cpn_rule.js"></script>
+		<!--script src="./js/Ma.js"></script-->
 		<style>
 			.ps__rail-x, .ps__rail-y {opacity: 0.6};
 		</style>
@@ -45,7 +46,7 @@ response.Charset = "utf-8"
 					<div class="leftbox">
 						<div class="tabbox">
 							<button class="tabbox-item" @click='fnTabboxItem("list", 0)' data-tab="list">
-								<h3>獎勵列表</h3>
+								<h3>點數紀錄</h3>
 							</button>
 							<button class="tabbox-item" @click='fnTabboxItem("learning", 1)' data-tab="learning">
 								<h3>學習獎勵</h3>
@@ -56,7 +57,7 @@ response.Charset = "utf-8"
 							<button class="tabbox-item" @click='fnTabboxItem("campaign", 3)' data-tab="campaign">
 								<h3>活動獎勵</h3>
 							</button>
-							<button class="tabbox-item" @click='fnTabboxItem("campaign", 3)' data-tab="campaign">
+							<button class="tabbox-item" @click='fnTabboxItem("rule", 4)' data-tab="rule">
 								<h3>兌換規則</h3>
 							</button>
 							<div class="tabbox-active"></div>
@@ -90,48 +91,84 @@ response.Charset = "utf-8"
 							<div class="contentbox-item" data-tab="learning">
 								<div class="contentbox-tip is-head">
 									<ol>
-										<li>學習獎勵</li>
+										<li>項目</li>
+									</ol>
+									<ol>
+										<li>完成日期</li>
+									</ol>
+									<ol>
+										<li> 
+											<div class="for-pc">Fun coin幣</div>
+											<div class="for-mb">F coin</div>
+										</li>
 									</ol>
 								</div>
 								<div class="contentbox-scroller is-s1">
 									<div class="box">
-										<cpn_2
+										<cpn_list
 											:prop='item'
 											v-for='(item, i) in ary.learning'
-											:req_i='i + 1'
 											:key='i'
-										></cpn_2>
+										></cpn_list>
 									</div>
 								</div>
 							</div>
 							<div class="contentbox-item" data-tab="recommend">
 								<div class="contentbox-tip is-head">
 									<ol>
-										<li>推薦獎勵</li>
+										<li>項目</li>
+									</ol>
+									<ol>
+										<li>完成日期</li>
+									</ol>
+									<ol>
+										<li> 
+											<div class="for-pc">Fun coin幣</div>
+											<div class="for-mb">F coin</div>
+										</li>
 									</ol>
 								</div>
 								<div class="contentbox-scroller is-s2">
 									<div class="box">
-										<cpn_2
+										<cpn_list
 											:prop='item'
 											v-for='(item, i) in ary.recommend'
-											:req_i='i + 1'
 											:key='i'
-										></cpn_2>
+										></cpn_list>
 									</div>
 								</div>
 							</div>
 							<div class="contentbox-item" data-tab="campaign">
 								<div class="contentbox-tip is-head">
 									<ol>
-										<li>活動獎勵</li>
+										<li>項目</li>
+									</ol>
+									<ol>
+										<li>完成日期</li>
+									</ol>
+									<ol>
+										<li> 
+											<div class="for-pc">Fun coin幣</div>
+											<div class="for-mb">F coin</div>
+										</li>
 									</ol>
 								</div>
 								<div class="contentbox-scroller is-s3">
 									<div class="box">
-										<cpn_2
+										<cpn_list
 											:prop='item'
 											v-for='(item, i) in ary.campaign'
+											:key='i'
+										></cpn_list>
+									</div>
+								</div>
+							</div>
+							<div class="contentbox-item" data-tab="rule">
+								<div class="contentbox-scroller is-s4">
+									<div class="box">
+										<cpn_2
+											:prop='item'
+											v-for='(item, i) in ary.rule'
 											:req_i='i + 1'
 											:key='i'
 										></cpn_2>
@@ -139,7 +176,7 @@ response.Charset = "utf-8"
 								</div>
 							</div>
 							<div class="contentbox-total">
-								<h2>目前累積<span id="countToSum"></span>Fun Coin幣</h2><a class="contentbox-convert" href="page.asp">兌換</a>
+								<h2>目前累積<span id="countToSum"></span>Fun Coin幣</h2><a class="contentbox-convert" href="intro.asp">返回首頁</a>
 							</div>
 						</div>
 					</div>
@@ -149,13 +186,21 @@ response.Charset = "utf-8"
 							<h3>FUN幣可兌換FUNDAY SHOP<br>裡的<span>各種商品</span>。</h3>
 							<h3>FUN幣累積達到3000點時，<br>始可<span>兌換現金</span>。</h3>
 							<div class="p">*申請兌換現金時，須提供個人資料與<br>金融帳戶資訊以利報稅與匯款。</div>
-							<div class="code-button">個人專屬優惠代碼</div><img class="img-responsive-coin-b" src="./2021/images/coin-2.png" alt="">
+							<div class="code-button" 
+								@click="fnMA"
+								v-if="reactiveMgmCode.length < 2"
+							>個人專屬優惠代碼</div>
+							<div class="code-button-have"
+								v-else
+							>{{reactiveMgmCode}}</div>
+							<img class="img-responsive-coin-b" src="./2021/images/coin-2.png" alt="">
 						</div>
 					</div>
 				</div>
 			</div>
 		</div>
 		<div class="mgmfoo">
+			<div class="mgmfoo-pc" ><!-- #include virtual="fundayshop/footer.asp"--></div> 
 			<div class="mgmfoo-mb">© 2021 Brainstorm Digital Communications Corp.<br>All rights reserved. Privacy Policy</div>
 		</div>
 		<script>
@@ -166,17 +211,39 @@ response.Charset = "utf-8"
 					const vm = this;
 					$.ajax({
 						type: 'GET',
-						url: './2021/api/FcoinList.Json',
+						url: './2021/api/FcoinList.asp',
+						contentType: 'application/json',
 						success(res){
-							vm.data = res;
-							console.log('data ', vm.data);
-							vm.ary.list = vm.data.List;
-							vm.ary.learning = vm.data.LearningRule;
-							vm.ary.recommend = vm.data.RecommendRule;
-							vm.ary.campaign = vm.data.CampaignRule;
-							//
-							vm.fnCountToSum( $('#countToSum') , vm.data.FunCoin, '', 2000);
-							//
+							console.log('res ', res);
+							// (tab 1~4) v
+							vm.ary.list = res.List;
+							vm.ary.learning = res.List.filter( item => item.type == 'Learning' );
+							vm.ary.recommend = res.List.filter( item => item.type == 'Recommend');
+							vm.ary.campaign = res.List.filter( item => item.type == 'Campaign');
+							// (tab 5)RULE v 
+							res.LearningRule.forEach(function(item){
+								vm.ary.rule.push(item);
+							});
+							res.RecommendRule.forEach(function(item){
+								vm.ary.rule.push(item);
+							});
+							res.CampaignRule.forEach(function(item){
+								vm.ary.rule.push(item);
+							});
+
+							// --------------------------------
+							// -- MGM CODE v
+							// --------------------------------
+							vm.mgmCode = res.Mgm_code;
+
+							// --------------------------------
+							// -- POINT ANIMATE v
+							// --------------------------------
+							vm.fnCountToSum( $('#countToSum') , res.FunCoin, '', 2000);
+							
+							// --------------------------------
+							// -- MOBILE OPEN FUN-COIN LB v
+							// --------------------------------
 							vm.ww = $(window).width();
 							if( vm.ww > 991 ){
 								new PerfectScrollbar('.is-s0');
@@ -188,14 +255,15 @@ response.Charset = "utf-8"
 									$('.mgmcontent').addClass('is-open');
 								});
 
-								$('.coinbox-lb').click(function(){
+								$('.coinbox-close').click(function(){
 									$('.mgmcontent').removeClass('is-open');
 								});
 							};
-							//
-							$('.tabbox-item:eq(0)').click();
-							//
 
+							// --------------------------------
+							// -- DEFAULT CLCIK v
+							// --------------------------------
+							$('.tabbox-item:eq(0)').click();
 						}
 					});
 				},
@@ -220,6 +288,7 @@ response.Charset = "utf-8"
 							case 1: key = "s1";break;
 							case 2: key = "s2";break;
 							case 3: key = "s3";break;
+							case 4: key = 's4';break;
 							default:
 						};
 						if( !vm.plugins[key] ){
@@ -242,6 +311,13 @@ response.Charset = "utf-8"
 						$('.contentbox-item').css('display', 'none');
 						$('.contentbox-item[data-tab="'+ tab +'"]').css('display', 'block').addClass('active');
 					},
+
+					fnMA(){
+						const vm = this;
+						$.get("../../../Fundayshop/api/data.asp?target=MGMcode", function(result){
+							vm.mgmCode = result;
+						});
+					}
 				},
 				data: {
 					data: new Object(),
@@ -250,14 +326,20 @@ response.Charset = "utf-8"
 						list: new Array(),
 						learning: new Array(),
 						recommend: new Array(),
-						campaign: new Array()
+						campaign: new Array(),
+						rule: new Array()
 					},
 					plugins: {
 						s1: false,
 						s2: false,
 						s3: false
 					},
-					text: 'eason here'
+					mgmCode: ''
+				},
+				computed: {
+					reactiveMgmCode(){
+						return this.mgmCode;
+					},
 				},
 				el: '#app',
 				components: {

@@ -9,7 +9,7 @@
 	background-color: #fff
 
 	h3
-		font-size: 1.625rem
+		font-size: 1.4rem
 		font-weight: 700
 		line-height: 1.4
 		text-align: center
@@ -27,16 +27,20 @@
 		text-align: center
 		padding: 1% 0
 
-.code-button
+.code-button,
+.code-button-have
 	font-size: 1.625rem
 	font-weight: 700
 	color: $c-skin
 	text-align: center
 	padding: 4% 0
-	background-color: $c-golden
 	border-radius: 3px
 	width: 190px
 	margin: 6% auto 6%
+	//
+
+.code-button
+	background-color: $c-golden
 	transition: all .5s
 
 	&:hover
@@ -44,6 +48,10 @@
 		cursor: pointer
 		transform: translateY(-5px) scale(1.05)
 		box-shadow: 0 0 1rem rgba(0, 0, 0, 0.5)
+
+.code-button-have
+	border: solid 1px $c-golden
+	color: $c-golden
 
 .textitem
 	margin: auto
@@ -182,7 +190,7 @@
 	.img-responsive-coin-b
 		margin-left: -23%
 
-	.code-button
+	.code-button, .code-button-have
 		width: 240px
 
 // --------------------------------

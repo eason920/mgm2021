@@ -23,7 +23,7 @@ response.Charset = "utf-8"
 	<head>
 		<meta charset="UTF-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
-		<title>mgm page</title>
+		<title>Funday Shop | 首頁</title>
 		<link href="./2021/css/index_flat.css" rel="stylesheet">
 		<!--link href="./2021/assets/plugins/perfect-scrollbar-master/perfect-scrollbar.css" rel="stylesheet"-->
 		<script src="./2021/assets/plugins/jquery/jquery-1.12.4-min.js"></script>
@@ -117,6 +117,7 @@ response.Charset = "utf-8"
 			</div>
 		</div>
 		<div class="mgmfoo">
+			<div class="mgmfoo-pc" ><!-- #include virtual="fundayshop/footer.asp"--></div> 
 			<div class="mgmfoo-mb">© 2021 Brainstorm Digital Communications Corp.<br>All rights reserved. Privacy Policy</div>
 		</div>
 		<script>

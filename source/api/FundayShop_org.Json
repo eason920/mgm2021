@@ -10,18 +10,18 @@
       },
       "subject": "世界再遠，夢想再大，我！都裝得下！",
       "button": "每月主題",
-      "href": "https://funday.asia/fundayshop/history.asp"
+      "href": "https://funday.asia/fundayshop/history.asp?cat=Life&id=6"
     }
   ],
   "Life": [
     {
-      "id": 11,
+      "id": 1,
       "orders":"1",
       "title": "FUNDAY經典帆布包",
       "type":"2",
       "description":["FUNDAY經典帆布包"],
       "pic":["./2021/images/gifts/6.jpg"],
-      "Fcoin":"199"
+      "Fcoin":"300"
     },
     {
       "id": 2,
@@ -30,27 +30,63 @@
       "type":"2",
       "description":["規格：有機原棉織造 無化學添加  柔細舒適  吸水性佳","材質：100% 有機棉 台灣織造","尺寸：76cm*148cm"],
       "pic":["./2021/images/gifts/lb/1.jpg","./2021/images/gifts/lb/2.jpg","./2021/images/gifts/lb/3.jpg","./2021/images/gifts/lb/4.jpg"],                 
-      "Fcoin":"299"
+      "Fcoin":"300"
+    },
+    {
+      "id": 3,
+      "orders":"3",
+      "title": "FUNDAY馬克杯",
+      "type":"2",
+      "description":["規格：容量320ml","材質：瓷","產地：台灣","尺寸：75cm x H80cm x w110cm","特色：看了"],
+      "pic":["./2021/images/gifts/8.jpg"],
+      "Fcoin":"400"
+    },
+    {
+      "id": 4,
+      "orders":"4",
+      "title": "FUNDAY晴雨傘",
+      "type":"2",
+      "description":["FUNDAY晴雨傘"],
+      "pic":["./2021/images/gifts/9.jpg"],
+      "Fcoin":"500"
+    },
+    {
+      "id": 5,
+      "orders":"5",
+      "title": "FUNDAY浴巾",
+      "type":"2",
+      "description":["FUNDAY浴巾"],
+      "pic":["./2021/images/gifts/10.jpg"],
+      "Fcoin":"800"
+    },
+    {
+      "id": 6,
+      "orders":"3",
+      "title": "FUNDAY馬克杯(M)",
+      "type":"2",
+      "description":["規格：容量320ml","材質：瓷","產地：台灣","尺寸：75cm x H80cm x w110cm","特色：看了"],
+      "pic":["./2021/images/history/main.jpg"],
+      "Fcoin":"400"
     }
   ],
   "Learning": [
     {
-      "id": 4,
+      "id": 6,
       "orders":"1",
       "title": "FUNDAY學習筆記本",
       "type":"2",
       "description":["FUNDAY學習筆記本"],
       "pic":["./2021/images/gifts/1.jpg"],
-      "Fcoin":"200"
+      "Fcoin":"150"
     },
     {
-      "id": 5,
+      "id": 7,
       "orders":"2",
       "title": "FUNDAY單字隨手貼",
       "type":"2",
       "description":["FUNDAY單字隨手貼"],
       "pic":["./2021/images/gifts/2.jpg"],
-      "Fcoin":"480"
+      "Fcoin":"250"
     },
     {
       "id": 8,
@@ -62,45 +98,54 @@
       "Fcoin":"300"
     },
     {
-      "id": 6,
+      "id": 9,
       "orders":"4",
       "title": "FUNDAY第16期英語達人誌",
       "type":"2",
       "description":["FUNDAY第16期英語達人誌"],
       "pic":["./2021/images/gifts/4.jpg"],
-      "Fcoin":"250"
+      "Fcoin":"300"
     },
     {
-      "id": 1,
+      "id": 10,
       "orders":"5",
       "title": "FUNDAY學習聖經",
       "type":"2",
       "description":["FUNDAY學習聖經"],
       "pic":["./2021/images/gifts/5.jpg"],
-      "Fcoin":"399"
+      "Fcoin":"300"
     },
     {
-      "id": 7,
+      "id": 11,
       "orders":"6",
       "title": "FUNDAY線上數位訂閱- 3個月",
       "type":"3",
       "description":["FUNDAY線上數位訂閱- 3個月"],
       "pic":["./2021/images/gifts/m3.png"],
-      "Fcoin":"990"
+      "Fcoin":"2500"
     },
     {
-      "id": 8,
+      "id": 12,
       "orders":"7",
       "title": "FUNDAY線上數位訂閱- 6個月",
       "type":"3",
       "description":["FUNDAY線上數位訂閱- 6個月"],
       "pic":["./2021/images/gifts/m6.png"],
-      "Fcoin":"1990"
-    }                        
+      "Fcoin":"4500"
+    },
+    {
+      "id": 13,
+      "orders":"8",
+      "title": "FUNDAY線上數位訂閱- 一年",
+      "type":"3",
+      "description":["FUNDAY線上數位訂閱- 一年"],
+      "pic":["./2021/images/gifts/y1.png"],
+      "Fcoin":"5500"
+    }                         
   ],
   "Cash": [
     {
-      "id": 3,
+      "id": 15,
       "orders":"1",
       "title": "現金NT$3,000",
       "type":"1",
@@ -109,7 +154,7 @@
       "Fcoin":"3000"
     },
     {
-      "id": 13,
+      "id": 16,
       "orders":"2",
       "title": "現金NT$5,000",
       "type":"1",
@@ -118,24 +163,13 @@
       "Fcoin":"5000"
     },
     {
-      "id": 14,
+      "id": 17,
       "orders":"3",
       "title": "現金NT$10,000",
       "type":"1",
       "description":["現金NT$10,000"],
       "pic":["./2021/images/gifts/13.png"],
       "Fcoin":"10000"
-    }
-  ],
-  "History": [
-    {
-      "id": 6,
-      "orders":"3",
-      "title": "FUNDAY馬克杯",
-      "type":"2",
-      "description":["規格：容量320ml","材質：瓷","產地：台灣","尺寸：75cm x H80cm x w110cm","特色：看了"],
-      "pic":["./2021/images/history/main.jpg"],
-      "Fcoin":"400"
     }
   ],
   "memo": [
