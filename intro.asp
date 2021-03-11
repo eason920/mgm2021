@@ -30,10 +30,10 @@ response.Charset = "utf-8"
 		<script src="./2021/assets/plugins/vue/vue2.6.12.js"></script>
 		<!--script src="./2021/assets/plugins/perfect-scrollbar-master/perfect-scrollbar.min.js"></script-->
 		<!--script src="./2021/js/page.js"></script-->
-		<script src="./2021/js/cpn_index.js"></script>
-		<style>
+		<script src="./2021/js/cpn_intro.js"></script>
+		<!--style>
 			.ps__rail-x, .ps__rail-y, .ps__thumb-y {opacity: .6}
-		</style>
+		</style-->
 		<link href="https://use.fontawesome.com/releases/v5.0.7/css/all.css" rel="stylesheet">
 	</head>
 	<body>
@@ -110,7 +110,7 @@ response.Charset = "utf-8"
 						<!--div class="giftbox-item is-empty"></div-->
 					</div>
 				</section>
-				<section class="mgmlimit">
+				<section class="mgmlimit" style="height: 0;padding: 0;overflow: hidden">
 					<p>**VIP會員若到期，點數僅保留3個月。</p>
 					<p>**活動有效日期110年8月31日。</p>
 				</section>
@@ -133,7 +133,7 @@ response.Charset = "utf-8"
 					// -- AJAX v
 					// --------------------------------
 					$.ajax({
-						url: './2021/api/FundayShop.Json',
+						url: './2021/api/FundayShop.asp',
 						type: 'GET',
 						contentType: 'application/json',
 						success(res){

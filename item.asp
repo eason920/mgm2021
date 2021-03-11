@@ -22,15 +22,15 @@ response.Charset = "utf-8"
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
 		<title>Funday Shop | 商品兌換頁</title>
 		<link href="./2021/css/item.css" rel="stylesheet">
-		<link href="./2021/assets/plugins/perfect-scrollbar-master/perfect-scrollbar.css" rel="stylesheet">
+		<!--link href="./2021/assets/plugins/perfect-scrollbar-master/perfect-scrollbar.css" rel="stylesheet"-->
 		<script src="./2021/assets/plugins/jquery/jquery-1.12.4-min.js"></script>
 		<script src="./2021/assets/plugins/vue/vue2.6.12.js"></script>
-		<script src="./2021/assets/plugins/perfect-scrollbar-master/perfect-scrollbar.min.js"></script>
+		<!--script src="./2021/assets/plugins/perfect-scrollbar-master/perfect-scrollbar.min.js"></script-->
 		<!--script src="./2021/js/page.js"></script-->
 		<script src="./2021/js/cpn_page.js"></script>
-		<style>
+		<!--style>
 			.ps__rail-x, .ps__rail-y, .ps__thumb-y {opacity: .6}
-		</style>
+		</style-->
 		<link href="https://use.fontawesome.com/releases/v5.0.7/css/all.css" rel="stylesheet">
 	</head>
 	<body>
@@ -160,7 +160,7 @@ response.Charset = "utf-8"
 					//
 					const vm = this;
 					$.ajax({
-						url: './2021/api/FundayShop.Json',
+						url: './2021/api/FundayShop.asp',
 						type: "GET",
 						contentType: "application/json",
 						success(res){
@@ -201,7 +201,15 @@ response.Charset = "utf-8"
 							}
 							// --------------------------------
 							vm.obj = res[vm.category][index];
+							const add = 4- vm.obj.pic.length;
+							for(i=1;i<=add;i++){
+								vm.obj.pic.push("");
+							}
 
+
+							// --------------------------------
+							// -- PURCHASE v
+							// --------------------------------
 							$('.lbbtn').on('click',function(){
 								let chkStr=1;
 

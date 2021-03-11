@@ -22,15 +22,15 @@ response.Charset = "utf-8"
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
 		<title>Funday Shop | 每月主題</title>
 		<link href="./2021/css/history.css" rel="stylesheet">
-		<link href="./2021/assets/plugins/perfect-scrollbar-master/perfect-scrollbar.css" rel="stylesheet">
+		<!--link href="./2021/assets/plugins/perfect-scrollbar-master/perfect-scrollbar.css" rel="stylesheet"-->
 		<script src="./2021/assets/plugins/jquery/jquery-1.12.4-min.js"></script>
 		<script src="./2021/assets/plugins/vue/vue2.6.12.js"></script>
-		<script src="./2021/assets/plugins/perfect-scrollbar-master/perfect-scrollbar.min.js"></script>
+		<!--script src="./2021/assets/plugins/perfect-scrollbar-master/perfect-scrollbar.min.js"></script-->
 		<!--script src="./2021/js/page.js"></script-->
 		<script src="./2021/js/cpn_page.js"></script>
-		<style>
+		<!--style>
 			.ps__rail-x, .ps__rail-y, .ps__thumb-y {opacity: .6}
-		</style>
+		</style-->
 		<link href="https://use.fontawesome.com/releases/v5.0.7/css/all.css" rel="stylesheet">
 	</head>
 	<body>
@@ -80,7 +80,7 @@ response.Charset = "utf-8"
 				</div>
 			</div>
 		</div>
-		<a class="lbbtn" href="intro.asp">回商品首頁</a>
+		<a class="lbbtn" href="https://funday.asia/fundayshop/item.asp?cat=Life&id=18">前往購買</a>
 		<div class="mgmfoo">
 			<div class="mgmfoo-pc" ><!-- #include virtual="fundayshop/footer.asp"--></div>
 			<div class="mgmfoo-mb">© 2021 Brainstorm Digital Communications Corp.<br>All rights reserved. Privacy Policy</div>

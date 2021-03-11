@@ -16,3 +16,6 @@ script.
 	$('.mgmnav-hamber').click(function(){
 		$('.mgmnav-box').toggleClass('is-open');
 	});
+	$(window).scroll(function(){
+		$('.mgmnav-box').removeClass('is-open');
+	});
