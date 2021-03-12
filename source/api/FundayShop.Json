@@ -15,18 +15,18 @@
   ],
   "Life": [
     {
-      "id": 11,
+      "sort": 11,
       "orders":"1",
-      "title": "FUNDAY經典帆布包",
+      "title": "11 FUNDAY經典帆布包",
       "type":"2",
       "description":["FUNDAY經典帆布包"],
       "pic":["./2021/images/gifts/6.jpg"],
       "Fcoin":"199"
     },
     {
-      "id": 2,
+      "sort": 2,
       "orders":"2",
-      "title": "FUNDAY運動毛巾",
+      "title": "2 FUNDAY運動毛巾",
       "type":"2",
       "description":["規格：有機原棉織造 無化學添加  柔細舒適  吸水性佳","材質：100% 有機棉 台灣織造","尺寸：76cm*148cm"],
       "pic":["./2021/images/gifts/lb/1.jpg","./2021/images/gifts/lb/2.jpg","./2021/images/gifts/lb/3.jpg","./2021/images/gifts/lb/4.jpg"],                 
@@ -35,63 +35,63 @@
   ],
   "Learning": [
     {
-      "id": 4,
+      "sort": 4,
       "orders":"1",
-      "title": "FUNDAY學習筆記本",
+      "title": "4 FUNDAY學習筆記本",
       "type":"2",
       "description":["FUNDAY學習筆記本"],
       "pic":["./2021/images/gifts/1.jpg"],
       "Fcoin":"200"
     },
     {
-      "id": 5,
+      "sort": 5,
       "orders":"2",
-      "title": "FUNDAY單字隨手貼",
+      "title": "5 FUNDAY單字隨手貼",
       "type":"2",
       "description":["FUNDAY單字隨手貼"],
       "pic":["./2021/images/gifts/2.jpg"],
       "Fcoin":"480"
     },
     {
-      "id": 8,
+      "sort": 8,
       "orders":"3",
-      "title": "FUNDAY當期英語達人誌",
+      "title": "8 FUNDAY當期英語達人誌",
       "type":"2",
       "description":["FUNDAY當期英語達人誌"],
       "pic":["./2021/images/gifts/3.jpg"],
       "Fcoin":"300"
     },
     {
-      "id": 6,
+      "sort": 6,
       "orders":"4",
-      "title": "FUNDAY第16期英語達人誌",
+      "title": "6 FUNDAY第16期英語達人誌",
       "type":"2",
       "description":["FUNDAY第16期英語達人誌"],
       "pic":["./2021/images/gifts/4.jpg"],
       "Fcoin":"250"
     },
     {
-      "id": 1,
+      "sort": 1,
       "orders":"5",
-      "title": "FUNDAY學習聖經",
+      "title": "1 FUNDAY學習聖經",
       "type":"2",
       "description":["FUNDAY學習聖經"],
       "pic":["./2021/images/gifts/5.jpg"],
       "Fcoin":"399"
     },
     {
-      "id": 7,
+      "sort": 7,
       "orders":"6",
-      "title": "FUNDAY線上數位訂閱- 3個月",
+      "title": "7 FUNDAY線上數位訂閱- 3個月",
       "type":"3",
       "description":["FUNDAY線上數位訂閱- 3個月"],
       "pic":["./2021/images/gifts/m3.png"],
       "Fcoin":"990"
     },
     {
-      "id": 8,
+      "sort": 99,
       "orders":"7",
-      "title": "FUNDAY線上數位訂閱- 6個月",
+      "title": "99 FUNDAY線上數位訂閱- 6個月",
       "type":"3",
       "description":["FUNDAY線上數位訂閱- 6個月"],
       "pic":["./2021/images/gifts/m6.png"],
@@ -100,27 +100,27 @@
   ],
   "Cash": [
     {
-      "id": 3,
+      "sort": 3,
       "orders":"1",
-      "title": "現金NT$3,000",
+      "title": "3 現金NT$3,000",
       "type":"1",
       "description":["現金NT$3,000"],
       "pic":["./2021/images/gifts/11.png"],
       "Fcoin":"3000"
     },
     {
-      "id": 13,
+      "sort": 13,
       "orders":"2",
-      "title": "現金NT$5,000",
+      "title": "13 現金NT$5,000",
       "type":"1",
       "description":["現金NT$5,000"],
       "pic":["./2021/images/gifts/12.png"],                 
       "Fcoin":"5000"
     },
     {
-      "id": 14,
+      "sort": 14,
       "orders":"3",
-      "title": "現金NT$10,000",
+      "title": "14 現金NT$10,000",
       "type":"1",
       "description":["現金NT$10,000"],
       "pic":["./2021/images/gifts/13.png"],
@@ -129,7 +129,7 @@
   ],
   "History": [
     {
-      "id": 6,
+      "sort": 6,
       "orders":"3",
       "title": "FUNDAY馬克杯",
       "type":"2",

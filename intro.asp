@@ -138,14 +138,29 @@ response.Charset = "utf-8"
 						contentType: 'application/json',
 						success(res){
 							console.log('res > ', res);
-							//
+							// FADE SHOW v
 							vm.fade = res.FadeShow;
-							//
-							vm.ary.life = res.Life;
-							vm.ary.learning = res.Learning;
-							vm.ary.cash = res.Cash;
-							console.log(vm.ary.learning, vm.ary.life, vm.ary.cash);
 
+							// LIFE v
+							vm.ary.life = res.Life;
+							vm.ary.life.sort(function(n, c){
+								if( n.sort > c.sort){return 1}else{return -1};
+							});
+
+							// LEARNING v
+							vm.ary.learning = res.Learning;
+							vm.ary.learning.sort(function(n, c){
+								if(n.sort > c.sort){return 1}else{return -1};
+							})
+
+							// CASH v
+							vm.ary.cash = res.Cash;
+							vm.ary.cash.sort(function(n, c){
+								if( n.sort > c.sort ){ return 1 }else{ return -1 };
+							});
+
+							//
+							console.log(vm.ary.learning, vm.ary.life, vm.ary.cash);
 
 							// --------------------------------
 							const ww = $(window).width();
