@@ -3,7 +3,7 @@ Vue.filter('filterBG', (str) => { return 'background-image: url(' + str + ')' })
 const cpn_item = {
 	props: ['prop', 'req_style', 'req_href'],
 	template: `
-		<a :href="req_href" class="giftbox-item">
+		<div class="giftbox-item">
 			<div class="giftbox-imgouter">
 				<div class="giftbox-img" :style="req_style"><img src="./2021/images/empty_item.png"></div>
 			</div>
@@ -11,10 +11,10 @@ const cpn_item = {
 				<div class="giftbox-title">{{prop.title}}</div>
 				<div class="giftbox-pricebox">
 					<div class="giftbox-price"> <img class="giftbox-icon" src="./2021/images/icon.svg">{{prop.Fcoin}} 點</div>
-					<div class="giftbox-btn" @click='fnEmitClick'>兌換</div>
+					<a class="giftbox-btn" :href="req_href">兌換</a>
 				</div>
 			</div>
-		</a>
+		</div>
 	`,
 	methods: {
 		 fnEmitClick(){

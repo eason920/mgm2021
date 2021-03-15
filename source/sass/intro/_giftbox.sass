@@ -79,6 +79,7 @@
 @media screen and (max-width: $bp-pad-mb)
 	$w3: 500px
 	$g: 15px
+	$w-btn: 52px
 
 	.gifttitle
 		font-size: 16px
@@ -113,16 +114,20 @@
 	.giftbox-pricebox
 		height: 30px
 
+	.giftbox-price
+		width: calc( 100% - #{$w-btn})
+
 	.giftbox-icon
 		height: 16px
 
 	.giftbox-btn
-		width: 52px
+		width: $w-btn
 
 	.giftbox-price, .giftbox-btn
 		font-size: 12px
 
 @media screen and (min-width: $bp-pad-pc)
+	$w-btn: 80px
 	$g: 1.5%
 	.giftbox-scroller
 		overflow: hidden
@@ -155,11 +160,14 @@
 	.giftbox-pricebox
 		height: 28px
 
+	.giftbox-price
+		width: calc( 100% - #{$w-btn})
+
 	.giftbox-icon
 		height: 22px
 
 	.giftbox-btn
-		width: 80px
+		width: $w-btn
 		transition: .2s
 		&:hover
 			transform: translateY(-2px) scale(1.05)

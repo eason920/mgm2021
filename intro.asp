@@ -24,7 +24,7 @@ response.Charset = "utf-8"
 		<meta charset="UTF-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
 		<title>Funday Shop | 首頁</title>
-		<link href="./2021/css/index_flat.css" rel="stylesheet">
+		<link href="./2021/css/intro.css" rel="stylesheet">
 		<!--link href="./2021/assets/plugins/perfect-scrollbar-master/perfect-scrollbar.css" rel="stylesheet"-->
 		<script src="./2021/assets/plugins/jquery/jquery-1.12.4-min.js"></script>
 		<script src="./2021/assets/plugins/vue/vue2.6.12.js"></script>
@@ -143,21 +143,21 @@ response.Charset = "utf-8"
 
 							// LIFE v
 							vm.ary.life = res.Life;
-							vm.ary.life.sort(function(n, c){
-								if( n.sort > c.sort){return 1}else{return -1};
-							});
+							// vm.ary.life.sort(function(n, c){
+							// 	if( n.sort > c.sort){return 1}else{return -1};
+							// });
 
 							// LEARNING v
 							vm.ary.learning = res.Learning;
-							vm.ary.learning.sort(function(n, c){
-								if(n.sort > c.sort){return 1}else{return -1};
-							})
+							// vm.ary.learning.sort(function(n, c){
+							// 	if(n.sort > c.sort){return 1}else{return -1};
+							// })
 
 							// CASH v
 							vm.ary.cash = res.Cash;
-							vm.ary.cash.sort(function(n, c){
-								if( n.sort > c.sort ){ return 1 }else{ return -1 };
-							});
+							// vm.ary.cash.sort(function(n, c){
+							// 	if( n.sort > c.sort ){ return 1 }else{ return -1 };
+							// });
 
 							//
 							console.log(vm.ary.learning, vm.ary.life, vm.ary.cash);
