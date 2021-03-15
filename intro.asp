@@ -79,7 +79,7 @@ response.Charset = "utf-8"
 							v-for='(item, i) in ary.life'
 							:key='i'
 							:req_style='item.pic[0] | filterBG'
-							@connect_click='fnLink("Life", item.id)'
+							:req_href='fnLink("Life", item.id)'
 						></cpn_item>
 					</div>
 				</section>
@@ -91,7 +91,7 @@ response.Charset = "utf-8"
 							v-for='(item, i) in ary.learning'
 							:key='i'
 							:req_style='item.pic[0] | filterBG'
-							@connect_click='fnLink("Learning", item.id)'
+							:req_href='fnLink("Learning", item.id)'
 						></cpn_item>
 						<!--div class="giftbox-item is-empty"></div-->
 					</div>
@@ -104,7 +104,7 @@ response.Charset = "utf-8"
 							v-for='(item, i) in ary.cash'
 							:key='i'
 							:req_style='item.pic[0] | filterBG'
-							@connect_click='fnLink("Cash", item.id)'
+							:req_href='fnLink("Cash", item.id)'
 						></cpn_item>
 						<!--div class="giftbox-item is-empty"></div-->
 						<!--div class="giftbox-item is-empty"></div-->
@@ -204,7 +204,7 @@ response.Charset = "utf-8"
 				},
 				methods: {
 					fnLink(category, id){
-						location.href= "item.asp?cat=" + category + "&id=" + id;
+						return "item.asp?cat=" + category + "&id=" + id;
 					},
 
 					fnImgOuterHeight(){
