@@ -26,7 +26,7 @@ response.Charset = "utf-8"
 		<script src="./2021/assets/plugins/jquery/jquery-1.12.4-min.js"></script>
 		<script src="./2021/assets/plugins/vue/vue2.6.12.js"></script>
 		<script src="./2021/assets/plugins/perfect-scrollbar-master/perfect-scrollbar.min.js"></script>
-		<script src="./2021/js/cpn_rule.js"></script>
+		<script src="./2021/js/cpn_rule.js?<%=time%>"></script>
 		<!--script src="./js/Ma.js"></script-->
 		<style>
 			.ps__rail-x, .ps__rail-y {opacity: 0.6};
@@ -73,8 +73,8 @@ response.Charset = "utf-8"
 									</ol>
 									<ol>
 										<li> 
-											<div class="for-pc">Fun coin幣</div>
-											<div class="for-mb">F coin</div>
+											<div class="for-pc">Fun 幣</div>
+											<div class="for-mb">F 幣</div>
 										</li>
 									</ol>
 								</div>
@@ -98,8 +98,8 @@ response.Charset = "utf-8"
 									</ol>
 									<ol>
 										<li> 
-											<div class="for-pc">Fun coin幣</div>
-											<div class="for-mb">F coin</div>
+											<div class="for-pc">Fun 幣</div>
+											<div class="for-mb">F 幣</div>
 										</li>
 									</ol>
 								</div>
@@ -123,8 +123,8 @@ response.Charset = "utf-8"
 									</ol>
 									<ol>
 										<li> 
-											<div class="for-pc">Fun coin幣</div>
-											<div class="for-mb">F coin</div>
+											<div class="for-pc">Fun 幣</div>
+											<div class="for-mb">F 幣</div>
 										</li>
 									</ol>
 								</div>
@@ -148,8 +148,8 @@ response.Charset = "utf-8"
 									</ol>
 									<ol>
 										<li> 
-											<div class="for-pc">Fun coin幣</div>
-											<div class="for-mb">F coin</div>
+											<div class="for-pc">Fun 幣</div>
+											<div class="for-mb">F 幣</div>
 										</li>
 									</ol>
 								</div>
@@ -176,7 +176,7 @@ response.Charset = "utf-8"
 								</div>
 							</div>
 							<div class="contentbox-total">
-								<h2>目前累積<span id="countToSum"></span>Fun Coin幣</h2><a class="contentbox-convert" href="intro.asp">返回首頁</a>
+								<h2>目前累積<span id="countToSum"></span>Fun 幣</h2><a class="contentbox-convert" href="intro.asp">返回首頁</a>
 							</div>
 						</div>
 					</div>
@@ -189,10 +189,13 @@ response.Charset = "utf-8"
 							<div class="code-button" 
 								@click="fnMA"
 								v-if="reactiveMgmCode.length < 2"
-							>個人專屬優惠代碼</div>
+							>建立專屬推薦序號</div>
 							<div class="code-button-have"
 								v-else
-							>{{reactiveMgmCode}}</div>
+							>
+								複製您的推廌序號
+								<input type="text" :value='reactiveMgmCode' class='copy-source' style='display: none' readonly/>
+							</div>
 							<img class="img-responsive-coin-b" src="./2021/images/coin-2.png" alt="">
 						</div>
 					</div>
@@ -203,6 +206,7 @@ response.Charset = "utf-8"
 			<div class="mgmfoo-pc" ><!-- #include virtual="fundayshop/footer.asp"--></div> 
 			<div class="mgmfoo-mb">© 2021 Brainstorm Digital Communications Corp.<br>All rights reserved. Privacy Policy</div>
 		</div>
+		<div class="copy-lb" style="display: none;">推薦序號己複製!</div>
 		<script>
 			const App = new Vue({
 				created(){
@@ -349,6 +353,66 @@ response.Charset = "utf-8"
 			});
 
 			Vue.config.devtools = true;
+
+			// --------------------------------
+			// --------------------------------
+			// copy
+			window.Clipboard = (function (window, document, navigator) {
+				var textArea,
+					copy;
+
+				function isIOS() {
+					return navigator.userAgent.match(/ipad|iphone/i);
+				}
+
+				function createTextArea(text) {
+					textArea = document.createElement('textArea');
+					textArea.value = text;
+					document.body.appendChild(textArea);
+				}
+
+				function selectText() {
+					var range,
+						selection;
+
+					if (isIOS()) {
+						range = document.createRange();
+						range.selectNodeContents(textArea);
+						selection = window.getSelection();
+						selection.removeAllRanges();
+						selection.addRange(range);
+						textArea.setSelectionRange(0, 999999);
+					} else {
+						textArea.select();
+					}
+				}
+
+				function copyToClipboard() {
+					document.execCommand("Copy");
+					document.body.removeChild(textArea);
+				}
+
+				copy = function (text) {
+					createTextArea(text);
+					selectText();
+					copyToClipboard();
+				};
+
+				return {
+					copy: copy
+				};
+			})(window, document, navigator);
+			
+			$('body').on('click', '.code-button-have', function(){
+				var value = $('.copy-source').val();
+				window.Clipboard.copy(value);
+				 
+				$('.copy-lb').fadeIn(200)
+				setTimeout(function(){
+					$('.copy-lb').fadeOut();
+				}, 2000);
+
+			});
 		</script>
 	</body>
 </html>
