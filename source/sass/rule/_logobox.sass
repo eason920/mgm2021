@@ -10,13 +10,15 @@
 	.logobox
 		position: relative
 		height: $h-logobox-mb
-		padding: 17px 5%
+		padding: 13px 5%
+		font-size: 33px
 
 	.logobox-what
 		position: absolute
 		width: 45px
 		top: 7px
-		right: 4%
+		left: 50%
+		transform: translateX(-50%)
 	// 	animation: motion 2s ease-in-out infinite 1s
 
 	// @keyframes motion
@@ -34,8 +36,10 @@
 // --------------------------------
 @media screen and (min-width: $bp-pc)
 	.logobox
-		height: $h-logobox-pc
-		padding-top: 25px
+		// height: $h-logobox-pc
+		// padding-top: 17px
+		// text-align: center
+		// font-size: 36px
 	
 	.logobox-bonus
 		display: block

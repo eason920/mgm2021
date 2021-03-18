@@ -68,6 +68,8 @@ $w-zipcode-selected: 40px
 	// background-color: #fbfbfb
 	&.active
 		border: solid 2px #{$c2}
+	&.active, &.pic-empty
+		cursor: default
 
 .lbpic-kv, .lbpic-item
 	background:
@@ -191,3 +193,31 @@ $w-zipcode-selected: 40px
 	cursor: pointer
 	transition: .3s
 	text-decoration: none
+
+// --------------------------------
+.filesbox
+	.lbinfo-tip
+
+	.lbinfo-iptbox
+
+	.lbinfo-name
+
+	.lbinfo-ipt
+		border: solid 1px #767676
+
+// --------------------------------
+$w-btn: 80px
+.filesbox-ready
+	display: flex
+	align-items: center
+
+	& > * 
+		font-size: 16px
+
+.filesbox-item
+	margin-right: 12px
+	// width: calc( 100% - #{$w-btn} )
+
+.filesbox-btn
+	// width: $w-btn
+

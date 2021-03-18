@@ -10,7 +10,7 @@ response.Charset = "utf-8"
 ' end if  
 
 ' response.cookies("mylesson_id").Expires=now()
-url="./2021/intro.asp"
+url="./2021/list.asp"
 
 server.execute(url)
 %>

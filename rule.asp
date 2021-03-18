@@ -40,8 +40,7 @@ response.Charset = "utf-8"
 		</div>
 		<div class="mgmcontent" id="app">
 			<div class="wrapper">
-				<div class="logobox">
-					<img class="logobox-bonus" src="./2021/images/bonus.png"><img class="logobox-what" src="./2021/images/what.png"></div>
+				<div class="logobox"><img class="logobox-what" src="./2021/images/what.png"></div>
 				<div class="mainbox">
 					<div class="leftbox">
 						<div class="tabbox">
@@ -73,8 +72,8 @@ response.Charset = "utf-8"
 									</ol>
 									<ol>
 										<li> 
-											<div class="for-pc">Fun 幣</div>
-											<div class="for-mb">F 幣</div>
+											<div class="for-pc">Fun Coin</div>
+											<div class="for-mb">F Coin</div>
 										</li>
 									</ol>
 								</div>
@@ -98,8 +97,8 @@ response.Charset = "utf-8"
 									</ol>
 									<ol>
 										<li> 
-											<div class="for-pc">Fun 幣</div>
-											<div class="for-mb">F 幣</div>
+											<div class="for-pc">Fun Coin</div>
+											<div class="for-mb">F Coin</div>
 										</li>
 									</ol>
 								</div>
@@ -123,8 +122,8 @@ response.Charset = "utf-8"
 									</ol>
 									<ol>
 										<li> 
-											<div class="for-pc">Fun 幣</div>
-											<div class="for-mb">F 幣</div>
+											<div class="for-pc">Fun Coin</div>
+											<div class="for-mb">F Coin</div>
 										</li>
 									</ol>
 								</div>
@@ -148,8 +147,8 @@ response.Charset = "utf-8"
 									</ol>
 									<ol>
 										<li> 
-											<div class="for-pc">Fun 幣</div>
-											<div class="for-mb">F 幣</div>
+											<div class="for-pc">Fun Coin</div>
+											<div class="for-mb">F Coin</div>
 										</li>
 									</ol>
 								</div>
@@ -176,15 +175,15 @@ response.Charset = "utf-8"
 								</div>
 							</div>
 							<div class="contentbox-total">
-								<h2>目前累積<span id="countToSum"></span>Fun 幣</h2><a class="contentbox-convert" href="intro.asp">返回首頁</a>
+								<h2>目前累積<span id="countToSum"></span>Fun Coin</h2><a class="contentbox-convert" href="intro.asp">商品兌換</a>
 							</div>
 						</div>
 					</div>
 					<div class="coinbox-lb">
 						<div class="coinbox-close">╳</div>
 						<div class="coinbox"><img class="img-responsive-title" src="./2021/images/coin-title.png" alt=""><img class="img-responsive-coin-a" src="./2021/images/coin-1.png" alt=""><img class="img-responsive-text" src="./2021/images/coin-text.png" alt="">
-							<h3>FUN幣可兌換FUNDAY SHOP<br>裡的<span>各種商品</span>。</h3>
-							<h3>FUN幣累積達到3000點時，<br>始可<span>兌換現金</span>。</h3>
+							<h3>FUN Coin可兌換FUNDAY SHOP<br>裡的<span>各種商品</span>。</h3>
+							<h3>FUN Coin累積達到1,500點時，<br>始可<span>兌換現金</span>。</h3>
 							<div class="p">*申請兌換現金時，須提供個人資料與<br>金融帳戶資訊以利報稅與匯款。</div>
 							<div class="code-button" 
 								@click="fnMA"
@@ -193,7 +192,7 @@ response.Charset = "utf-8"
 							<div class="code-button-have"
 								v-else
 							>
-								複製您的推廌序號
+								複製您的專屬連結
 								<input type="text" :value='reactiveMgmCode' class='copy-source' style='display: none' readonly/>
 							</div>
 							<img class="img-responsive-coin-b" src="./2021/images/coin-2.png" alt="">
@@ -202,10 +201,9 @@ response.Charset = "utf-8"
 				</div>
 			</div>
 		</div>
-		<div class="mgmfoo">
-			<div class="mgmfoo-pc" ><!-- #include virtual="fundayshop/footer.asp"--></div> 
-			<div class="mgmfoo-mb">© 2021 Brainstorm Digital Communications Corp.<br>All rights reserved. Privacy Policy</div>
-		</div>
+
+		<!-- #include virtual="fundayshop/footer.asp"-->
+		
 		<div class="copy-lb" style="display: none;">推薦序號己複製!</div>
 		<script>
 			const App = new Vue({

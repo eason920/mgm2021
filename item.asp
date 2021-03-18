@@ -22,15 +22,9 @@ response.Charset = "utf-8"
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
 		<title>Funday Shop | 商品兌換頁</title>
 		<link href="./2021/css/item.css" rel="stylesheet">
-		<!--link href="./2021/assets/plugins/perfect-scrollbar-master/perfect-scrollbar.css" rel="stylesheet"-->
 		<script src="./2021/assets/plugins/jquery/jquery-1.12.4-min.js"></script>
 		<script src="./2021/assets/plugins/vue/vue2.6.12.js"></script>
-		<!--script src="./2021/assets/plugins/perfect-scrollbar-master/perfect-scrollbar.min.js"></script-->
-		<!--script src="./2021/js/page.js"></script-->
-		<script src="./2021/js/cpn_page.js"></script>
-		<!--style>
-			.ps__rail-x, .ps__rail-y, .ps__thumb-y {opacity: .6}
-		</style-->
+		<script src="./2021/js/cpn_list.js"></script>
 		<link href="https://use.fontawesome.com/releases/v5.0.7/css/all.css" rel="stylesheet">
 	</head>
 	<body>
@@ -56,7 +50,7 @@ response.Charset = "utf-8"
 									v-for='(item, i) in obj.pic'
 									:style="obj.pic[i] | filterBG"
 									:key='i'
-									:class='{"active": i == 0}'
+									:class='{"active": i == 0, "pic-empty": obj.pic[i] == ""}'
 									@click='fnChange( obj.pic[i], i )'
 								><img src="./2021/images/empty_lb.png"></div>
 							</div>
@@ -141,6 +135,29 @@ response.Charset = "utf-8"
 									<input type="hidden" name="ordr_addr"  />
 								</div>
 								<input type="hidden" name="p_id" v-model="goodsId" />
+
+								<!-- FILES -->
+								<div class="filesbox" v-if="category == 'Cash'">
+									<div class="lbinfo-tip">請上傳以下證件圖檔</div>
+									<div>
+										<div class="lbinfo-iptbox">
+											<div class="lbinfo-name">匯款存摺封面</div>
+											<input class="lbinfo-ipt" type="file" ref="" name="">
+										</div>
+										<div class="lbinfo-iptbox">
+											<div class="lbinfo-name">身份證正面</div>
+											<input class="lbinfo-ipt" type="file" ref="" name="">
+										</div>
+										<div class="lbinfo-iptbox">
+											<div class="lbinfo-name">身份證背面</div>
+											<input class="lbinfo-ipt" type="file" ref="" name="">
+										</div>
+									</div>
+									<div class="filesbox-ready">
+										<div class="filesbox-item">使用上回兌換時的系統儲存資料</div>
+										<button class="filebox-btn">我要更新</button>
+									</div>
+								</div>
 							</form>
 							<button class="lbbtn">立即兌換</button>
 						</div>
@@ -148,10 +165,8 @@ response.Charset = "utf-8"
 				</div>
 			</div>
 		</div>
-		<div class="mgmfoo">
-			<div class="mgmfoo-pc" ><!-- #include virtual="fundayshop/footer.asp"--></div>
-			<div class="mgmfoo-mb">© 2021 Brainstorm Digital Communications Corp.<br>All rights reserved. Privacy Policy</div>
-		</div>
+
+		<!-- #include virtual="fundayshop/footer.asp"-->
 			
 		<script>
 			new Vue({
@@ -307,8 +322,10 @@ response.Charset = "utf-8"
 				},
 				methods: {
 					fnChange(style, i){
-						$('.lbpic-kv').attr('style', 'background-image: url(' + style + ')');
-						$('.lbpic-item').removeClass('active').eq(i).addClass('active');
+						if( style != ''){
+							$('.lbpic-kv').attr('style', 'background-image: url(' + style + ')');
+							$('.lbpic-item').removeClass('active').eq(i).addClass('active');
+						};
 					},
 				},
 				computed: {

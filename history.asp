@@ -22,15 +22,9 @@ response.Charset = "utf-8"
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
 		<title>Funday Shop | 每月主題</title>
 		<link href="./2021/css/history.css" rel="stylesheet">
-		<!--link href="./2021/assets/plugins/perfect-scrollbar-master/perfect-scrollbar.css" rel="stylesheet"-->
 		<script src="./2021/assets/plugins/jquery/jquery-1.12.4-min.js"></script>
 		<script src="./2021/assets/plugins/vue/vue2.6.12.js"></script>
-		<!--script src="./2021/assets/plugins/perfect-scrollbar-master/perfect-scrollbar.min.js"></script-->
-		<!--script src="./2021/js/page.js"></script-->
-		<script src="./2021/js/cpn_page.js"></script>
-		<!--style>
-			.ps__rail-x, .ps__rail-y, .ps__thumb-y {opacity: .6}
-		</style-->
+		<script src="./2021/js/cpn_list.js"></script>
 		<link href="https://use.fontawesome.com/releases/v5.0.7/css/all.css" rel="stylesheet">
 	</head>
 	<body>
@@ -81,10 +75,8 @@ response.Charset = "utf-8"
 			</div>
 		</div>
 		<a class="lbbtn" href="https://funday.asia/fundayshop/item.asp?cat=Life&id=18">前往購買</a>
-		<div class="mgmfoo">
-			<div class="mgmfoo-pc" ><!-- #include virtual="fundayshop/footer.asp"--></div>
-			<div class="mgmfoo-mb">© 2021 Brainstorm Digital Communications Corp.<br>All rights reserved. Privacy Policy</div>
-		</div>
+		
+		<!-- #include virtual="fundayshop/footer.asp"-->
 			
 		<script>
 			new Vue({
@@ -92,137 +84,14 @@ response.Charset = "utf-8"
 					$('.mgmnav').load('./2021/header.html');
 					//
 					const vm = this;
-					$.ajax({
-						url: './2021/api/FundayShop.Json',
-						type: "GET",
-						contentType: "application/json",
-						success(res){
-							const url = location.href;
-							// let val;
-							// let index;
-							// if( url.match(/[?=]/) ){
-							// 	console.log('have ? = ');
-							// 	val = url.split("?")[1].split("&");
-							// 	vm.category = val[0].split("cat=")[1];
-							// 	vm.goodsId = val[1].split("id=")[1];
-							// 	//
-							// 	res[vm.category].forEach(function(item,i){
-							// 		if( item.id == vm.goodsId ){ index = i };
-							// 	})
-							// }else{
-							// 	console.log('no ? =');
-							// 	vm.category = "Life";
-							// 	index = 0
-							// }
 
-							// // --------------------------------
-							// if( !res[vm.category] ){
-							// 	vm.category = "Life";
-							// };
-
-							// if( !res[vm.category][index] ){
-							// 	index = 0;
-							// };
-
-							// switch(vm.category){
-							// 	case "Life":
-							// 		vm.categoryCh = "生活類";break;
-							// 	case "Learning":
-							// 		vm.categoryCh = "學習類";break;
-							// 	case "Cash":
-							// 		vm.categoryCh = "現金類";break;
-							// }
-							// --------------------------------
-							vm.obj = res.History[0];
-						}
-					});
-
-					// ==========================================
-					// == ZIP CODE v
-					// ==========================================
-					$.ajax({
-						url: "./2021/api/zipcode_item.json",
-						type: "GET",
-						contentType: "application/json",
-						success(res){
-							vm.countyAry = res;
-						}
-					});
-
-					// ==========================================
-					// == BANK v
-					// ==========================================
-					$.ajax({
-						url: "./2021/api/bank.json",
-						type: "GET",
-						contentType: "application/json",
-						success(res){
-							vm.bank.ary = res;
-						}
-					});
-				},
-				methods: {
-					// fnChange(style, i){
-					// 	$('.lbpic-kv').attr('style', 'background-image: url(' + style + ')');
-					// 	$('.lbpic-item').removeClass('active').eq(i).addClass('active');
-					// },
-				},
-				computed: {
-					// filterTown(){
-					// 	const vm = this;
-					// 	const index = vm.countyAry.findIndex(function(item, i){
-					// 		return item.county == vm.zipInfo.county;
-					// 	});
-					// 	if( index >= 0 ){
-					// 		return vm.countyAry[index].ary;
-					// 	}else{
-					// 		return [];
-					// 	}
-					// },
-					// filterCode() {
-					// 	const vm = this;
-					// 	const countyIndex = vm.countyAry.findIndex(function(item){
-					// 		return item.county == vm.zipInfo.county;
-					// 	});
-					// 	if( countyIndex >= 0){
-					// 		const townIndex = vm.countyAry[countyIndex].ary.findIndex(function(item){
-					// 			return item.town == vm.zipInfo.town;
-					// 		});
-					// 		if( townIndex >= 0 ){
-					// 			vm.zipInfo.selected = true;
-					// 			return vm.countyAry[countyIndex].ary[townIndex].code;
-					// 		}else{
-					// 			vm.zipInfo.selected = false;
-					// 			return "選填郵遞區號";
-					// 		}
-					// 	}else{
-					// 		vm.zipInfo.selected = false;
-					// 		return "選填郵遞區號";
-					// 	}
-					// }
 				},
         data: {
-					category: "",
-					categoryCh: "",
-					goodsId: "",
 					obj: {
-						orders: "",
-						title: "",
-						description: [],
-						pic: [],
-						Fcoin: "",
-					},
-					countyAry: [],
-					zipInfo: {
-						county: "",
-						town: "",
-						selected: false
-					},
-					bank: {
-						ary: [],
-						selected: ''
+						title:  "FUNDAY馬克杯",
+						description: ["材質 : 陶瓷","產地 : MIT","尺寸 : 杯面直徑8CM, 高度9.5CM","商品描述 :","經典直筒陶瓷白杯，搭配FUNDAY專屬字樣LOGO，","襯托出簡約兼具時尚，微波加熱沒問題。"],
+						pic: ["./2021/images/history/main.jpg"],
 					}
-
 				},
         el: "#App",
       })
