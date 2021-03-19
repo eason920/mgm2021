@@ -40,7 +40,10 @@ response.Charset = "utf-8"
 		</div>
 		<div class="mgmcontent" id="app">
 			<div class="wrapper">
-				<div class="logobox"><img class="logobox-what" src="./2021/images/what.png"></div>
+				<div class="logobox">
+					<!--img class="logobox-what" src="./2021/images/what.png"-->
+					<div class="logobox-what">Fun Coin 說明</div>
+				</div>
 				<div class="mainbox">
 					<div class="leftbox">
 						<div class="tabbox">
@@ -175,7 +178,7 @@ response.Charset = "utf-8"
 								</div>
 							</div>
 							<div class="contentbox-total">
-								<h2>目前累積<span id="countToSum"></span>Fun Coin</h2><a class="contentbox-convert" href="intro.asp">商品兌換</a>
+								<h2>目前累積<span id="countToSum"></span>Fun Coin</h2><a class="contentbox-convert" href="list.asp">商品兌換</a>
 							</div>
 						</div>
 					</div>
@@ -195,6 +198,7 @@ response.Charset = "utf-8"
 								複製您的專屬連結
 								<input type="text" :value='reactiveMgmCode' class='copy-source' style='display: none' readonly/>
 							</div>
+							<a href="list.asp" class="code-button"><img class="is-go" src="./2021/images/btn.png"/></a>
 							<img class="img-responsive-coin-b" src="./2021/images/coin-2.png" alt="">
 						</div>
 					</div>
