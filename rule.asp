@@ -50,11 +50,11 @@ response.Charset = "utf-8"
 							<button class="tabbox-item" @click='fnTabboxItem("list", 0)' data-tab="list">
 								<h3>點數紀錄</h3>
 							</button>
-							<button class="tabbox-item" @click='fnTabboxItem("learning", 1)' data-tab="learning">
-								<h3>學習獎勵</h3>
-							</button>
-							<button class="tabbox-item" @click='fnTabboxItem("recommend", 2)' data-tab="recommend">
+							<button class="tabbox-item" @click='fnTabboxItem("recommend", 1)' data-tab="recommend">
 								<h3>推薦獎勵</h3>
+							</button>
+							<button class="tabbox-item" @click='fnTabboxItem("learning", 2)' data-tab="learning">
+								<h3>學習獎勵</h3>
 							</button>
 							<button class="tabbox-item" @click='fnTabboxItem("campaign", 3)' data-tab="campaign">
 								<h3>活動獎勵</h3>
@@ -90,7 +90,7 @@ response.Charset = "utf-8"
 									</div>
 								</div>
 							</div>
-							<div class="contentbox-item" data-tab="learning">
+							<div class="contentbox-item" data-tab="recommend">
 								<div class="contentbox-tip is-head">
 									<ol>
 										<li>項目</li>
@@ -109,13 +109,13 @@ response.Charset = "utf-8"
 									<div class="box">
 										<cpn_list
 											:prop='item'
-											v-for='(item, i) in ary.learning'
+											v-for='(item, i) in ary.recommend'
 											:key='i'
 										></cpn_list>
 									</div>
 								</div>
 							</div>
-							<div class="contentbox-item" data-tab="recommend">
+							<div class="contentbox-item" data-tab="learning">
 								<div class="contentbox-tip is-head">
 									<ol>
 										<li>項目</li>
@@ -134,7 +134,7 @@ response.Charset = "utf-8"
 									<div class="box">
 										<cpn_list
 											:prop='item'
-											v-for='(item, i) in ary.recommend'
+											v-for='(item, i) in ary.learning'
 											:key='i'
 										></cpn_list>
 									</div>
@@ -227,12 +227,15 @@ response.Charset = "utf-8"
 							vm.ary.recommend = res.List.filter( item => item.type == 'Recommend');
 							vm.ary.campaign = res.List.filter( item => item.type == 'Campaign');
 							// (tab 5)RULE v 
-							res.LearningRule.forEach(function(item){
-								vm.ary.rule.push(item);
-							});
+							// 推薦 recommend
 							res.RecommendRule.forEach(function(item){
 								vm.ary.rule.push(item);
 							});
+							// 學習 learning
+							res.LearningRule.forEach(function(item){
+								vm.ary.rule.push(item);
+							});
+							// 活動 campaign
 							res.CampaignRule.forEach(function(item){
 								vm.ary.rule.push(item);
 							});
