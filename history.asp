@@ -75,13 +75,15 @@ response.Charset = "utf-8"
 			</div>
 		</div>
 		<a class="lbbtn" href="https://funday.asia/fundayshop/item.asp?cat=Life&id=18">前往購買</a>
-		
-		<!-- #include virtual="fundayshop/footer.asp"-->
+		<div class="mgmfoo">
+			<div class="mgmfoo-pc" ><!-- #include virtual="fundayshop/footer.asp"--></div>
+			<div class="mgmfoo-mb">© 2021 Brainstorm Digital Communications Corp.<br>All rights reserved. Privacy Policy</div>
+		</div>
 			
 		<script>
 			new Vue({
         created(){
-					$('.mgmnav').load('./2021/header.html');
+					$('.mgmnav').load('./2021/header.html?1100601');
 					//
 					const vm = this;
 

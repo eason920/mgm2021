@@ -5,14 +5,38 @@ response.Buffer = true
 session.Codepage =65001
 response.Charset = "utf-8"  
 
-' mindx=Get_mid()  '--使用者ID
-' cindx=Get_cid()  '--customer ID
-' enddate=Get_enddate()  '--使用者到期日
+ mindx=Get_mid()  '--使用者ID
+ cindx=Get_cid()  '--customer ID
+ enddate=Get_enddate()  '--使用者到期日
 
-' if session("indx")="" then
-'   response.write "<script>location.href='../../'</script>"
-'   response.end()
-' end if
+ if session("indx")="" then
+   response.write "<script>location.href='../../'</script>"
+   response.end()
+ end if
+
+'mindx=1179  '--使用者ID
+'cindx=411  '--customer ID
+
+h=request("h")
+
+if mindx<>"" and h="1" then
+	sql = "select * from member_info where customer_id ='"&cindx&"' and  member_id ='"&mindx&"' "
+    set rs2 = connection2.execute(sql)
+    if not rs2.eof then
+		realname=rs2("realname")
+		tel=rs2("tel")
+		city=rs2("city")
+		town=rs2("town")
+		zip=rs2("zip")
+		location=rs2("location")
+		banksn=rs2("banksn")
+		bankaccount=rs2("bankaccount")
+		accountName=rs2("accountName")
+		file1=rs2("file1")
+		file2=rs2("file2")
+		file3=rs2("file3")
+    end if
+end if
 
 %>
 <!DOCTYPE html>
@@ -71,23 +95,24 @@ response.Charset = "utf-8"
 									:key='i'
 								>{{obj.description[i]}}</div>
 							</div>
-							<form class="lbinfo is-lbblock" id="Tform" name="Tform">
+							<form class="lbinfo is-lbblock" id="Tform" name="Tform" enctype="multipart/form-data" charset="UTF-8">
+
 								<div class="lbinfo-tip">請正確填寫以下收件人相關資訊</div>
 								<!-- USUAL v -->
 								<div class="lbinfo-iptbox">
 									<div class="lbinfo-name">收件人姓名</div>
-									<input class="lbinfo-ipt" type="text" ref="ordr_name" name="ordr_name" placeholder="*必填">
+									<input class="lbinfo-ipt" type="text" ref="ordr_name" name="ordr_name" placeholder="*必填" value="<%=realname%>">									
 								</div>
 								<div class="lbinfo-iptbox">
 									<div class="lbinfo-name">收件人電話</div>
-									<input class="lbinfo-ipt" type="text" ref="ordr_tel" name="ordr_tel" placeholder="*必填">
+									<input class="lbinfo-ipt" type="text" ref="ordr_tel" name="ordr_tel" placeholder="*必填" value="<%=tel%>">
 								</div>
 
 								<!-- BANK v -->
 								<div class="bankblock" v-if="category == 'Cash'">
 									<div class="lbinfo-iptbox">
 										<div class="lbinfo-name">身份證字號</div>
-										<input class="lbinfo-ipt" ref="ordr_idno" name="ordr_idno" type="text" placeholder="*必填">
+										<input class="lbinfo-ipt" ref="ordr_idno" name="ordr_idno" type="text" placeholder="*必填" autocomplete="off">
 									</div>
 									<div class="lbinfo-iptbox">
 										<div class="lbinfo-name">銀行代號</div>
@@ -101,23 +126,28 @@ response.Charset = "utf-8"
 									</div>
 									<div class="lbinfo-iptbox">
 										<div class="lbinfo-name">銀行帳號</div>
-										<input class="lbinfo-ipt" ref="ordr_Baccount" name="ordr_Baccount" type="text" placeholder="*必填">
+										<input class="lbinfo-ipt" ref="ordr_Baccount" name="ordr_Baccount" type="text" placeholder="*必填" value="<%=bankaccount%>">
 									</div>
+									<div class="lbinfo-iptbox">
+										<div class="lbinfo-name">帳號戶名</div>
+										<input class="lbinfo-ipt" type="text" ref="ordr_BName" name="ordr_BName" placeholder="*必填" value="<%=accountName%>" >									
+									</div>									
 								</div>
 
 								<!-- TRANSPORT v -->
-								<div class="lbinfo-iptbox is-zipcode" v-else>
-									<div class="lbinfo-name">郵遞區號及地址</div>
+								<div class="lbinfo-iptbox is-zipcode" >
+									<div class="lbinfo-name" v-if="category == 'Cash'">戶籍地址</div>
+									<div class="lbinfo-name" v-else>郵遞區號及地址</div>
 									<div class="zipbox">
 										<div class="zipbox-block">
-											<select v-model="zipInfo.county">
+											<select v-model="zipInfo.county" >
 												<option value='' disabled>請選擇縣市</option>
 												<option
 													v-for="(item, i) in countyAry"
 													:key="i"
 												>{{item.county}}</option>
 											</select>
-											<select v-model="zipInfo.town">
+											<select v-model="zipInfo.town" >
 												<option value='' disabled>請選擇鎮市區</option>
 												<option 
 													v-for="(item, i) in filterTown"
@@ -129,11 +159,12 @@ response.Charset = "utf-8"
 											<div class="zipbox-code"
 												:class="{ 'is-selected' : zipInfo.selected == true}"
 											>{{filterCode}}</div>
-											<input class="zipbox-ipt" type="text" ref="zipbox_ipt" v-model="zipipt" placeholder="*必填">
+											<input class="zipbox-ipt" type="text" ref="zipbox_ipt" v-model="zipipt"  placeholder="*必填" >
 										</div>
 									</div>
 									<input type="hidden" name="ordr_addr"  />
 								</div>
+
 								<input type="hidden" name="p_id" v-model="goodsId" />
 
 								<!-- FILES -->
@@ -142,22 +173,42 @@ response.Charset = "utf-8"
 									<div>
 										<div class="lbinfo-iptbox">
 											<div class="lbinfo-name">匯款存摺封面</div>
-											<input class="lbinfo-ipt" type="file" ref="" name="">
+											<%if file1<>"" then%>
+												<a href='MImg.asp?i=1' class="lb-file" style="margin-right: 10px;font-size: 1.2em;" target="_blank">PIC</a>
+											<%end if%>
+											<input class="lbinfo-ipt" type="file" ref="file1" name="file1">
 										</div>
 										<div class="lbinfo-iptbox">
 											<div class="lbinfo-name">身份證正面</div>
-											<input class="lbinfo-ipt" type="file" ref="" name="">
+											<%if file2<>"" then%>
+												<a href='MImg.asp?i=2' class="lb-file" style="margin-right: 10px;font-size: 1.2em;" target="_blank">PIC</a>
+											<%end if%>											
+											<input class="lbinfo-ipt" type="file" ref="file2" name="file2">
 										</div>
 										<div class="lbinfo-iptbox">
 											<div class="lbinfo-name">身份證背面</div>
-											<input class="lbinfo-ipt" type="file" ref="" name="">
+											<%if file3<>"" then%>
+												<a href='MImg.asp?i=3' class="lb-file" style="margin-right: 10px;font-size: 1.2em;" target="_blank">PIC</a>
+											<%end if%>											
+											<input class="lbinfo-ipt" type="file" ref="file3" name="file3">
 										</div>
 									</div>
-									<div class="filesbox-ready">
-										<div class="filesbox-item">使用上回兌換時的系統儲存資料</div>
-										<button class="filebox-btn">我要更新</button>
+								</div>
+								<%if h="" then%>
+								<div class="filesbox-ready" style="margin-top: 10px;">
+									<div class="filesbox-item" style="cursor: pointer;">使用上回兌換時的系統儲存資料</div>
+										<!--<button class="filebox-btn">我要更新</button><!-->
+								</div>
+								<%end if%>
+								<div class="lbinfo-iptbox" v-if="category == 'Cash'" style="height: 100px;color: #10567b;">
+									<div class="lbinfo-tip" >
+										<p style="height: 40px;">*申請兌換現金時，須提供個人資料與金融帳戶資訊以利報稅與匯款。</p>
+										<p>*當月25號前申請，可於次月收到款項。 </p>
 									</div>
 								</div>
+								<div class="lbinfo-iptbox" v-else-if="type==2"  style="height: 60px;color: #10567b;">
+									<div class="lbinfo-tip" >* 兌換商品統一於每週一寄出 </div>
+								</div>								
 							</form>
 							<button class="lbbtn">立即兌換</button>
 						</div>
@@ -171,7 +222,7 @@ response.Charset = "utf-8"
 		<script>
 			new Vue({
         created(){
-					$('.mgmnav').load('./2021/header.html');
+					$('.mgmnav').load('./2021/header.html?1100601');
 					//
 					const vm = this;
 					$.ajax({
@@ -220,11 +271,15 @@ response.Charset = "utf-8"
 							for(i=1;i<=add;i++){
 								vm.obj.pic.push("");
 							}
-
+							vm.type=vm.obj.type
+							console.log(vm.type)
 
 							// --------------------------------
 							// -- PURCHASE v
 							// --------------------------------
+							$('.filesbox-item').on('click',function(){
+								location.href=location.href+'&h=1'
+							})
 							$('.lbbtn').on('click',function(){
 								let chkStr=1;
 
@@ -259,21 +314,64 @@ response.Charset = "utf-8"
 									if(chkStr==1 && vm.$refs.ordr_Baccount.value==''){
 										chkStr=0;
 										vm.$refs.ordr_Baccount.focus();				
-									}								
+									}
+									if(chkStr==1 && vm.$refs.ordr_BName.value==''){
+										chkStr=0;
+										vm.$refs.ordr_BName.focus();				
+									}									
+									if(chkStr==1 && (!vm.zipInfo.selected || vm.zipipt=='') ){
+										chkStr=0;
+										vm.$refs.zipbox_ipt.focus();				
+									}
+
+									Tform.ordr_addr.value=vm.filterCode+vm.zipInfo.county+vm.zipInfo.town+vm.zipipt	
+
+									<%if h="" or (h<>"" and (file1="" or file2="" or file3="") ) then%>
+									if(chkStr==1 && (vm.$refs.file1.value=='' || vm.$refs.file2.value=='' || vm.$refs.file3.value=='')){
+										chkStr=0;
+										alert('請依序上傳證件圖片')
+									}
+									<%end if%>								
 								}
 
 								//(chkStr==1)?console.log($('#Tform').serialize()):null
 								
 								if(chkStr==1){
 									if(confirm("確定是否兌換商品?")){
+										var form = $('#Tform')[0];
+    									var formData = new FormData(form);
+										//if(vm.category!='Cash'){										
+											formData.append('city', vm.zipInfo.county);
+											formData.append('town', vm.zipInfo.town);
+											formData.append('zip', vm.filterCode);
+											formData.append('location', vm.zipipt);
+										//}
+										var fg={};
+										for (var key of formData.keys()) {
+											if(key!='file1' && key!='file2' && key!='file3'){
+												formData.set(key,escape(formData.get(key)));
+											}else{
+												
+												formData.set(key,formData.get(key),key+escape(formData.get(key).name));
+												//formData.set(key,formData.get(key),'file.doc');
+												console.log(formData.get(key))
+											}	
+										}
+
 										$.ajax({
 											type: "POST",//方法
 											url: "../../../../fundayshop/ordersC.asp" ,//表單接收url
-											data: $('#Tform').serialize(),
+											data: formData,
+											contentType: false,
+											cache: false,
+											processData: false,
+											contentType : false , 											
 											success: function (res) {
+
 												const obj = JSON.parse(res);
 												console.log( 'type is > ', typeof(obj));
 												console.log(obj, obj.Status, obj.Status == 0)
+
 												if( obj.Status == 0 ){
 													console.log('0, error');
 													if( obj.message == "點數不足"){
@@ -286,8 +384,13 @@ response.Charset = "utf-8"
 													alert( "您的商品「" + vm.obj.title + "」兌換成功!" );
 													location.href = "./rule.asp"
 												}
+
+											},
+											error:function(res){
+												console.log(res)
 											}
 										});
+
 									}
 								}
 								
@@ -366,6 +469,7 @@ response.Charset = "utf-8"
 					category: "",
 					categoryCh: "",
 					goodsId: "",
+					type:"",
 					obj: {
 						orders: "",
 						title: "",
@@ -375,14 +479,14 @@ response.Charset = "utf-8"
 					},
 					countyAry: [],
 					zipInfo: {
-						county: "",
-						town: "",
+						county: "<%=city%>",
+						town: "<%=town%>",
 						selected: false
 					},
-					zipipt:"",					
+					zipipt:"<%=location%>",					
 					bank: {
 						ary: [],
-						selected: ''
+						selected: '<%=banksn%>'
 					}
 
 				},

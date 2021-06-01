@@ -1,18 +1,53 @@
 <%@LANGUAGE="VBSCRIPT" CODEPAGE="65001" %>   
 <!-- #include virtual="include/DBConnection.asp"--> 
+<!--#include virtual="include/aspJSON1.17.asp"-->
+<!-- #include virtual="fundayshop/api/function.asp"--> 
 <%
 response.Buffer = true
 session.Codepage =65001
 response.Charset = "utf-8"  
 
-' mindx=Get_mid()  '--使用者ID
-' cindx=Get_cid()  '--customer ID
-' enddate=Get_enddate()  '--使用者到期日
 
-' if session("indx")="" then
-'   response.write "<script>location.href='../../'</script>"
-'   response.end()
-' end if
+mindx=session("indx")
+cindx=session("ip_indx")
+
+
+mcoins=0
+
+Frozen=MemberRule(mindx)
+
+if Frozen="1" then
+	response.write "<script>alert('僅限定會員使用');location.href='../../../../';</script>"
+	response.end
+end if
+
+' 尚未同意條款(產生MGM code)
+sql="select * from exchange.dbo.MGM_Code where member_id="&mindx&" and ready=1"
+set rs = connection2.execute(sql)  
+if  rs.eof then
+	Response.Redirect("./Policy.htm")
+	response.end
+end if
+
+
+' 是否有推薦註冊者漏值
+sql="select MML.member_id,mc2.code from exchange.dbo.MGM_member_List MML inner join exchange.dbo.MGM_Code mc2 on MML.ref_member_id =mc2.member_id where MML.ref_member_id='"&mindx&"' and MML.chk=1 and ( select mc.ref_id from exchange.dbo.member_coins mc where mc.rule_id=21 and mc.ref_id like '%'+CONVERT(varchar,MML.member_id) +'%' ) is null order by MML.indx desc"
+set rs = connection2.execute(sql)
+while not rs.eof 
+	ordercode="21-"&mindx&"-"&rs("member_id")&"-"&rs("code")
+	MGMCoins 21,ordercode
+	rs.movenext
+wend
+
+'是否有達成文章漏值
+sql="select a.ref_id,a.member_levels from company1.dbo.score a where a.member_id="&mindx&"  and a.listen>=80 and a.word>=80 and a.reading>=80  and datediff(d,'2021/4/20',a.cdate)>=0 and (select ref_id from exchange.dbo.member_coins b where b.member_id=a.member_id and b.rule_id=12 and b.ref_id = '12-'+CONVERT(varchar,a.member_id) +'-'+CONVERT(varchar,a.ref_id)+'-'+CONVERT(varchar,a.member_levels) ) is null"
+recordset1.open sql,connection2,1,3 
+while not recordset1.eof 
+	ordercode="12-"&mindx&"-"&recordset1("ref_id")&"-"&recordset1("member_levels")
+	MGMCoins 12,ordercode
+	recordset1.movenext
+wend
+recordset1.close
 
 %>
 <!DOCTYPE html>
@@ -20,7 +55,7 @@ response.Charset = "utf-8"
 	<head>
 		<meta charset="UTF-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
-		<title>Funday Shop | 點數紀錄</title>
+		<title>Funday Shop | 集點介紹</title>
 		<link href="./2021/css/rule.css" rel="stylesheet">
 		<link href="./2021/assets/plugins/perfect-scrollbar-master/perfect-scrollbar.css" rel="stylesheet">
 		<script src="./2021/assets/plugins/jquery/jquery-1.12.4-min.js"></script>
@@ -212,7 +247,7 @@ response.Charset = "utf-8"
 		<script>
 			const App = new Vue({
 				created(){
-					$('.mgmnav').load('./2021/header.html');
+					$('.mgmnav').load('./2021/header.html?1100601');
 					//
 					const vm = this;
 					$.ajax({
@@ -272,7 +307,7 @@ response.Charset = "utf-8"
 							// --------------------------------
 							// -- DEFAULT CLCIK v
 							// --------------------------------
-							$('.tabbox-item:eq(0)').click();
+							$('.tabbox-item:eq(4)').click();
 						}
 					});
 				},

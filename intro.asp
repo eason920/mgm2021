@@ -1,11 +1,11 @@
 <%@LANGUAGE="VBSCRIPT" CODEPAGE="65001" %>   
 <!-- #include virtual="include/DBConnection.asp"--> 
 <!--#include virtual="include/aspJSON1.17.asp"-->
-<!-- #include virtual="fundayshop/api/function.asp"--> 
 <%
 response.Buffer = true
 session.Codepage =65001
 response.Charset = "utf-8"  
+
 
 function MemberJson(mindx)
 	Str_count="{"
@@ -37,18 +37,54 @@ end function
 mindx=session("indx")
 cindx=session("ip_indx")
 
-Frozen=MemberRule(mindx)
+
+mcoins=0
+
+M2Str=MemberJson(mindx)
+
+if M2Str<>"False" then
+	Set oJSON2=new aspJSON
+	oJSON2.loadJSON(M2Str)
+	amont=oJSON2.data("amont")
+	Pdate=oJSON2.data("Pdate")
+	T_tel=oJSON2.data("T_tel")
+	Frozen=oJSON2.data("Frozen")
+	MGMLevel=oJSON2.data("MGMLevel")
+else
+	amont="0"
+	MGMLevel="0"
+	Pdate=now()
+	T_tel="1"
+	Frozen="1"
+end if
+
+if amont="" then '找不到合約
+	amont="0"
+	Pdate=now()
+	T_tel="1"
+	Frozen="1"
+	message="無合約"
+elseif int(MGMLevel)<1 then '方案不符
+	Frozen="1"
+	message="合約條件未達"
+elseif len(T_tel)>2 then ' 有轉讓
+	Frozen="1"
+	message="合約轉讓" 
+else
+
+	if datediff("d",FormatDateTime(Pdate,2),date())>15 then '到期超過15天
+		Frozen="1"
+		message="合約過期15天"
+	elseif Frozen="1" then '本身己凍結點數(申請退費或其它因素)
+		message="凍結點數"
+	else
+		Frozen="0"
+	end if
+
+end if
 
 if Frozen="1" then
 	response.write "<script>alert('僅限定會員使用');location.href='../../../../';</script>"
-	response.end
-end if
-
-' 尚未同意條款(產生MGM code)
-sql="select * from exchange.dbo.MGM_Code where member_id="&mindx&" and ready=1"
-set rs = connection2.execute(sql)  
-if  rs.eof then
-	Response.Redirect("./Policy.htm")
 	response.end
 end if
 
@@ -58,11 +94,17 @@ end if
 	<head>
 		<meta charset="UTF-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
-		<title>Funday Shop | 首頁</title>
-		<link href="./2021/css/list.css" rel="stylesheet">
+		<title>Funday Shop</title>
+		<link href="./2021/css/index_flat.css" rel="stylesheet">
+		<!--link href="./2021/assets/plugins/perfect-scrollbar-master/perfect-scrollbar.css" rel="stylesheet"-->
 		<script src="./2021/assets/plugins/jquery/jquery-1.12.4-min.js"></script>
 		<script src="./2021/assets/plugins/vue/vue2.6.12.js"></script>
-		<script src="./2021/js/cpn_list.js"></script>
+		<!--script src="./2021/assets/plugins/perfect-scrollbar-master/perfect-scrollbar.min.js"></script-->
+		<!--script src="./2021/js/page.js"></script-->
+		<script src="./2021/js/cpn_intro.js"></script>
+		<style>
+			.ps__rail-x, .ps__rail-y, .ps__thumb-y {opacity: .6}
+		</style>
 		<link href="https://use.fontawesome.com/releases/v5.0.7/css/all.css" rel="stylesheet">
 	</head>
 	<body>
@@ -108,7 +150,7 @@ end if
 							v-for='(item, i) in ary.life'
 							:key='i'
 							:req_style='item.pic[0] | filterBG'
-							:req_href='fnLink("Life", item.id)'
+							@connect_click='fnLink("Life", item.id)'
 						></cpn_item>
 					</div>
 				</section>
@@ -120,7 +162,7 @@ end if
 							v-for='(item, i) in ary.learning'
 							:key='i'
 							:req_style='item.pic[0] | filterBG'
-							:req_href='fnLink("Learning", item.id)'
+							@connect_click='fnLink("Learning", item.id)'
 						></cpn_item>
 						<!--div class="giftbox-item is-empty"></div-->
 					</div>
@@ -133,13 +175,13 @@ end if
 							v-for='(item, i) in ary.cash'
 							:key='i'
 							:req_style='item.pic[0] | filterBG'
-							:req_href='fnLink("Cash", item.id)'
+							@connect_click='fnLink("Cash", item.id)'
 						></cpn_item>
 						<!--div class="giftbox-item is-empty"></div-->
 						<!--div class="giftbox-item is-empty"></div-->
 					</div>
 				</section>
-				<section class="mgmlimit" style="height: 0;padding: 0;overflow: hidden">
+				<section class="mgmlimit">
 					<p>**VIP會員若到期，點數僅保留3個月。</p>
 					<p>**活動有效日期110年8月31日。</p>
 				</section>
@@ -167,29 +209,14 @@ end if
 						contentType: 'application/json',
 						success(res){
 							console.log('res > ', res);
-							// FADE SHOW v
-							vm.fade = res.FadeShow;
-
-							// LIFE v
-							vm.ary.life = res.Life;
-							// vm.ary.life.sort(function(n, c){
-							// 	if( n.sort > c.sort){return 1}else{return -1};
-							// });
-
-							// LEARNING v
-							vm.ary.learning = res.Learning;
-							// vm.ary.learning.sort(function(n, c){
-							// 	if(n.sort > c.sort){return 1}else{return -1};
-							// })
-
-							// CASH v
-							vm.ary.cash = res.Cash;
-							// vm.ary.cash.sort(function(n, c){
-							// 	if( n.sort > c.sort ){ return 1 }else{ return -1 };
-							// });
-
 							//
+							vm.fade = res.FadeShow;
+							//
+							vm.ary.life = res.Life;
+							vm.ary.learning = res.Learning;
+							vm.ary.cash = res.Cash;
 							console.log(vm.ary.learning, vm.ary.life, vm.ary.cash);
+
 
 							// --------------------------------
 							const ww = $(window).width();
@@ -233,7 +260,7 @@ end if
 				},
 				methods: {
 					fnLink(category, id){
-						return "item.asp?cat=" + category + "&id=" + id;
+						location.href= "item.asp?cat=" + category + "&id=" + id;
 					},
 
 					fnImgOuterHeight(){
