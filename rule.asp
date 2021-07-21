@@ -247,7 +247,7 @@ recordset1.close
 		<script>
 			const App = new Vue({
 				created(){
-					$('.mgmnav').load('./2021/header.html?1100601');
+					$('.mgmnav').load('./2021/header.html');
 					//
 					const vm = this;
 					$.ajax({
@@ -255,7 +255,6 @@ recordset1.close
 						url: './2021/api/FcoinList.asp',
 						contentType: 'application/json',
 						success(res){
-							console.log('res ', res);
 							// (tab 1~4) v
 							vm.ary.list = res.List;
 							vm.ary.learning = res.List.filter( item => item.type == 'Learning' );
@@ -283,7 +282,7 @@ recordset1.close
 							// --------------------------------
 							// -- POINT ANIMATE v
 							// --------------------------------
-							vm.fnCountToSum( $('#countToSum') , res.FunCoin, '', 2000);
+							vm.fnCountToSum( $('#countToSum') , res.FunCoin, 2000);
 							
 							// --------------------------------
 							// -- MOBILE OPEN FUN-COIN LB v
@@ -312,12 +311,13 @@ recordset1.close
 					});
 				},
 				methods: {
-					fnCountToSum(element, number, suffix, duration) {
+					fnCountToSum(element, number, duration) {
+            if( number == "" ){number = 0}
 						$({ count: parseInt(element.text().split("+")[0].replace(/\,/g, '')) }).animate({ count: number }, {
 							duration: duration ? duration : 1000,
 							easing: 'swing',
 							step: function (now) {
-								element.text((Math.floor(now) + suffix).replace(/(\d)(?=(\d\d\d)+(?!\d))/g, "$1,"));
+								element.text(String(Math.floor(now)).replace(/(\d)(?=(\d\d\d)+(?!\d))/g, "$1,"));
 							}
 						});
 					},

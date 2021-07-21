@@ -234,7 +234,7 @@ end if
 							let val;
 							let index;
 							if( url.match(/[?=]/) ){
-								console.log('have ? = ');
+								// console.log('have ? = ');
 								val = url.split("?")[1].split("&");
 								vm.category = val[0].split("cat=")[1];
 								vm.goodsId = val[1].split("id=")[1];
@@ -243,7 +243,7 @@ end if
 									if( item.id == vm.goodsId ){ index = i };
 								})
 							}else{
-								console.log('no ? =');
+								// console.log('no ? =');
 								vm.category = "Life";
 								index = 0
 							}
@@ -272,7 +272,7 @@ end if
 								vm.obj.pic.push("");
 							}
 							vm.type=vm.obj.type
-							console.log(vm.type)
+							// console.log(vm.type)
 
 							// --------------------------------
 							// -- PURCHASE v
@@ -354,7 +354,7 @@ end if
 												
 												formData.set(key,formData.get(key),key+escape(formData.get(key).name));
 												//formData.set(key,formData.get(key),'file.doc');
-												console.log(formData.get(key))
+												// console.log(formData.get(key))
 											}	
 										}
 
@@ -369,18 +369,18 @@ end if
 											success: function (res) {
 
 												const obj = JSON.parse(res);
-												console.log( 'type is > ', typeof(obj));
-												console.log(obj, obj.Status, obj.Status == 0)
+												// console.log( 'type is > ', typeof(obj));
+												// console.log(obj, obj.Status, obj.Status == 0)
 
 												if( obj.Status == 0 ){
-													console.log('0, error');
+													// console.log('0, error');
 													if( obj.message == "點數不足"){
 														alert("點數不足")
 													}else{
 														alert("無此商品")
 													}
 												}else{
-													console.log('1, success');
+													// console.log('1, success');
 													alert( "您的商品「" + vm.obj.title + "」兌換成功!" );
 													location.href = "./rule.asp"
 												}

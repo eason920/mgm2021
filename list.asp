@@ -166,7 +166,6 @@ end if
 						type: 'GET',
 						contentType: 'application/json',
 						success(res){
-							console.log('res > ', res);
 							// FADE SHOW v
 							vm.fade = res.FadeShow;
 
@@ -189,7 +188,6 @@ end if
 							// });
 
 							//
-							console.log(vm.ary.learning, vm.ary.life, vm.ary.cash);
 
 							// --------------------------------
 							const ww = $(window).width();
@@ -203,7 +201,6 @@ end if
 										const l = $('.giftbox[data-category="'+i+'"]').find('.giftbox-item').length - $('.giftbox[data-category="'+i+'"]').find('.is-empty').length;
 										const width = w * l + g;
 										$('.giftbox[data-category="'+i+'"] .giftbox-scroller').css({width});
-										console.log('is mb', w, l, g, width);
 										//
 										vm.deviceClass = 'is-mb-open';
 									};
